@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "课程详情",
-  "usingComponents": {
-    "shareToast-modal": "../../../common/easyModal/shareToast/shareToast",
-    "modal": "../../../common/easyModal/swichRoleToast/swichRoleToast"
-    
-  }
-}

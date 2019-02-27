@@ -1,5 +1,0 @@
-<showRecord-modal id="showRecordModal" modalSize="{{modalSize}}" animated="{{animated}}" backdrop="{{backdrop}}">
-  <view slot="body" class='modal-body'>
-    <slot></slot>
-  </view>
-</showRecord-modal>

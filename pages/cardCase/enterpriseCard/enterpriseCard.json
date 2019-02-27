@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "企业名片",
-  "usingComponents": {
-    "callPhoneToast-modal": "../../../common/easyModal/callPhoneToast/callPhoneToast",
-    "modal": "../../../common/easyModal/swichRoleToast/swichRoleToast"
-  }
-}

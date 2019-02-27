@@ -1,7 +1,0 @@
-{
-  "enablePullDownRefresh": true,
-  "navigationBarTitleText": "企业老师",
-  "usingComponents": {
-    "modal": "../../../common/easyModal/swichRoleToast/swichRoleToast"
-  }
-}
