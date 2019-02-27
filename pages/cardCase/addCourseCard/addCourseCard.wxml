@@ -1,0 +1,124 @@
+<view class='wrapper'>
+  <view class='wrapper-center'>
+    <!-- 添加图片 开始 -->
+    <view class="{{imgUrls.length > 0 ? 'slider-wrapper-public' : 'slider-wrapper-img'}}" bindtap="doUpload" >
+      <swiper autoplay="{{autoplay}}" interval="{{interval}}" current="{{current}}" duration="{{duration}}" >
+        <block wx:for="{{imgUrls}}" wx:for-item="on" wx:key="*{{imgUrls}}" >
+          <swiper-item  data-id="{{on.id}}" data-index="{{index}}" data-middleid="{{on.middleId}}" bindlongpress="deleteImage">
+            <image src="{{on.url}}"  mode='scaleToFill' class="slide-image" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class='flex mui-view-center mui-align-center switch'>
+        <view class='changeImg'>添加图片(长按删除)</view>
+      </view>
+    </view>
+    <!-- 添加图片 结束 -->
+    <!-- 课程信息 开始 -->
+    <view class='Detail'>
+      <!-- 课程名称 -->
+      <view class="weui-row">
+        <view class='mui-col-sm-30 flex mui-align-center'>
+          <text class="iconfont icon-qiye "></text>
+          <view class="range">课程名称：</view>
+        </view>
+        <input class="course mui-col-sm-65" placeholder='课程名称' maxlength="10" bindinput="courseInput" value="{{courseName}}"></input>
+      </view>
+      <!-- 上课时间 -->
+      <view class="flex weui-row">
+        <view class='mui-col-sm-30 flex mui-align-center'>
+          <text class="iconfont icon-shijian mui-align-center"></text>
+          <view class="range_two">上课时间：</view>
+        </view>
+        <view class='mui-col-sm-65 flex mui-align-center'>
+          <picker mode="time" bindchange="bindTimeChange" data-type='0' class="mui-align-center mui-view-center  flex timePicker">
+            <view wx:if="{{status =='add'||status =='addMore'}}" class="picker">{{time1[0]}} </view>
+            <view wx:else class="picker">{{time1[0]}} </view>
+          </picker>
+          <view class="school">至</view>
+          <picker mode="time" bindchange="bindTimeChange" data-type='1' class="mui-align-center mui-view-center flex timePicker">
+            <view wx:if="{{status =='add'||status =='addMore'}}" class="picker">{{time2[0]}} </view>
+            <view wx:else class="picker">{{time2[0]}} </view>
+          </picker>
+          <view class="plusSign iconfont icon-tianjia" catchtap="addTime"></view>
+        </view>
+      </view>
+      <view wx:for="{{timeSize}}" wx:for-item="on" class="weui-row-two" wx:if="{{status == 'edit' ? index < timeSize.length - 1 : index < timeSize.length}}" wx:key="*item">
+        <view class='mui-col-sm-30 flex mui-align-center'>
+        </view>
+        <view class='mui-col-sm-65 flex mui-align-center'>
+          <picker mode="time" bindchange="bindTimeChange2" data-type='0' data-index='{{index}}' class="mui-align-center mui-view-center  flex  timePicker">
+            <view class="picker">{{time1[index+1]}} </view>
+          </picker>
+          <view class="school">至</view>
+          <picker mode="time" data-type='1' data-index='{{index}}' bindchange="bindTimeChange2" class="mui-align-center flex timePicker mui-view-center">
+            <view class="picker">{{time2[index+1]}}</view>
+          </picker>
+          <view class="plusSign_two iconfont icon-shanjian" data-index='{{index}}' catchtap="subtract"></view>
+        </view>
+      </view>
+      <!-- 年龄范围选择 -->
+      <radio-group class="radio-group">
+        <view id="{{list.id}}" class="flex  kind-list-item  kind-list-item-hd {{isShow ? 'kind-list-item-hd-show' : ''}} " catchtap="kindToggle">
+          <view class='flex mui-col-sm-30 mui-align-center'>
+            <text class="iconfont icon-nianling "></text>
+            <view class="range_two">年龄范围：</view>
+          </view>
+          <view class='mui-col-sm-65 flex mui-align-center mui-view-space'>
+            <view class="select-age" wx:if="{{scopea}}">{{ages[ageShow]}}</view>
+            <text class="iconfont icon-arrowright {{triangle ? 'normal' : 'triangle'}}"></text>
+          </view>
+        </view>
+        <view class="kind-list-item-bd {{isShow ? 'kind-list-item-bd-show' : ''}}">
+          <view class="navigator-box {{isShow ? 'navigator-box-show' : ''}}">
+            <block wx:for-items="{{ages}}" wx:key="{{ages}}">
+              <view class="navigat" data-index='{{index}}' data-val='{{item}}' catchtap='kindAge'>
+                <view class="navigator-text">{{item}}</view>
+                <radio value="{{item}}" class='age-option' color='#14a1fd' checked="{{ageShow==index}}" />
+              </view>
+            </block>
+          </view>
+        </view>
+      </radio-group>
+      <!-- 课时 -->
+      <radio-group class='weui-row'>
+        <view class='flex mui-col-sm-30 mui-align-center'>
+          <text class="iconfont icon-keshixuanze"> </text>
+          <view class="range_two">课时选择：</view>
+        </view>
+        <view class='mui-col-sm-65 flex mui-align-center'>
+          <label bindtap="checkboxChange" wx:for-item="on" data-val="{{on.value}}" data-index="{{index}}" class='periodCheckbox mui-col-sm-50' wx:for="{{classHour}}" wx:key="key">
+            <text class='hour-option'> {{on.value}}</text>
+            <radio class="checkbox" color='#14a1fd' value="{{on.value}}" checked="{{on.checked}}" />
+          </label>
+        </view>
+      </radio-group>
+    </view>
+    <!-- 课程信息 结束 -->
+
+    <!-- 课程简介 开始 -->
+    <view class='flex intro  mui-align-center'>
+      <view class='company-intro mui-align-center'>课程简介</view>
+    </view>
+    <view class='introduction'>
+      <textarea maxlength="-1" class="editor-textarea" bindinput="introduceInput" value="{{introduce}}"> </textarea>
+    </view>
+    <!-- 课程简介 结束 -->
+
+
+    <!-- <view class=' add_btn'>
+      <button class='btn' bindtap="addCourse">
+        继续添加
+      </button>
+    </view> -->
+
+    <view class=' add_btn_two'>
+      <button class='btn_two' bindtap="onSave">
+        完成
+      </button>
+    </view>
+  </view>
+
+
+
+</view>

@@ -1,0 +1,30 @@
+<!--pages/message/message.wxml-->
+
+
+<view wx:if="{{messageList.length>0}}">
+  <view bindlongpress='deleteMessage' data-id="{{on.id}}" wx:for="{{messageList}}" wx:for-item="on" wx:key="{{messageList}}" class='mui-view-cell flex mui-align-center'>
+    <view class='mui-col-sm-20 flex mui-view-center'>
+      <text wx:if="{{on.type == 0}}" class='iconfont xitong icon-xitongxiaoxi'></text>
+      <text wx:if="{{on.type == 1}}" class='iconfont yaoqing icon-yaoqing'></text>
+      <text wx:if="{{on.type == 2}}" class='iconfont daka icon-daka'></text>
+    </view>
+    <view class="mui-col-sm-80 ">
+      <view class='flex mui-view-space mui-align-center'>
+        <view wx:if="{{on.isDay}}" class='isDay'>{{on.createtime}}</view>
+        <view wx:else>{{on.createtime}}</view>
+      </view>
+      <view class='flex mui-align-center mui-view-space'>
+        <view class="details ">{{on.content}}</view>
+        <view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{!hasData}}">
+  <!-- 没有消息 -->
+  <view class='NoMessage'>
+    <text class='iconfont icon-kong'></text>
+    <text>暂无消息</text>
+  </view>
+</view>

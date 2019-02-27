@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "学生情况",
+  "usingComponents": {
+    "showRecordToast-modal": "../../../common/easyModal/showRecordToast/showRecordToast"
+  },
+  "enablePullDownRefresh": true
+}

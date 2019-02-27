@@ -1,0 +1,272 @@
+/* miniprogram/pages/owner/index/index.wxss */
+@import "../../../common/style/iconfont.wxss";
+@import "../../../common/style/common.wxss";
+
+.avatar-wrapper {
+  background: linear-gradient(rgb(80, 172, 255), rgb(132, 181, 255));
+  padding: 25px 0;
+}
+
+.avatar-wrapper .avatar {
+  /* margin: 0 auto; */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.icon-xiugai {
+  font-size: 5vw !important;
+}
+
+.Edit {
+  position: absolute;
+  right: 4vw;
+  top: 2vw;
+}
+
+.userinfo {
+  line-height: 5vh;
+  background: none;
+  right: 3vw;
+  top: 2vw;
+  position: absolute;
+  color: #fff;
+}
+
+.userinfo::after {
+  border: none;
+}
+
+.weui-cell-tx>view {
+  font-size: 14px;
+}
+
+.weui-border, .ListRow:first-child {
+  border-top: 1px solid #ededed;
+}
+
+/* .CompanyRow {
+  padding: 1vw 0;
+}
+
+.CompanyRow>radio {
+  transform: scale(0.8);
+}
+
+.CompanyRow>text {
+  font-size: 3.4vw;
+} */
+
+.weui-row {
+  display: flex;
+  background-color: white;
+  padding: 0 0 0 40rpx;
+  height: 12vw;
+  justify-content: space-between;
+  font-size: 17px;
+  border-bottom: 1px solid #ededed;
+}
+
+.weui-row-top {
+  margin-top: 1vh;
+}
+
+.weui-cell-tx {
+  margin-left: 1vw;
+}
+
+.oldUser image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.icon-chakan {
+  color: #8d8d8d;
+}
+
+.oldUser text {
+  color: white;
+}
+
+.weui-cell-hd {
+  display: flex;
+  align-items: center;
+}
+
+.roleType {
+  padding: 1vw 2vw;
+  font-size: 3vw;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.radio-group radio {
+  zoom: 0.8;
+}
+
+.radio-group view:not(:last-child) {
+  padding-bottom: 1vw;
+}
+
+/* .modal-content {
+  padding: 3vw;
+  font-size: 13px;
+} */
+
+.green {
+  color: #43bb67;
+}
+
+.icon-arrowright {
+  font-size: 4vw;
+  padding-right: 2vw;
+  color: #ebebeb;
+}
+
+.head-portrait {
+  width: 17vh;
+  height: 17vh;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.avatar-wrapper .text {
+  color: white;
+  text-align: center;
+}
+
+.extra-icons-container {
+  color: white;
+  position: absolute;
+  top: 1vh;
+  right: 2vw;
+}
+
+.icon-fenxiang {
+  color: #43bb67;
+}
+
+.icon-qiyexuesheng {
+  color: #43bb67;
+}
+
+.weui-cell-hd .icon-xiugai {
+  font-size: 3.5vw !important;
+}
+
+.icon-qiyelaoshi, .icon-qiyexuesheng, .icon-kechengliebiao, .icon-keshizhangdan {
+  font-size: 3.5vw;
+}
+
+.icon-xueshengliebiao, .icon-xiaoxiliebiao {
+  font-size: 2.8vw;
+}
+
+.radio {
+  position: relative;
+  left: 1vw;
+}
+
+.change-row {
+  text-align: center;
+  line-height: 7vh;
+  margin-top: 1vh;
+  color: #50acff;
+}
+
+.change-row:last-of-type {
+  margin-bottom: 10vh;
+}
+
+.icon-kecheng {
+  color: #ff9f24;
+}
+
+.icon-yanjing {
+  color: #ff9f24;
+}
+
+.mui-col-sm-33 {
+  text-align: center;
+  margin: 2vw 0;
+}
+
+.mui-col-sm-33:not(:last-child) {
+  border-right: 1px solid #cac9c9;
+}
+
+.mui-col-sm-33>text:last-child {
+  font-size: 4vw;
+}
+
+.little-icon {
+  color: #8d8d8d !important;
+}
+
+.gray {
+  color: rgb(187, 187, 187);
+}
+
+.gray-two {
+  height: 16.5vh;
+}
+
+.blue {
+  color: #50acff;
+}
+
+.mui-col-sm-33 text {
+  display: block;
+}
+
+.mui-col-sm-33>text:first-child {
+  font-size: 10vw;
+}
+
+.extra-icons-container text {
+  padding-right: 3vw;
+  font-size: 19px;
+}
+
+.num {
+  padding-right: 3vw;
+  color: rgb(158, 158, 158);
+}
+
+/* .text open-data {
+  padding-left: 4vw;
+  position: relative;
+  left: 30vw;
+} */
+
+.text input {
+  margin-left: 7vw;
+  border-bottom: 1px solid white;
+  padding-left: 1vw;
+}
+
+.text text {
+  color: white;
+  font-size: 4vw;
+  position: relative;
+  left: 2vw;
+}
+
+.newName {
+  padding-left: 6vw;
+}
+
+.heig {
+  height: 18vh;
+}
+
+.avatarUrl {
+  width: 17vh;
+  height: 17vh;
+}
+
+.nickName {
+  color: white;
+}

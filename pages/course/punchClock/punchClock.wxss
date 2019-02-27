@@ -1,0 +1,240 @@
+/* miniprogram/pages/home/punchClock/punchClock.wxss */
+@import "../../../common/style/common.wxss";
+@import "../../../common/style/iconfont.wxss";
+
+.mui-col-sm-85 {
+  padding: 6px 0px 7px 0px;
+}
+
+.introduce {
+  font-size: 12px;
+  color: #b1aaaa;
+  padding: 1vw 3vw 1vw 3vw;
+  border-bottom: 1px solid #b1aaaa;
+}
+.NoStu{
+  width: 100vw;
+  height: 10vh;
+}
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.icon-gou {
+  font-size: 14px;
+  right: 6vw;
+  top: 12vw;
+  color: #50acff;
+}
+
+.courseTemContainer {
+  border-bottom: 1px solid #b1aaaa;
+  padding-bottom: 1vh;
+}
+
+.courseContainer image {
+  width: 10vh;
+  height: 10vh;
+  border-radius: 2vw;
+}
+
+.courseContainer {
+  margin: 1vw 2vw 2vw 2vw;
+  padding: 1vh;
+  border-radius: 2vw;
+  /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); */
+}
+
+.coursedetail .flex view {
+  font-size: 13px;
+  color: #b1aaaa;
+}
+
+.coursedetail>view:first-child {
+  /* margin-bottom: 10px; */
+}
+
+.course_container {
+  margin-top: 1vh;
+}
+
+.gray {
+  background: #b4b4b4 !important;
+}
+
+.none {
+  text-align: center;
+}
+
+.student-container {
+  /* padding: 2vw 0 2vw 2vw; *//* padding-left: 2px; */
+  font-size: 4vw;
+  background: #f8f8f8;
+  /* height: 5.5vh; */
+}
+
+.ude {
+  padding-left: 9px;
+  color: #969696;
+}
+
+.student {
+  margin-left: 1vw;
+  color: #413f3f;
+}
+
+.border {
+  border-right: 3px solid #222121;
+}
+
+.footBtn {
+  position: relative;
+  width: 100%;
+  left: 0;
+}
+
+.NoUser {
+  text-align: center;
+  color: #969696;
+}
+
+.NoUser text {
+  display: block;
+}
+
+.NoUser text:first-child {
+  font-size: 25vh;
+  position: relative;
+  top: 9vw;
+}
+
+.footBtn view {
+  text-align: center;
+  margin: 3vw 0;
+  line-height: 12vw;
+  border-radius: 2vw;
+}
+
+.footBtn view:first-child {
+  background: #50acff;
+  color: white;
+}
+
+.checkbox+text {
+  font-size: 13px;
+}
+
+.inblock {
+  /* padding-left: 4vw;
+  width: 19vw; */
+}
+
+.StuContainer {
+  padding-left: 2vw;
+  min-height: 25vh;
+}
+
+.StuContainer>view {
+  margin: 1vw 0;
+}
+
+.courseContainer {
+  margin-bottom: 11vh;
+}
+
+/* 名字 */
+
+.stuName {
+  /* position: relative;
+  left: -25.5vw;
+  top: -4vh;
+  width: 18vw; */
+  text-align: center;
+  color: #8f8f8f;
+  font-size: 10px;
+}
+
+.checkbox {
+  /* zoom: 0.6;
+  position: relative;
+  top: 4.5vh;
+  left: 21vw; */
+}
+
+.avatar {
+  /* position: relative;
+  left: 6vw;
+  white-space: nowrap; */
+}
+
+.slide-image {
+  width: 100% !important;
+  height: 30vh !important;
+}
+
+.coursetea {
+  padding-left: 7px;
+  font-size: 16px;
+  align-items: center;
+  justify-content: center;
+  /* margin: 0 15px; */
+}
+
+.weui-row {
+  display: flex;
+  background-color: white;
+  padding-left: 3vw;
+  height: 11vw;
+  border-bottom: 1px solid #ededed;
+  font-size: 15px;
+  align-items: center;
+}
+
+.iconfont {
+  position: relative;
+  /* top: 0.3vh; */
+}
+
+.img {
+}
+
+/* 未选中的 背景样式 */
+
+checkbox .wx-checkbox-input {
+  border-radius: 50%; /* 圆角 */
+  width: 15rpx; /* 背景的宽 */
+  height: 15rpx; /* 背景的高 */
+  border: none;
+}
+
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  position: relative;
+  z-index: 1;
+  border: none;
+}
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  font-weight: 900;
+  position: absolute;
+  z-index: 3;
+  font-size: 80rpx;
+  border-radius: 50%; /* 圆角 */
+}
+
+.hasClock {
+  padding-top: 8px;
+}
+
+.refresh {
+  position: relative !important;
+  top: 1vh !important;
+  left: -3vh;
+}

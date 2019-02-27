@@ -1,0 +1,231 @@
+/* miniprogram/pages/init/enterprise/Enterprise.wxss */
+@import "../../../common/style/common.wxss";
+@import "../../../common/style/iconfont.wxss";
+
+.head-container {
+  background: #fff;
+}
+
+.to-margin-top {
+  margin-top: 2vh;
+}
+
+.to-line {
+  border-bottom: 1px solid #b3b2b2;
+}
+
+.to-end {
+  font-size: 12px;
+  color: #969696;
+  text-align: center;
+}
+
+.NoEnterprise {
+  text-align: center;
+  color: #969696;
+}
+
+.NoEnterprise text {
+  display: block;
+}
+
+.NoEnterprise text:first-child {
+  font-size: 25vh;
+  position: relative;
+  top: 9vw;
+}
+
+.head-container text {
+  color: #6e6e6e;
+}
+
+.icon-qiehuanzhanghao {
+  font-size: 8vw;
+  padding-right: 3vw;
+}
+
+.search {
+  border-radius: 2vw;
+  text-align: center;
+  height: 6vh;
+  line-height: 6vh;
+  vertical-align: middle;
+  background: #ededed;
+}
+
+.search text:first-child {
+  font-size: 15px;
+}
+
+.business {
+  font-size: 15px;
+  color: rgb(61, 60, 60);
+  font-weight: bold;
+}
+
+.mui-col-sm-100 {
+  margin: 1vw 2vw;
+}
+
+.search text:last-child {
+  padding-left: 3vw;
+}
+
+.distance {
+  text-align: center;
+}
+
+.mui-card:first-of-type {
+  border-top: 1px solid #e6e6e6;
+}
+
+.mui-card:not(:last-of-type) {
+  border-bottom: 2px solid #e6e6e6;
+}
+
+.mui-card {
+  font-size: 14px;
+  background-color: #fff;
+  background-clip: padding-box;
+}
+
+.mui-card-content {
+  font-size: 14px;
+  position: relative;
+}
+
+.mui-card-content-inner {
+  position: relative;
+  padding: 1vw 2vw 2vw 4vw;
+}
+
+.mui-card-content-inner>view:first-child {
+  font-weight: bold;
+  font-size: 18px;
+  color: #000;
+}
+
+.mui-card-content-inner>view {
+  color: #999;
+  margin: 2vw;
+}
+
+.mui-col-sm-80 {
+  padding: 1vw 6px 3px 4px;
+}
+
+.tag {
+  color: #999;
+  border: 1px solid #ff9700;
+  border-radius: 2px;
+  padding: 3px 6px 3px 4px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.iconfont {
+  font-size: 3.5vw;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.icon-bohao, .icon-lianxiren {
+  padding-left: 2vw;
+  font-size: 16px;
+  color: #50acff;
+}
+
+.footBtn {
+  position: fixed;
+  bottom: 0vh;
+  width: 100%;
+  background: #fff;
+}
+
+.footBtn::after {
+  border: none;
+}
+
+.footBtn view {
+  text-align: center;
+  margin: 2vw;
+  line-height: 12vw;
+  border-radius: 2vw;
+}
+
+.footBtn view:first-child, .blue {
+  background: #50acff;
+  color: white;
+}
+
+.modal-header {
+  background: #00a7f7;
+  color: #fff;
+  padding: 20rpx;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+
+.modal-body {
+  background: #fff;
+}
+
+.modal-footer {
+  background: #fff;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-top: 1rpx solid #e5e5e5;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+
+.btn {
+  flex: 1;
+  text-align: center;
+  padding: 27rpx 5rpx;
+}
+
+.btn-primary {
+  color: #00a7f7;
+  font-weight: bold;
+}
+
+.modal-content {
+  padding: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.addEnterprise {
+  position: fixed;
+  bottom: 13px;
+  right: 2vw;
+  background: #50acff;
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #ccc;
+  z-index: 11;
+}
+
+.addEnterprise view:first-child {
+  margin-top: 9px;
+}
+
+.addEnterprise view {
+  display: block;
+  line-height: 13px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.red {
+  color: rgb(235, 130, 130);
+}

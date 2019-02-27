@@ -1,0 +1,239 @@
+<!--miniprogram/pages/owner/punchClockSituation/punchClockSituation.wxml-->
+<wxs src="../../../util/util.wxs" module="tools" />
+<view class='flex white header'>
+  <view catchtap="choiceItem" data-item="1" class='mui-col-sm-50 swiber-item flex mui-view-center'>
+    <text>{{content}}</text>
+    <text class='iconfont icon-arrowright {{!channel?"":"transform"}}'></text>
+  </view>
+  <view catchtap="choiceItem" data-item="2" class='mui-col-sm-50 swiber-item'>
+    <text>按课程查询</text>
+  </view>
+
+
+  <view class="sorting-list {{!channel?' chioce-list-hide':' chioce-list-show'}}">
+    <view class='flex mui-view-space white ' data-index='0' catchtap='chiceIndex'>
+      <text>当月</text>
+      <radio value='0' color='#50acff' checked='{{checkIndex==0}}'></radio>
+    </view>
+    <view class='flex mui-view-space white' data-index='1' catchtap='chiceIndex'>
+      <text>最近一个季度</text>
+      <radio value='1' color='#50acff' checked='{{checkIndex==1}}'></radio>
+    </view>
+    <view class='flex mui-view-space white' data-index='2' catchtap='chiceIndex'>
+      <text>最近一年</text>
+      <radio value='2' color='#50acff' checked='{{checkIndex==2}}'></radio>
+    </view>
+    <view class='flex mui-view-space dateTool'>
+
+      <view>
+        <picker mode="date" value="{{dateToolStatDate}}" start="2010-01-01" end="{{toDayDate}}" bindchange="bindStatDateChange">
+          <view class="picker">{{dateToolStatDate}}</view>
+        </picker>
+      </view>
+      <text class="middleSymbol">~</text>
+      <view>
+        <picker mode="date" value="{{dateToolEndDate}}" start="{{endStartDate}}" end="{{toDayDate}}" bindchange="bindEnedDateChange">
+          <view class="picker">{{dateToolEndDate}}</view>
+        </picker>
+      </view>
+
+      <view class='selectDateButton'>
+        <button disabled="{{dateToolStatDate != '' && dateToolEndDate != '' ? false : true}}" data-index='3' catchtap='chiceIndex' class='selectDateButton'>确定</button>
+      </view>
+
+    </view>
+
+
+    <view class='flex mui-view-space xiaHuaXianPr'>
+      <view class="xiaHuaXian"></view>
+    </view>
+
+  </view>
+
+</view>
+
+
+<view class='white top'>
+  <view wx:if="{{isView == 1}}">
+    <view class='mui-year flex mui-align-center mui-view-center'>
+      <view>
+        <text> {{year}}年{{month}}月</text>
+        <text catchtap='layout' data-type='{{layout}}' class='iconfont {{!layout?"icon-liebiao":"icon-rili"}} icon-detail'></text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{layout == 0}}">
+    <view class='flex week'>
+      <view class='mui-col-sm-14 ' wx:for="{{date}}" wx:key="{{date}}">{{item}}</view>
+    </view>
+    <view class='mui-all ta-center'>
+      <view wx:for="{{dateArr}}" class="day mui-col-sm-14  flex mui-view-center mui-align-center" wx:for-item="on" wx:key="{{dateArr}}">
+        <view wx:if="{{on.isLast}}" class='color-gray'>
+          {{on.day}}
+        </view>
+        <view wx:else>
+          <view wx:if="{{on.isPunch}}" catchtap='seeRecord' data-clickPunchIndex='{{on.clickPunchIndex}}' class='blue'>
+            <text class='textday'>{{on.day}}</text>
+            <view class='sign'></view>
+          </view>
+          <view wx:else class='noRecord'>
+            {{on.day}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="recordNum">
+      <view>本月有{{punchClockList.length}}次打卡记录</view>
+      <view>累计打卡{{punchCount}}次</view>
+    </view>
+
+    <view class="footer">
+      注：一天有多次打卡记录需点击查看，点击圆圈查看打卡详情
+    </view>
+  </view>
+  <view wx:if="{{layout == 1}}">
+    <view class='' wx:if="{{punchListing.length>0}}">
+      <view wx:for="{{punchListing}}" wx:for-item="on" wx:key="{{punchListing}}" class='mui-col-sm-70 detail line'>
+
+        <view class='mui-align-center'>
+          <text class='iconfont icon-kecheng'></text>
+          <text catchtap='navCourse' data-courseid='{{on.courseId}}'>{{on.courseName}}</text>
+        </view>
+        <view class='mui-align-center'>
+          <text class='iconfont icon-qiyelaoshi'></text>
+          <text>{{on.teaName}} </text>
+        </view>
+        <view class='mui-align-center'>
+          <text class='iconfont icon-dakashijian'></text>
+          <text>{{tools.subStr(on.punchClockDate,16)}}</text>
+        </view>
+        <view class='mui-align-center'>
+          <text class='iconfont icon-qiye'></text>
+          <text wx:if="{{on.companyName.length > 13}}" catchtap='navCompany' data-companyid='{{on.companyId}}'>{{tools.subStr(on.companyName,13)}}...</text>
+          <text wx:else catchtap='navCompany' data-companyid='{{on.companyId}}'>{{on.companyName}}</text>
+        </view>
+      </view>
+      <!-- <view wx:if="{{!hasMore}}" class='flex mui-align-center mui-view-center to-margin'>
+        <view class='mui-col-sm-20 to-line'></view>
+        <view class='mui-col-sm-20 to-end'>已经到底了</view>
+        <view class='mui-col-sm-20 to-line'></view>
+      </view> -->
+    </view>
+    <view wx:else class='NoData'>
+      <text class='iconfont icon-kong'></text>
+      <text>暂无记录</text>
+    </view>
+  </view>
+
+
+  <view wx:if="{{cuorseGroup}}">
+
+    <view class='' wx:if="{{courseList.length>0}}">
+      <view wx:for="{{courseList}}" wx:for-item="on" wx:key="{{courseList}}">
+        <!-- <view class='mui-col-sm-30'>
+          <view style='height:7vw; width:10vw;'></view>
+        </view> -->
+        <view catchtap='lookKunchClock' data-list='{{on.entryList}}' data-coursename='{{on.courseName}}' class='mui-col-sm-70 detail2 line'>
+          <view class='mui-align-center'>
+            <text class='iconfont icon-kecheng'></text>
+            <text catchtap='navCourse' data-courseid='{{on.courseId}}'>{{on.courseName}}</text>
+          </view>
+          <view class='mui-align-center'>
+            <text class='iconfont icon-qiye'></text>
+            <text wx:if="{{on.companyName.length > 13}}" catchtap='navCompany' data-companyid='{{on.companyId}}'>{{tools.subStr(on.companyName,13)}}...</text>
+            <text wx:else catchtap='navCompany' data-companyid='{{on.companyId}}'>{{on.companyName}}</text>
+          </view>
+          <view class='mui-align-center'>
+            <text class='iconfont icon-dakacishu'></text>
+            <text>{{on.punchClockCount}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- <view wx:if="{{!coursListHasMore}}" class='flex mui-align-center mui-view-center to-margin'>
+        <view class='mui-col-sm-20 to-line'></view>
+        <view class='mui-col-sm-20 to-end'>已经到底了</view>
+        <view class='mui-col-sm-20 to-line'></view>
+      </view> -->
+    </view>
+    <view wx:else class='NoData'>
+      <text class='iconfont icon-kong'></text>
+      <text>暂无记录</text>
+    </view>
+  </view>
+
+</view>
+
+<showRecordToast-modal id="showRecordToastModal">
+  <scroll-view scroll-y class="scroll-view-y">
+    <view class='modal-content' style='height: {{punchList.length >2 ?"120vw":"60vw"}};'>
+      <view wx:for="{{punchList}}" wx:for-item="on" wx:key="{{punchList}}">
+        <view class='scroll-y-item '>
+          <view class='flex mui-align-center'>
+            <view class='mui-col-sm-10'>
+              <text class='iconfont icon-kecheng'></text>
+            </view>
+            <text catchtap='navCourse' data-courseid='{{on.courseId}}'>{{on.courseName}}</text>
+          </view>
+          <view class='flex mui-align-center'>
+            <view class='mui-col-sm-10'>
+              <text class='iconfont icon-qiyelaoshi'></text>
+            </view>
+            <text>{{on.teaName}} </text>
+          </view>
+          <view class='flex mui-align-center'>
+            <view class='mui-col-sm-10'>
+              <text class='iconfont icon-dakashijian'></text>
+            </view>
+            <text>{{tools.subStr(on.punchClockDate,16)}}</text>
+          </view>
+          <view class='flex mui-align-center'>
+            <view class='mui-col-sm-10'>
+              <text class='iconfont icon-qiye'></text>
+            </view>
+            <text wx:if="{{on.companyName.length > 10}}" catchtap='navCompany' data-companyid='{{on.companyId}}'>{{tools.subStr(on.companyName,10)}}...</text>
+            <text wx:else catchtap='navCompany' data-companyid='{{on.companyId}}'>{{on.companyName}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</showRecordToast-modal>
+
+
+<showRecordToast-modal id="showRecordToastModal2">
+  <scroll-view scroll-y class="scroll-view-y">
+    <view class='modal-content' style='height: {{entryList.length >2 ?"120vw":"60vw"}};'>
+
+      <view wx:for="{{entryList}}" wx:for-item="on" wx:key="{{entryList}}">
+        <view class='scroll-y-item '>
+          <view class='flex mui-align-center'>
+            <view class='mui-col-sm-10  '>
+              <text class='iconfont icon-kecheng'></text>
+            </view>
+            <text catchtap='navCourse' data-courseid='{{on.courseId}}'>{{on.courseName}}</text>
+          </view>
+          <view class='flex mui-align-center'>
+            <view class='mui-col-sm-10 '>
+              <text class='iconfont icon-qiyelaoshi'></text>
+            </view>
+            <text>{{on.teaName}} </text>
+          </view>
+          <view class='flex mui-align-center'>
+            <view class='mui-col-sm-10 '>
+              <text class='iconfont icon-dakashijian'></text>
+            </view>
+            <text>{{tools.subStr(on.punchClockDate,16)}}</text>
+          </view>
+          <view class='flex mui-align-center'>
+            <view class='mui-col-sm-10 '>
+              <text class='iconfont icon-qiye'></text>
+            </view>
+            <text wx:if="{{on.companyName.length > 10}}" catchtap='navCompany' data-companyid='{{on.companyId}}'>{{tools.subStr(on.companyName,10)}}...</text>
+            <text wx:else catchtap='navCompany' data-companyid='{{on.companyId}}'>{{on.companyName}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</showRecordToast-modal>

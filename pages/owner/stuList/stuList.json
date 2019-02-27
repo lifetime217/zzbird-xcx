@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "学生列表",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "modal": "../../../common/easyModal/swichRoleToast/swichRoleToast"
+  }
+}

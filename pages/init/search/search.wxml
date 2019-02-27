@@ -1,0 +1,28 @@
+<!--pages/search/search.wxml-->
+<import src="../../../common/easyModal/toast/toast.wxml" />
+<template is="toast" data="{{ ..._toast_ }}" />
+
+<view class='bigcontainer'>
+  <view class='search_container flex mui-view-space mui-align-center'>
+    <view class='mui-col-sm-85'>
+      <input placeholder='输入关键字搜索' maxlength='8' bindinput="input" placeholder-class='placeHolder' focus = 'true' confirm-type = 'search' bindconfirm="search"></input>
+    </view>
+    <view class='mui-col-sm-15 flex mui-view-center' bindtap='search'>
+      <text class='iconfont icon-search'></text>
+    </view>
+  </view>
+  <view class='history'>
+    <view>历史搜索</view>
+    <!-- <view bindtap='chlickDelete'>
+      <view wx:if="{{!isDelete||searchHistory.length==0}}">
+        <text class='iconfont icon-shanchu'></text>
+      </view>
+      <view wx:else>
+        <button size="mini" bindtap='finish' style='background-color:#66CD00;color:white;'>完成</button>
+      </view>
+    </view> -->
+  </view>
+  <view style="margin-left:2vh;" wx:for="{{searchHistory}}" wx:key="{{searchHistory}}" data-search="{{item}}" catchtap="historySearch" class='oldSearch'>
+    <text>{{item}}</text>
+  </view>
+</view>

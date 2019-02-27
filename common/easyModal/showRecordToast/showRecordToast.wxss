@@ -1,0 +1,11 @@
+/* common/component/customModal.wxss */
+
+
+
+.modal-body{
+  background: #ffffff;  
+}
+
+
+
+ 

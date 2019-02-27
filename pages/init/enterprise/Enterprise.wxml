@@ -1,0 +1,93 @@
+<!--miniprogram/pages/init/enterprise/Enterprise.wxml-->
+<!-- 头部 -->
+<wxs src="../../../util/util.wxs" module="tools" />
+<view class='flex mui-view-space mui-align-center head-container'>
+  <view class='mui-col-sm-100'>
+    <navigator url='../search/search' open-type='navigate'>
+
+      <view class='search'>
+        <text class='iconfont icon-search' wx:if="{{search==''}}"></text>
+        <text wx:if="{{search==''}}">{{searchText}}</text>
+        <text wx:else>{{search}}</text>
+      </view>
+    </navigator>
+  </view>
+  <!-- <view catchtap='switchRole'>
+    <text class='iconfont icon-qiehuanzhanghao'></text>
+  </view> -->
+</view>
+
+<!-- 数据展示 -->
+<view style="{{!isNew? 'margin-bottom: 2vh':'margin-bottom: 11vh;'}}">
+  <view wx:if="{{enterpriseList.length>0}}">
+    <view class="mui-card" wx:for="{{enterpriseList}}" wx:for-item="on" catchtap='cardDetail' data-id='{{on.id}}' wx:key="{{enterpriseList}}">
+      <view class="mui-card-content">
+        <view class="mui-card-content-inner">
+          <view wx:if="{{on.companyName.length > 13}}">{{tools.subStr(on.companyName,13)}}...</view>
+          <view wx:else >{{on.companyName}}</view>
+          <view class="flex mui-align-center">
+            <view class="mui-col-sm-8 ">
+              <text class='iconfont icon-chanyeleixing'></text>
+            </view>
+            <view class="mui-col-sm-90 inblock business">
+              <view class='typeSite' wx:if="{{on.kIndustryTag.length==0}}"></view>
+              <view class='type' wx:else>
+                <block wx:for="{{on.kIndustryTag}}" wx:for-item="tag" wx:key="{{type}}">
+                  <text>{{tag.tagName}} </text>
+                </block>
+              </view>
+            </view>
+          </view>
+          <view class="flex mui-align-center">
+            <view class="mui-col-sm-8">
+              <text class='iconfont icon-weizhi'></text>
+            </view>
+            <view class="mui-col-sm-90 inblock">{{on.companyAddress}}</view>
+          </view>
+          <view class="flex mui-align-center" wx:if="{{on.telephoneNumber!=null}}">
+            <view class="mui-col-sm-8 ">
+              <text class='iconfont icon-dianhua'></text>
+            </view>
+            <view class="mui-col-sm-60 inblock">
+              <text>{{on.telephoneNumber}}</text>
+              <text class='iconfont icon-bohao' data-phone='{{on.telephoneNumber}}' catchtap='callPhone'></text>
+              <text class='iconfont icon-lianxiren' catchtap='keep' data-phone='{{on.telephoneNumber}}' data-name='{{on.companyName}}'></text>
+            </view>
+            <view class="mui-col-sm-30 red distance"> {{on.distance}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view wx:if="{{!hasMore}}" class='flex mui-align-center mui-view-center to-margin-top'>
+      <view class='mui-col-sm-20 to-line'></view>
+      <view class='mui-col-sm-20 to-end'>已经到底了</view>
+      <view class='mui-col-sm-20 to-line'></view>
+    </view> -->
+  </view>
+  <view wx:if="{{enterpriseList.length == 0}}" class='NoEnterprise'>
+    <text class='iconfont icon-kong'></text>
+    <text>暂无企业</text>
+  </view>
+
+</view>
+
+
+<!-- 开通企业 -->
+<button wx:if="{{isNew}}" open-type='getUserInfo' class='flex footBtn' lang="zh_CN" bindgetuserinfo="openEnterprise">
+  <text class='mui-col-sm-100 blue share'>开通企业</text>
+</button>
+<!-- <view hidden="{{!isFirst}}" catchtap='openEnterprise' class='flex footBtn'>
+  <view class='mui-col-sm-100 blue share'>开通企业</view>
+</view> -->
+
+
+<callPhoneToast-modal id="callPhoneModal" title="拨打电话" bind:cancelEvent="cancelPhone" bind:confirmEvent="confirmPhone">
+  <view class='modal-content'>
+    <text> {{clickPhone}} </text>
+  </view>
+</callPhoneToast-modal>
+
+<view class='addEnterprise' wx:if="{{roleType==2 && !isNew}}" catchtap='addEnterprise'>
+  <view>新增</view>
+  <view>企业</view>
+</view>

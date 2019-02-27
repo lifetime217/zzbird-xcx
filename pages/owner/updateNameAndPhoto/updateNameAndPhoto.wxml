@@ -1,0 +1,30 @@
+<!--miniprogram/pages/owner/updateNameAndPhoto/updateNameAndPhoto.wxml-->
+<view>
+  <view class='flex mui-view-space mui-align-center white mui-row'>
+    <view>姓名</view>
+    <view class='flex mui-align-center'>
+      <view class='beRight'>
+        <input placeholder-class='placeName' value='{{nickName}}' maxlength="9" class='ta-right'  bindinput='inputName' placeholder="请输入姓名" />
+      </view>
+      <!-- <view wx:else class='beRight'>
+        <open-data type="userNickName"></open-data>
+      </view> -->
+      <text class='iconfont icon-arrowright'></text>
+    </view>
+  </view>
+  <view class='flex mui-view-space mui-align-center white mui-row'>
+    <view>头像</view>
+    <view class='flex mui-align-center' catchtap='uploadImg'>
+      <view>
+        <image src='{{avatarUrl}}' class='img'></image>
+      </view>
+      <!-- <view wx:else class='wxImg'>
+        <open-data type="userAvatarUrl"></open-data>
+      </view> -->
+      <text class='iconfont icon-arrowright'></text>
+    </view>
+  </view>
+  <view class='flex mui-view-center'>
+    <button catchtap='finish' class='btn mui-col-sm-80'>保存设置</button>
+  </view>
+</view>

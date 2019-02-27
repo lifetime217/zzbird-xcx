@@ -1,0 +1,48 @@
+<!--miniprogram/pages/owner/enterpriseStu/enterpriseStu.wxml-->
+<wxs src="../../../util/util.wxs" module="tools" />
+<view wx:if="{{stuList.length>0}}">
+  <view wx:for="{{stuList}}" catchlongpress="deleteStu" data-userid='{{on.stu_OpenId}}' class='flex mui-view-space mui-align-center white' wx:for-item="on" wx:key="{{stuList}}">
+    <view class='mui-col-sm-30 mui-view-center flex'>
+      <image class='img' src='{{on.stu_Img}}'></image>
+    </view>
+    <view class='mui-col-sm-70'>
+      <view class='flex mui-align-center'>
+        <text class='iconfont icon-qiyexuesheng'></text>
+        <text>{{on.stu_Name}}</text>
+      </view>
+      <view class='flex mui-align-center'>
+        <text class='iconfont icon-kecheng'></text>
+        <view class='courNameFont' wx:if="{{on.courseList.length > 0}}">
+          <text catchtap='navCourse' data-courseid='{{on.courseList[0].id}}'>{{on.courseList[0].courseName}}</text>
+          <text data-index='{{index}}' catchtap='moreCourse' wx:if="{{on.courseList.length>1}}" class="iconfont icon-xiangqing"></text>
+        </view>
+        <view wx:else class='no-course'>该老师还没有绑定课程</view>
+      </view>
+      <view class='flex mui-align-center'>
+        <text class='iconfont icon-qiye'></text>
+        <text wx:if="{{on.company_Name.length > 13}}" data-companyid='{{on.company_Id}}' catchtap='navCompany'>{{tools.subStr(on.company_Name,13)}}...</text>
+        <text wx:else data-companyid='{{on.company_Id}}' catchtap='navCompany'>{{on.company_Name}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- <view wx:if="{{!isMore}}" class='flex mui-align-center mui-view-center to-margin-top'>
+    <view class='mui-col-sm-20 to-line'></view>
+    <view class='mui-col-sm-20 to-end'>已经到底了</view>
+    <view class='mui-col-sm-20 to-line'></view>
+  </view> -->
+</view>
+<view  wx:if="{{!hasData}}" class='NullData'>
+  <text class='iconfont icon-kong'></text>
+  <text> 暂无学生，快去邀请学生吧！</text>
+</view>
+
+<modal id="moreCourseToast" title="课程">
+  <view class='moreCourse-content'>
+    <scroll-view scroll-y style='height:14vh;'>
+      <view wx:for="{{courseList}}" class='flex mui-align-center' wx:for-item="on" wx:key="{{courseList}}">
+        <text class="iconfont icon-kecheng courseInforma"></text>
+        <text class='course'> {{on.courseName}}</text>
+      </view>
+    </scroll-view>
+  </view>
+</modal>

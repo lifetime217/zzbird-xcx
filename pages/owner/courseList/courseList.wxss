@@ -1,0 +1,99 @@
+/* miniprogram/pages/owner/courseList/courseList.js */
+@import "../../../common/style/common.wxss";
+@import "../../../common/style/iconfont.wxss";
+
+.courseTemContainer {
+  border-bottom: 1px solid #dbd5d5;
+  padding: 2vw;
+}
+
+.courseTemContainer>view:last-child {
+  padding-left: 2vw;
+}
+
+.icon-xueshengliebiao {
+  font-size: 2.8vw !important;
+}
+
+.time>view {
+  padding-right: 2vw;
+}
+
+.introduce>text:last-child {
+  color: rgba(49, 91, 230, 0.589);
+  font-weight: bold;
+}
+
+.companyLine {
+  border-bottom: 1px solid #dbd5d5;
+  padding-bottom: 2px;
+}
+
+.courseContainer>view {
+  margin: 2vh 2vh 0 2vh;
+}
+
+.courseContainer image {
+  width: 25vh;
+  height: 15vh;
+}
+
+/* .courseContainer>view:first-child>view{
+  border-top: 1px solid #dbd5d5;
+} */
+
+.to-line {
+  border-bottom: 1px solid #b3b2b2;
+}
+
+.to-end {
+  font-size: 12px;
+  color: #969696;
+  text-align: center;
+}
+
+.coursedetail>view>text:first-child, .icon-keshixuanze, .icon-nianling {
+  padding-right: 2vw;
+}
+
+.coursedetail>view:not(:first-child)>text:last-child, .icon-keshixuanze+text,
+.icon-keshixuanze+text {
+  color: #b1aaaa;
+  font-size: 13px;
+}
+
+.introduce {
+  font-size: 12px;
+  color: #b1aaaa;
+  padding: 1vw 3vw 1vw 3vw;
+}
+
+.coursedetail .iconfont {
+  color: black;
+}
+
+.noCourse {
+  text-align: center;
+  color: #50acff;
+}
+
+.noCourse text {
+  display: block;
+}
+
+.noCourse text:first-child {
+  font-size: 25vh;
+  position: relative;
+  top: 9vw;
+}
+
+.addCourse view:first-child {
+  margin-top: 9px;
+}
+
+.addCourse view {
+  display: block;
+  line-height: 13px;
+  text-align: center;
+  font-size: 13px;
+}

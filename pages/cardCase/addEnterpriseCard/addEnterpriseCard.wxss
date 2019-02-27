@@ -1,0 +1,151 @@
+/* miniprogram/pages/cardCase/addEnterpriseCard/addEnterpriseCard.wxss */
+@import "../../../common/style/common.wxss";
+@import "../../../common/style/iconfont.wxss";
+
+/* 图片 */
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
+.wrapper-center {
+  /* height: 95vh; */
+  width: 100vw;
+  /* border-radius: 3vw; */
+}
+
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 36vh;
+  overflow: hidden;
+  background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;
+  
+}
+
+.slide-image, swiper {
+  width: 100%;
+  height: 100%;
+  /* border-top-left-radius: 8px;
+  border-top-right-radius: 8px; */
+  display: inline-block;
+  overflow: hidden;
+}
+
+.switch {
+  position: absolute;
+  text-align: center;
+  background-color: rgba(60, 60, 61, 0.6);
+  height: 5.1vh;
+  width: 100%;
+  top: 30.8vh;
+}
+
+.changeImg {
+  color: white;
+  font-size: 4vw;
+  position: relative;
+  top: 0vw;
+}
+
+/* 列表 */
+
+.weui-row {
+  display: flex;
+  background-color: white;
+  padding: 0 0 0 20rpx;
+  height: 11vw;
+  justify-content: space-between;
+  border-bottom: 1px solid #ededed;
+  font-size: 15px;
+}
+
+.iconfont {
+  font-size: 3.5vw;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.company, .type, .phone {
+  /* 输入框字体位置 */
+  padding-left: 7px;
+}
+
+.companySite, .typeSite {
+  padding-left: 7px;
+  color: #808090;
+  width: 38vw;
+}
+
+.type text {
+  font-size: 11px;
+  padding: 4px 5px;
+  background: #969696;
+  margin-right: 1vw;
+  color: #fff;
+  border-radius: 2vw;
+}
+
+.introduction {
+  background: rgb(255, 255, 255);
+  /* height: 16.6vh; */
+  border-radius: 0 0 8px 8px;
+}
+
+.intro {
+  padding-left: 2px;
+  /* padding-top: 3.5%; */
+  font-size: 4vw;
+  background: #f8f8f8;
+  height: 5.5vh;
+}
+
+
+.company-intro {
+  padding-left: 7px;
+  color: #969696;
+}
+
+.add_btn {
+  position: fixed;
+  bottom: 1vh;
+  left: 39vw;
+}
+
+.btn {
+  align-items: center;
+  justify-content: center;
+  background: #14a1fd;
+  color: #fff;
+  width: 46vw;
+  position: relative;
+  top: -2vh;
+  left: -23vw;
+}
+
+.company {
+  width: 72vw;
+  padding-left: 7px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.triangle {
+  padding-right: 26rpx;
+  position: absolute;
+  /* left: 88vw; */
+  left: 92vw;
+  /* color: #808090; */
+  font-size: 4vw;
+  font-weight: 100;
+  transform: scale(0.85);
+  font-stretch: condensed;
+  color: rgba(60, 60, 61, 0.4);
+}

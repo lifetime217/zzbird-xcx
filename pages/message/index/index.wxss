@@ -1,0 +1,93 @@
+/* miniprogram/pages/message/index/index.wxss */
+@import "../../../common/style/iconfont.wxss";
+@import "../../../common/style/common.wxss";
+
+page {
+  background-color: white;
+}
+
+.NoMessage {
+  text-align: center;
+  color: #969696;
+}
+
+.NoMessage text {
+  display: block;
+}
+
+.NoMessage text:first-child {
+  font-size: 25vh;
+  position: relative;
+  top: 9vw;
+}
+
+.image {
+  width: 9vh;
+  height: 9vh;
+}
+
+.mui-view-cell {
+  padding: 2vw;
+  border-bottom: 1px solid #ededed;
+}
+
+.title {
+  color: #000;
+  font-size: 15px;
+}
+
+.mui-view-space>view:last-child {
+  font-size: 15px;
+  color: #998c8c;
+}
+
+.details {
+  font-size: 11px;
+  color: #818181;
+}
+
+.title+view {
+  padding-right: 1vw;
+}
+
+.details+view {
+  /* position: relative; */
+  margin-right: 2vw;
+}
+
+/* .red-point {
+  border: 2px solid #ec5050;
+  background: #ec5050;
+  color: white;
+  width: 0.8em;
+  height: 0.8em;
+  padding: 1px;
+  box-shadow: 0 1px 2px rgba(207, 32, 32, 0.3);
+}
+
+.red-point text {
+  font-size: 11px;
+  position: relative;
+  top: -2vw;
+} */
+
+.isDay {
+  color: red !important;
+}
+
+.iconfont {
+  font-size: 10vw;
+  color: #50acff; 
+}
+
+.xitong {
+  color: #FF0000;
+}
+
+.yaoqing {
+  color: 	rgb(8, 250, 0);
+}
+
+.daka {
+  color: rgb(241, 245, 7);
+}

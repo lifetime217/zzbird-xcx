@@ -1,0 +1,310 @@
+/* miniprogram/pages/owner/punchClockSituation/punchClockSituation.wxss */
+@import "../../../common/style/iconfont.wxss";
+@import "../../../common/style/common.wxss";
+
+.week {
+  text-align: center;
+  line-height: 5vh;
+  border-bottom: 1px solid #d4d4d4;
+  background-color: #dfdfdf;
+  color: white;
+  font-weight: 800;
+}
+
+.icon-dakashijian, .icon-kecheng, .icon-dakacishu {
+  padding-left: 0.7vw;
+}
+
+.iconfont {
+  font-size: 3.5vw;
+}
+
+.picker {
+  border-bottom: 0.3vw solid black;
+  height: 7vw;
+  width: 30vw;
+  text-align: center;
+  font-size: 4vw;
+}
+
+.xiaHuaXianPr {
+  justify-content: center;
+}
+
+.xiaHuaXian {
+  width: 100%;
+  background-color: #8a8a8a;
+  height: 1vw;
+}
+
+.day {
+  height: 8vh;
+}
+
+.NoData {
+  text-align: center;
+  color: #969696;
+}
+
+.NoData text {
+  display: block;
+}
+
+.NoData text:first-child {
+  font-size: 25vh;
+  position: relative;
+  top: 9vw;
+}
+
+.mui-year {
+  line-height: 6vh;
+  font-size: 4.5vw;
+  padding: 0 4vw;
+}
+
+.mui-year>view>text:last-child {
+  position: relative;
+  left: 25vw;
+}
+
+.mui-image {
+  width: 6vh;
+  height: 7vh;
+}
+
+.mui-all {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.textday {
+  position: relative;
+  top: 2vh;
+  z-index: 2;
+  color: white;
+}
+
+.sign {
+  position: relative;
+  border-radius: 50%;
+  width: 5vh;
+  height: 5vh;
+  top: -4vw;
+  background-color: #50acff;
+}
+
+.top {
+  margin-top: 1vw;
+}
+
+.color-gray {
+  color: #d3d3d3;
+}
+
+.modal-content {
+  padding: 4vw;
+  font-size: 15px;
+}
+
+.modal-content>view {
+  padding: 2vw;
+  margin-bottom: 2vw;
+}
+
+.modal-content>view:not(:last-child) {
+  border-bottom: 1px solid #ededed;
+}
+
+.modal-content>view>view>text:last-child {
+  padding-left: 3vw;
+}
+
+.supplementDay {
+  color: #87cefa;
+  font-size: 18px;
+}
+
+.footer {
+  color: #d3d3d3;
+  font-size: 3.5vw;
+  padding: 2vw 8vw;
+}
+
+.icon-arrowright {
+  position: absolute;
+  left: 40vw;
+}
+
+.icon-detail {
+  font-size: 5vw;
+}
+
+.recordNum {
+  font-size: 3.5vw;
+  padding: 2vw 8vw;
+}
+
+.recordNum text {
+  display: block;
+}
+
+.swiber-item {
+  line-height: 7vh;
+  text-align: center;
+  margin: 1vw 0;
+}
+
+.swiber-item:first-of-type {
+  border-right: 1px solid #000;
+}
+
+.sorting-list {
+  position: absolute;
+  top: 80rpx;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 9999;
+  font-size: 14px;
+  border-bottom: 1rpx solid #ddd;
+  border-top: 1rpx solid #ddd;
+}
+
+.header {
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.sorting-list>view {
+  padding: 2vh 6vw;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.chioce-list-hide {
+  display: none !important;
+}
+
+.transform {
+  transform: rotate(90deg);
+}
+
+.chioce-list-show {
+  top: 8vh;
+  animation: slide 500ms;
+}
+
+.detail>view>text {
+  font-size: 13px;
+  margin-left: 2vw;
+}
+
+.detail2>view>text {
+  font-size: 13px;
+  margin-left: 2vw;
+}
+
+.line {
+  margin: 1vw;
+  padding: 1vw;
+  border-bottom: 1px solid #b3b2b2;
+  width: 100%;
+}
+
+.to-margin {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.to-end {
+  font-size: 12px;
+  color: #969696;
+  text-align: center;
+}
+
+.to-line {
+  border-bottom: 1px solid #b3b2b2;
+}
+
+.scroll-view-y {
+  width: 100%;
+  z-index: 9000;
+}
+
+.scroll-y-item {
+  height: 95px;
+  width: 100%;
+}
+
+.scroll-y-item text {
+  margin-left: 1vw;
+  text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.middleSymbol {
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.selectDateButton {
+  justify-content: flex-end;
+  background: #50acff;
+  line-height: 5vh;
+  font-size: 4vw;
+  color: #fff;
+  border-radius: 1vw;
+}
+
+.dateTool {
+  align-items: center;
+}
+
+@keyframes slide {
+  0% {
+    top: 1rpx;
+  }
+
+  10% {
+    top: 10rpx;
+  }
+
+  20% {
+    top: 20rpx;
+  }
+
+  30% {
+    top: 30rpx;
+  }
+
+  40% {
+    top: 40rpx;
+  }
+
+  50% {
+    top: 50rpx;
+  }
+
+  60% {
+    top: 60rpx;
+  }
+
+  70% {
+    top: 70rpx;
+  }
+
+  85% {
+    top: 85rpx;
+  }
+
+  95% {
+    top: 95rpx;
+  }
+
+  100% {
+    top: 100rpx;
+  }
+}

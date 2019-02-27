@@ -1,0 +1,46 @@
+/* miniprogram/pages/owner/updateNameAndPhoto/updateNameAndPhoto.wxss */
+@import "../../../common/style/iconfont.wxss";
+@import "../../../common/style/common.wxss";
+
+.btn {
+  background: #50acff;
+  color: white;
+  margin-top: 4vh;
+}
+
+.beRight {
+  position: relative;
+  right: 3vw;
+}
+
+.mui-row:first-of-type {
+  padding: 5vw 2vw;
+  border-top: 2px solid #f8f8f8;
+}
+
+.mui-row>view:first-child {
+  position: relative;
+  left: 3vw;
+}
+
+.mui-row {
+  padding-left: 2vw;
+  padding-right: 2vw;
+  border-bottom: 2px solid #f8f8f8;
+}
+
+.img {
+  width: 11vh;
+  height: 11vh;
+  border-radius: 2vw;
+  margin: 1vw 2vw 1vw 0;
+}
+
+/* .wxImg {
+  text-align: center;
+  overflow: hidden;
+} */
+
+.placeName {
+  color: #d3d3d3;
+}
