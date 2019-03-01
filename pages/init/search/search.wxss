@@ -53,6 +53,7 @@
   padding-right: 1.5vw;
   border-radius: 2vw;
   margin-bottom: 1.5vw;
+  padding: 1vw;
 }
 
 .oldSearch>text {

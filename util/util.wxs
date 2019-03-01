@@ -1,5 +1,5 @@
 /**
- * 截取字符串
+ * 截取字符串加...
  */
 var subLength = function(str, length) {
   if (str.length > length) {
@@ -9,14 +9,17 @@ var subLength = function(str, length) {
   }
 }
 
-var subStr = function (str, length) {
-    return str.substring(0, length);
+/**
+ * 截取字符串不加...
+ */
+var subStr = function(str, length) {
+  return str.substring(0, length);
 }
 
 /**
  * 验证某个元素是否存在元素当中，存在返回下标，否则返回-1
  */
-var validateId = function (arrayToSearch,attr, val) {
+var validateId = function(arrayToSearch, attr, val) {
   for (var i = 0; i < arrayToSearch.length; i++) {
     if (arrayToSearch[i][attr] == val) {
       return i;
@@ -25,11 +28,18 @@ var validateId = function (arrayToSearch,attr, val) {
   return -1;
 }
 
+/**
+ * 截取第一张图片
+ */
+var splitFirstImg = function(imgs) {
+  return imgs.substring(0, imgs.indexOf(","));
+}
+
 
 
 module.exports = {
   subLength: subLength,
   validateId: validateId,
-  subStr: subStr
+  subStr: subStr,
+  splitFirstImg: splitFirstImg
 }
-

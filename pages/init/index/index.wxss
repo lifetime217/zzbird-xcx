@@ -1,0 +1,186 @@
+/* miniprogram/pages/init/enterprise/Enterprise.wxss */
+@import "../../../common/style/common.wxss";
+@import "../../../common/style/iconfont.wxss";
+
+.search {
+  border-radius: 2vw;
+  text-align: center;
+  height: 6vh;
+  line-height: 6vh;
+  vertical-align: middle;
+  background: #ededed;
+}
+
+.search text:first-child {
+  font-size: 15px;
+}
+
+.search text:last-child {
+  padding-left: 3vw;
+  font-size: 4vw;
+}
+
+.iconfont {
+  font-size: 3.5vw;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+swiper {
+  width: 96%;
+  height: 29vh;
+}
+
+.slide-image {
+  width: 100%;
+  height: 29vh;
+  border-radius: 2vw;
+}
+
+.slider-wrapper {
+  /* width:  */
+}
+
+.head-search {
+  background: #fff;
+}
+
+.head-search>view:first-child {
+  margin: 1vw 2vw;
+}
+
+.head-search text {
+  color: #6e6e6e;
+}
+
+.point-container>view {
+  width: 96%;
+  margin: 1vw 3vw;
+}
+
+.ordinary-container>view {
+  width: 96%;
+  margin: 1vw 2vw;
+}
+
+.point-company-img image {
+  width: 30vw;
+  height: 26vh;
+  border-radius: 2vw;
+}
+
+.ordinary-company-img image {
+  width: 27vw;
+  height: 22vh;
+  border-radius: 2vw;
+}
+
+.point-title, .ordinary-title {
+  line-height: 6vh;
+  font-size: 4.5vw;
+}
+
+.point-companyName {
+  font-size: 3.8vw;
+}
+
+.point-industryListName, .point-telphone {
+  font-size: 3.5vw;
+  color: #b9b9b9;
+}
+
+.point-company-container {
+  width: 30vw;
+  margin-right: 4vw;
+}
+
+.ordinary-company-container:first-child {
+  margin-top: 3vh !important;
+}
+
+.ordinary-company-container {
+  height: 18.5vh;
+  margin-top: 5vh;
+  /* border: 1px solid #b9b9b9; */
+  border-radius: 1vw;
+  box-shadow: -1px 0px 10px #f4f4f4,
+                0px -4px 10px #f4f4f4,
+                1px 0px 10px #f4f4f4,
+                0px 4px 10px #f4f4f4;
+  padding: 3vw 4vw 2vw 4vw;
+}
+
+.ordinary-company-container>view:last-child {
+  padding-left: 3.5vw;
+}
+
+.ordinary-container {
+  border-top: 4px solid #f4f4f4;
+  margin-top: 3px;
+  margin-bottom: 3vw;
+}
+
+.ordinary-company-img {
+  position: relative;
+  bottom: 4vh;
+}
+
+.ordinary-companyName {
+  font-size: 4vw;
+}
+
+.icon-dianhua {
+  font-size: 3vw;
+}
+
+.icon-dianhua+text {
+  position: relative;
+  left: -1vw;
+}
+
+.ordinary-industryListName, .ordinary-telphone, .ordinary-companySimpleAddress {
+  font-size: 3.5vw;
+  color: #b9b9b9;
+  line-height: 5vh;
+}
+
+.ordinary-industryListName {
+  padding-top: 1vh;
+}
+
+.icon-chanyeleixing, .icon-dianhua, .icon-weizhi {
+  padding-left: 0.5vw;
+  padding-right: 2vw;
+}
+
+.NoEnterprise image {
+  width: 50vw;
+  height: 50vw;
+  margin: 2vw 0;
+}
+
+.banner {
+  margin-top: 0.5vh;
+}
+
+.foot-view {
+  position: fixed;
+  bottom: 0vh;
+  width: 100%;
+  background: #fff;
+}
+
+.share {
+  color: #4dadff;
+}
+
+.foot-btn::after {
+  border: none;
+}
+
+.foot-btn{
+  border-top: 1px solid #e4e4e4;
+  background: #fff;
+}
+

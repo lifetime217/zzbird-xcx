@@ -1,23 +1,22 @@
 {
   "pages": [
-    "pages/init/enterprise/Enterprise",
-    "pages/owner/changeRole/changeRole",
-    "pages/owner/enterpriseStu/enterpriseStu",
-    "pages/owner/enterpriseTea/enterpriseTea",
-    "pages/cardCase/addEnterpriseCard/addEnterpriseCard",
-    "pages/owner/index/index",
-    "pages/course/courseDetail/courseDetail",
-    "pages/owner/punchClockSituation/punchClockSituation",
+    "pages/init/index/index",
     "pages/course/index/index",
+    "pages/course/courseDetail/courseDetail",
+    "pages/owner/index/index",
     "pages/init/search/search",
-    "pages/cardCase/addCourseCard/addCourseCard",
-    "pages/owner/updateNameAndPhoto/updateNameAndPhoto",
-    "pages/cardCase/enterpriseCard/enterpriseCard",
-    "pages/message/index/index",
-    "pages/cardCase/industryType/industryType",
-    "pages/course/punchClock/punchClock",
-    "pages/owner/courseList/courseList",
-    "pages/owner/stuList/stuList"
+    "pages/init/addCourse/addCourse",
+    "pages/init/addCompany/addCompany",
+    "pages/init/companyDetail/companyDetail",
+    "pages/init/industry/industry",
+    "pages/owner/company/companyStu/companyStu",
+    "pages/owner/company/companyTea/companyTea",
+    "pages/owner/message/message",
+    "pages/owner/teacher/stuList/stuList",
+    "pages/owner/teacher/courseList/courseList",
+    "pages/owner/checkRole/checkRole",
+    "pages/owner/updateUser/updateUser",
+    "pages/owner/student/punchClockRecord/punchClockRecord"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -33,7 +32,7 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/init/enterprise/Enterprise",
+        "pagePath": "pages/init/index/index",
         "text": "企业",
         "iconPath": "images/enterprise.png",
         "selectedIconPath": "images/click_enterprise.png"

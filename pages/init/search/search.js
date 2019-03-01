@@ -21,7 +21,6 @@ Page({
     this.setData({
       searchHistory: searchHistory
     });
-    new app.ToastPannel();
   },
   // 输入框的值
   input: function(e) {

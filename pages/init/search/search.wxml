@@ -1,7 +1,4 @@
 <!--pages/search/search.wxml-->
-<import src="../../../common/easyModal/toast/toast.wxml" />
-<template is="toast" data="{{ ..._toast_ }}" />
-
 <view class='bigcontainer'>
   <view class='search_container flex mui-view-space mui-align-center'>
     <view class='mui-col-sm-85'>

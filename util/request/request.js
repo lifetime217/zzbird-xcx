@@ -1,7 +1,27 @@
+
+function getRole(){
+  var obj = wx.getStroge('sessionObj');
+  if (obj != null && obj.role){
+    return obj.role;
+  }
+}
+
+
+
 /**
  * 封装post请求
  */
 function httpPost(url, params) {
+  /*
+  if(!checkSessionKey()){
+    post('/auth',function(res){
+      if(res.statusCode == 200){
+        var obj = {key:sessionKey,role:10,userRoleId:''};
+        wx.setStroge('sessionObj',obj);
+      }
+    });
+  }
+  */
   var promise = new Promise((resolve, reject) => {
     //网络请求
     wx.request({

@@ -1,0 +1,108 @@
+<!--miniprogram/pages/init/enterprise/Enterprise.wxml-->
+<wxs src="../../../util/util.wxs" module="tools" />
+<!-- 头部 搜索 -->
+<view class='flex mui-view-space mui-align-center head-search'>
+  <view class='mui-col-sm-100'>
+    <navigator url='../search/search' open-type='navigate'>
+      <view class='search'>
+        <text class='iconfont icon-search' wx:if="{{search==''}}"></text>
+        <text wx:if="{{search==''}}">{{searchText}}</text>
+        <text wx:else>{{search}}</text>
+      </view>
+    </navigator>
+  </view>
+  <!-- <view catchtap='switchRole'>
+    <text class='iconfont icon-qiehuanzhanghao'></text>
+  </view> -->
+</view>
+
+<!-- 图片展示  -->
+<view class="{{bannerList.length > 0 ? 'flex mui-view-center banner' : ''}}">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{bannerList}}" wx:key="{{bannerList}}">
+      <swiper-item>
+        <image src="{{item}}" mode='scaleToFill' class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!-- 推荐模块 -->
+<view class='point-container' wx:if="{{pointUser.length>0}}">
+  <view class='point-title'>推荐</view>
+  <view>
+    <scroll-view scroll-x="true" style="width: 98%;">
+      <view class='flex mui-align-center'>
+        <view wx:for="{{pointUser}}" class='point-company-container' wx:for-item="on" catchtap='navCompanyDetail' data-id='{{on.id}}' wx:key="{{pointUser}}">
+          <view class='point-company-img'>
+            <image src='{{tools.splitFirstImg(on.bannerImgs)}}'></image>
+          </view>
+          <view class='point-companyName'>
+            {{tools.subLength(on.companyName,6)}}
+          </view>
+          <view class='point-industryListName'>
+            {{tools.splitFirstImg(on.industryListName)}}
+          </view>
+          <view class='point-telphone'>
+            {{on.telphone}}
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<!-- 全部企业模块 -->
+<view class='ordinary-container' style="margin-bottom:{{isNew?'11vh':'3vh'}};">
+  <view class='ordinary-title'>全部企业</view>
+  <view>
+    <view wx:if="{{ordinaryUser.length>0}}">
+      <view wx:for="{{ordinaryUser}}" class='ordinary-company-container flex' wx:for-item="on" catchtap='navCompanyDetail' data-id='{{on.id}}' wx:key="{{ordinaryUser}}">
+        <view class='ordinary-company-img'>
+          <image src='{{tools.splitFirstImg(on.bannerImgs)}}'></image>
+        </view>
+        <view>
+          <view class='ordinary-companyName'>
+            {{on.companyName}}
+          </view>
+          <view class='ordinary-industryListName'>
+            <text class='iconfont icon-chanyeleixing'></text>
+            <text>{{on.industryListName}}</text>
+          </view>
+          <view class='ordinary-telphone'>
+            <text class='iconfont icon-dianhua'></text>
+            <text> {{on.telphone}}</text>
+          </view>
+          <view class='ordinary-companySimpleAddress'>
+            <text class='iconfont icon-weizhi'></text>
+            <text>{{on.companySimpleAddress}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{!hasData}}" class='NoEnterprise flex mui-view-center'>
+      <image src='../../../images/no_company.png'></image>
+    </view>
+
+  </view>
+</view>
+
+
+
+
+<!-- 开通企业 -->
+<view class='foot-view'>
+  <button wx:if="{{isNew}}" open-type='getUserInfo' class='flex foot-btn' lang="zh_CN" bindgetuserinfo="openEnterprise">
+    <text class='mui-col-sm-100 share'>开通企业</text>
+  </button>
+</view>
+
+
+<callPhoneToast-modal id="callPhoneModal" title="拨打电话" bind:cancelEvent="cancelPhone" bind:confirmEvent="confirmPhone">
+  <view class='modal-content'>
+    <text> {{clickPhone}} </text>
+  </view>
+</callPhoneToast-modal>
+
+<view class='addEnterprise' wx:if="{{roleType==2 && !isNew}}" catchtap='addEnterprise'>
+  <view>新增</view>
+  <view>企业</view>
+</view>
