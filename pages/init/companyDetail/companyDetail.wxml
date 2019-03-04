@@ -1,2 +1,26 @@
 <!--pages/init/companyDetail/companyDetail.wxml-->
-<text>pages/init/companyDetail/companyDetail.wxml</text>
+<!-- 上 -->
+<view>
+  <view class='banner'>
+    <image src='{{bannerList[0]}}' mode="scaleToFill"></image>
+  </view>
+  <view class='company-detail'>
+    <view class=''></view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+  </view>
+</view>
+<!-- 中 -->
+<view>
+
+</view>
+<!-- 下 -->
+<view>
+
+</view>
+
+<view class='foot-view'>
+
+</view>

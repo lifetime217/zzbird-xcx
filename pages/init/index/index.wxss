@@ -71,8 +71,8 @@ swiper {
 }
 
 .ordinary-company-img image {
-  width: 27vw;
-  height: 22vh;
+  width: 28vw;
+  height: 23.5vh;
   border-radius: 2vw;
 }
 
@@ -85,9 +85,13 @@ swiper {
   font-size: 3.8vw;
 }
 
-.point-industryListName, .point-telphone {
+.point-industryListName, .ponint-tea, .ponint-stu, .icon-qiyelaoshi {
   font-size: 3.5vw;
   color: #b9b9b9;
+}
+
+.ponint-tea, .ponint-stu {
+  padding-left: 2vw;
 }
 
 .point-company-container {
@@ -100,7 +104,7 @@ swiper {
 }
 
 .ordinary-company-container {
-  height: 18.5vh;
+  height: 20.5vh;
   margin-top: 5vh;
   /* border: 1px solid #b9b9b9; */
   border-radius: 1vw;
@@ -139,14 +143,21 @@ swiper {
   left: -1vw;
 }
 
-.ordinary-industryListName, .ordinary-telphone, .ordinary-companySimpleAddress {
+.ordinary-industryListName, .ordinary-telphone, .ordinary-companySimpleAddress,
+.ordinary-geren {
   font-size: 3.5vw;
   color: #b9b9b9;
-  line-height: 5vh;
+  line-height: 4vh;
+  position: relative;
+  left: 1vw;
 }
 
 .ordinary-industryListName {
   padding-top: 1vh;
+}
+
+.ordinary-tea, .ordinary-stu {
+  padding-left: 2vw;
 }
 
 .icon-chanyeleixing, .icon-dianhua, .icon-weizhi {
@@ -179,8 +190,7 @@ swiper {
   border: none;
 }
 
-.foot-btn{
+.foot-btn {
   border-top: 1px solid #e4e4e4;
   background: #fff;
 }
-
