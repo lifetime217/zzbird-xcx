@@ -42,8 +42,10 @@
           <view class='point-industryListName'>
             {{tools.splitFirstImg(on.industryListName)}}
           </view>
-          <view class='point-telphone'>
-            {{on.telphone}}
+          <view class='point-geren flex mui-align-center'>
+            <text class='iconfont icon-qiyelaoshi'></text>
+            <text class='ponint-tea'>{{on.teacherCount}}</text>
+            <text class='ponint-stu'>{{on.studentCount}}</text>
           </view>
         </view>
       </view>
@@ -67,13 +69,18 @@
             <text class='iconfont icon-chanyeleixing'></text>
             <text>{{on.industryListName}}</text>
           </view>
+          <view class='ordinary-geren flex mui-align-center'>
+            <text class='iconfont icon-qiyelaoshi'></text>
+            <text class='ordinary-tea'>{{on.teacherCount}}</text>
+            <text class='ordinary-stu'>{{on.studentCount}}</text>
+          </view>
           <view class='ordinary-telphone'>
             <text class='iconfont icon-dianhua'></text>
             <text> {{on.telphone}}</text>
           </view>
           <view class='ordinary-companySimpleAddress'>
             <text class='iconfont icon-weizhi'></text>
-            <text>{{on.companySimpleAddress}}</text>
+            <text>{{tools.subLength(on.companySimpleAddress,8)}}</text>
           </view>
         </view>
       </view>

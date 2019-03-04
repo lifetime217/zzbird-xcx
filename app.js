@@ -70,6 +70,7 @@ App({
     searchHistory: [], //搜索历史
     isNew: false, //判断是否是新老用户
     domainUrl: "http://192.168.1.100/", //本机
+    flagback:0, //搜索页面返回首页 0左上角返回 1按钮返回或者历史返回
     // domainUrl: "http://192.168.0.105/", //本机
     // domainUrl: "https://zzn.luoran.net/zzn/",
   },

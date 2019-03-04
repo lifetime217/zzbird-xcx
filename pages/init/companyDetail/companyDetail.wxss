@@ -1,1 +1,10 @@
 /* pages/init/companyDetail/companyDetail.wxss */
+@import "../../../common/style/common.wxss";
+@import "../../../common/style/iconfont.wxss";
+
+.banner {
+  height: 30vh;
+}
+.banner image{
+  height: 30vh;
+}

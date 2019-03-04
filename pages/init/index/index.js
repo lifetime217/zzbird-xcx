@@ -31,10 +31,9 @@ Page({
   // 点击卡片详情
   navCompanyDetail: function(e) {
     const id = e.currentTarget.dataset.id;
-    console.log(id);
-    // wx.navigateTo({
-    //   url: '../../cardCase/enterpriseCard/enterpriseCard?companyId=' + id,
-    // })
+    wx.navigateTo({
+      url: '../companyDetail/companyDetail?companyId=' + id,
+    })
   },
   // 开通企业
   openEnterprise: function(e) {
@@ -321,7 +320,7 @@ Page({
         hasData: true
       });
       this.authAddress(1, currPage.data.search);
-    } else if (!that.data.isFirstRequest) {
+    } else if (!that.data.isFirstRequest && app.globalData.flagback == 1) {
       // search为空时查询所有的数据
       that.setData({
         isFirstRequest: true,
