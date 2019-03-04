@@ -1,2 +1,28 @@
 <!--pages/owner/student/punchClockRecord/punchClockRecord.wxml-->
-<text>pages/owner/student/punchClockRecord/punchClockRecord.wxml</text>
+<wxs src="../../../../util/util.wxs" module="tools" />
+<view class='flex header'>
+  <view catchtap="choiceItem" class='mui-col-sm-50 swiber-item'>
+    <text>按课程查询</text>
+  </view>
+  <view class='swiber-item'>
+    <view class='vline'></view>
+  </view>
+  <view catchtap="choiceItem" class='mui-col-sm-50 swiber-item'>
+    <text>按时间查询
+      <text class='iconfont'></text>
+    </text>
+  </view>
+</view>
+<view class='body-item'>
+  <swiper class="tab-right" vertical="true" circular="true">
+    <swiper-item>
+      <view class="item">
+        <view class="item-head flex">
+          <view class='mui-col-sm-50 item-head-text'>2019年1月</view>
+          <view class='mui-col-sm-50 item-head-text'>本月打卡3次</view>
+        </view>
+        <view class="item-body"></view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
