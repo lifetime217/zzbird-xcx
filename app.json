@@ -1,13 +1,13 @@
 {
   "pages": [
+    "pages/init/addCompany/addCompany",
     "pages/init/index/index",
+    "pages/init/companyDetail/companyDetail",
     "pages/course/index/index",
     "pages/course/courseDetail/courseDetail",
     "pages/owner/index/index",
     "pages/init/search/search",
     "pages/init/addCourse/addCourse",
-    "pages/init/addCompany/addCompany",
-    "pages/init/companyDetail/companyDetail",
     "pages/init/industry/industry",
     "pages/owner/company/companyStu/companyStu",
     "pages/owner/company/companyTea/companyTea",
@@ -16,7 +16,8 @@
     "pages/owner/teacher/courseList/courseList",
     "pages/owner/checkRole/checkRole",
     "pages/owner/updateUser/updateUser",
-    "pages/owner/student/punchClockRecord/punchClockRecord"
+    "pages/owner/student/punchClockRecord/punchClockRecord",
+    "pages/init/richText/richText"
   ],
   "window": {
     "backgroundTextStyle": "dark",

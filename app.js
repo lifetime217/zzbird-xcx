@@ -66,10 +66,10 @@ App({
   },
   globalData: {
     openid: "", //用户的openid
-    roleType: 2, //角色类型，0代表普通用户(家长，孩子)   1代表老师   2代表企业      
+    roleType: 2, //角色类型，0代表普通用户(家长，孩子)   1代表老师   2代表企业 
     searchHistory: [], //搜索历史
     isNew: false, //判断是否是新老用户
-    domainUrl: "http://192.168.1.100/", //本机
+    domainUrl: "http://192.168.0.101/", //本机
     flagback:0, //搜索页面返回首页 0左上角返回 1按钮返回或者历史返回
     // domainUrl: "http://192.168.0.105/", //本机
     // domainUrl: "https://zzn.luoran.net/zzn/",

@@ -1,26 +1,73 @@
 <!--pages/init/companyDetail/companyDetail.wxml-->
+<import src="../../../util/wxParse/wxParse.wxml" />
+<wxs src="../../../util/util.wxs" module="tools" />
 <!-- 上 -->
 <view>
   <view class='banner'>
     <image src='{{bannerList[0]}}' mode="scaleToFill"></image>
   </view>
   <view class='company-detail'>
-    <view class=''></view>
-    <view></view>
-    <view></view>
-    <view></view>
-    <view></view>
+    <view class='flex mui-view-center company-name'>
+      <text>{{companyDetail.companyName}}</text>
+    </view>
+    <view class='flex mui-view-center mui-align-center company-count'>
+      <view>
+        <text class='iconfont icon-chakan1'></text>
+        <text class='look-count'>{{companyDetail.lookCount}}</text>
+      </view>
+      <view>
+        <text class='iconfont icon-shoucang'></text>
+        <text class='love-count'>{{companyDetail.loveCount}}</text>
+      </view>
+      <view>
+        <text class='iconfont icon-geren'></text>
+        <text class='tea-count'>{{companyDetail.teacherCount}}</text>
+      </view>
+    </view>
+    <view class='flex mui-view-center mui-align-center industry'>
+      <view wx:for="{{industry}}" wx:key="{{industry}}">
+        <text>{{item}}</text>
+      </view>
+    </view>
+    <view class='flex mui-view-center telphone'>
+      <text class='iconfont icon-dianhua'></text>
+      <text class=''>{{companyDetail.telphone}}</text>
+    </view>
+    <view class='flex mui-view-center company-address'>
+      <text class='iconfont icon-weizhi'></text>
+      <text>{{companyDetail.companyAddress}}</text>
+    </view>
   </view>
 </view>
 <!-- 中 -->
-<view>
-
+<view class='teacher-container' wx:if="{{teaList.length>0}}">
+  <view class='teacher-title'>师资力量</view>
+  <scroll-view scroll-x="true" class='scroll-view'>
+    <view class='flex mui-align-center '>
+      <view wx:for="{{teaList}}" class='teacher' wx:for-item="on" wx:key="{{teaList}}">
+        <view class='roleHeadimg flex mui-view-center'>
+          <image src='{{on.roleHeadimg}}'></image>
+        </view>
+        <view class='roleName flex mui-view-center'>
+          <text> {{tools.subLength(on.roleName,3)}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
 </view>
 <!-- 下 -->
-<view>
-
+<view class='company-detail-info'>
+  <view class='company-detail-info-title'>企业介绍</view>
+  <view>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
 </view>
 
+<!-- 底部电话 -->
 <view class='foot-view'>
-
+  <!-- <view class='btn-phone-background'> -->
+    <view data-phone='{{companyDetail.telphone}}' class='btn-phone flex mui-align-center mui-view-center ' catchtap='callphone'>
+      <text class='iconfont icon-dianhua2'></text>
+    <!-- </view> -->
+  </view>
 </view>

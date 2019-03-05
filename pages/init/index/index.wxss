@@ -85,7 +85,7 @@ swiper {
   font-size: 3.8vw;
 }
 
-.point-industryListName, .ponint-tea, .ponint-stu, .icon-qiyelaoshi {
+.point-industryListName, .ponint-tea, .ponint-stu, .icon-geren {
   font-size: 3.5vw;
   color: #b9b9b9;
 }

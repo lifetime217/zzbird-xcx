@@ -1,0 +1,4 @@
+<!--pages/init/richText/richText.wxml-->
+<xing-editor bindfinish="save" output-type="html"  image-upload-name="image" image-upload-key-chain="image.url"  html="{{companyDetaiInfo}}" />
+
+

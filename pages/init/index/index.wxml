@@ -43,7 +43,7 @@
             {{tools.splitFirstImg(on.industryListName)}}
           </view>
           <view class='point-geren flex mui-align-center'>
-            <text class='iconfont icon-qiyelaoshi'></text>
+            <text class='iconfont icon-geren'></text>
             <text class='ponint-tea'>{{on.teacherCount}}</text>
             <text class='ponint-stu'>{{on.studentCount}}</text>
           </view>
@@ -70,7 +70,7 @@
             <text>{{on.industryListName}}</text>
           </view>
           <view class='ordinary-geren flex mui-align-center'>
-            <text class='iconfont icon-qiyelaoshi'></text>
+            <text class='iconfont icon-geren'></text>
             <text class='ordinary-tea'>{{on.teacherCount}}</text>
             <text class='ordinary-stu'>{{on.studentCount}}</text>
           </view>
