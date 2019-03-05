@@ -48,7 +48,6 @@ function trim(str) {
 
 
 module.exports = {
-  uuid: uuid,
   getDate: getDate,
   getTimestamp: getTimestamp,
   formatTime: formatTime,
