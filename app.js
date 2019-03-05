@@ -67,6 +67,7 @@ App({
   globalData: {
     openid: "", //用户的openid
     roleType: 2, //角色类型，0代表普通用户(家长，孩子)   1代表老师   2代表企业 
+    companyid:"",
     searchHistory: [], //搜索历史
     isNew: false, //判断是否是新老用户
     domainUrl: "http://192.168.0.101/", //本机
