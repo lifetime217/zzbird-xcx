@@ -1,1 +1,74 @@
 /* pages/init/addCompany/addCompany.wxss */
+@import "../../../common/style/common.wxss";
+@import "../../../common/style/iconfont.wxss";
+
+page {
+  background: #f5f5f5;
+}
+
+.icon-arrowright {
+  font-size: 4vw;
+  color: #c7c6cc;
+}
+
+.company-picture, .company-name, .telphone, .company-detai-info {
+  margin-top: 2vh;
+  background: #fff;
+  padding: 0 3vw;
+}
+
+.company-picture {
+  line-height: 10vh;
+}
+
+.picture-title, .companyName-title, .industry-title, .telphone-title,
+.address-title, .company-detai-info-title {
+  font-size: 4vw;
+}
+
+.picture-title+view, .companyName-title+view, .industry-title+view,
+.telphone-title+view, .address-title+view, .company-detai-info-title+view {
+  padding-left: 6vw;
+}
+
+.company-image {
+  width: 7vh;
+  height: 7vh;
+  margin-right: 3vw;
+}
+
+.company-industry, .company-address {
+  background: #fff;
+  padding: 0 3vw;
+  border-top: 1px solid #e5e5e5;
+}
+
+.company-name, .telphone, .company-industry, .company-address,
+.company-detai-info {
+  line-height: 8vh;
+}
+
+.check-picture, .placeholder-companyname, .check-industry, .placeholder-telphone,
+.information {
+  color: #d4d4d4;
+  font-size: 4.5vw;
+}
+
+.industry-tag, .input-companyname, .input-telphone, .companySimpleAddress {
+  font-size: 4vw;
+}
+
+.btn {
+  position: fixed;
+  bottom: 2vh;
+  margin: 2vw;
+}
+
+.editor-submit-btn {
+  align-items: center;
+  justify-content: center;
+  background: #14a1fd;
+  color: #fff;
+  position: relative;
+  width: 96vw;
+}

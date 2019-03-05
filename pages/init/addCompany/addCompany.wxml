@@ -1,2 +1,90 @@
 <!--pages/init/addCompany/addCompany.wxml-->
-<text>pages/init/addCompany/addCompany.wxml</text>
+<!-- 照片 -->
+<wxs src="../../../util/util.wxs" module="tools" />
+<view class='flex mui-view-space company-picture' catchtap='checkpicture'>
+  <view class='flex mui-align-center'>
+    <view class='picture-title'>企业照片</view>
+    <view wx:if="{{imgUrls.length>0}}" class="flex mui-align-center">
+      <block wx:for="{{imgUrls}}" wx:for-item="on" wx:key="{{imgUrls}}">
+        <image src='{{on.url}}' catchlongpress='deletImg' data-name='{{on.name}}' class='company-image'></image>
+      </block>
+    </view>
+    <view wx:else>
+      <text class='check-picture'>请选择图片(长按删除图片)</text>
+    </view>
+  </view>
+  <view>
+    <text class='iconfont icon-arrowright'></text>
+  </view>
+</view>
+<!-- 名称 -->
+<view class='flex mui-view-space company-name'>
+  <view class='flex mui-align-center'>
+    <view class='companyName-title'>企业名称</view>
+    <view>
+      <input maxlength='20' bindinput='companyNameInput' class='input-companyname' placeholder='请输入企业名称' placeholder-class='placeholder-companyname'></input>
+    </view>
+  </view>
+</view>
+<!-- 行业 -->
+<view class='flex mui-view-space company-industry' catchtap='checkindustry'>
+  <view class='flex mui-align-center '>
+    <view class='industry-title'>所属行业</view>
+    <view wx:if="{{instury.length>0}}" class="industry-tag">
+      <block wx:for="{{instury}}" wx:for-item="on" wx:key="{{instury}}">
+        {{tools.subLength(on.tagName,4)}}
+      </block>
+    </view>
+    <view wx:else>
+      <text class='check-industry'>请选择类型</text>
+    </view>
+  </view>
+  <view>
+    <text class='iconfont icon-arrowright'></text>
+  </view>
+</view>
+<!-- 电话 -->
+<view class='flex mui-view-space telphone'>
+  <view class='flex mui-align-center'>
+    <view class='telphone-title'>企业电话</view>
+    <view>
+      <input maxlength='20' bindinput='telphoneInput' class='input-telphone' placeholder='请输入企业电话' placeholder-class='placeholder-telphone'></input>
+    </view>
+  </view>
+</view>
+<!-- 地址 -->
+<view class='flex mui-view-space company-address' catchtap='checkCompanyAddress'>
+  <view class='flex mui-align-center '>
+    <view class='address-title'>企业地址</view>
+    <view wx:if="{{companySimpleAddress!=''}}" class='companySimpleAddress'>
+      {{tools.subLength(companySimpleAddress,14)}}
+    </view>
+    <view wx:else>
+      <text class='check-industry'>请选择地址</text>
+    </view>
+  </view>
+  <view>
+    <text class='iconfont icon-arrowright'></text>
+  </view>
+</view>
+<!-- 介绍 -->
+<view class='flex mui-view-space company-detai-info' catchtap='checkRichtext'>
+  <view class='flex mui-align-center'>
+    <view class='company-detai-info-title'>企业介绍</view>
+    <view wx:if="{{companyDetaiInfo!=''}}">
+    </view>
+    <view wx:else>
+      <text class='information'>描述信息</text>
+    </view>
+  </view>
+  <view>
+    <text class='iconfont icon-arrowright'></text>
+  </view>
+</view>
+
+
+
+<!-- 按钮 -->
+<view class='btn'>
+  <button class="editor-submit-btn" style="" bindtap="onFinish">完成</button>
+</view>
