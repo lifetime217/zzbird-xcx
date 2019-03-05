@@ -1,1 +1,56 @@
 /* pages/owner/student/punchClockRecord/punchClockRecord.wxss */
+@import "../../../../common/style/iconfont.wxss";
+@import "../../../../common/style/common.wxss";
+
+page{
+height: 100%;
+}
+
+.header{
+  border-bottom: 0.3vh solid #e9e9e9;
+  border-top: 0.3vh solid #e9e9e9 ;
+}
+
+.swiber-item {
+  line-height: 9vh;
+  text-align: center;
+  font-size: 4.5vw;
+  margin: 1vw 0;
+}
+
+.vline{
+  height:7vh;
+  border-right: 0.1vh solid #e9e9e9;
+  text-align: center;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+
+}
+
+.tab-right {
+    margin: 0vh 2vw 0vh 2vw;
+    bottom: 1vh;
+    height: 100%;
+}
+
+.body-item{
+  height: 89%;
+}
+.item{
+  margin:1vh 0vw 1vh 0vw;
+}
+
+.item-head{
+  width: 100%;
+  height: 5.5vh;
+  background-color: #50ACFF;
+  border-top-left-radius: 2vw;
+  border-top-right-radius: 2vw;
+  text-align: center;
+}
+
+.item-head-text{
+  font-size: 4vw;
+  line-height: 5vh;
+  color:white;
+}
