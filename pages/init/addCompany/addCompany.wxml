@@ -22,7 +22,7 @@
   <view class='flex mui-align-center'>
     <view class='companyName-title'>企业名称</view>
     <view>
-      <input maxlength='20' bindinput='companyNameInput' class='input-companyname' placeholder='请输入企业名称' placeholder-class='placeholder-companyname'></input>
+      <input maxlength='20' bindinput='companyNameInput' value='{{companyName}}' class='input-companyname' placeholder='请输入企业名称' placeholder-class='placeholder-companyName'></input>
     </view>
   </view>
 </view>
@@ -30,8 +30,8 @@
 <view class='flex mui-view-space company-industry' catchtap='checkindustry'>
   <view class='flex mui-align-center '>
     <view class='industry-title'>所属行业</view>
-    <view wx:if="{{instury.length>0}}" class="industry-tag">
-      <block wx:for="{{instury}}" wx:for-item="on" wx:key="{{instury}}">
+    <view wx:if="{{industry.length>0}}" class="industry-tag">
+      <block wx:for="{{industry}}" wx:for-item="on" wx:key="{{industry}}">
         {{tools.subLength(on.tagName,4)}}
       </block>
     </view>
@@ -48,7 +48,7 @@
   <view class='flex mui-align-center'>
     <view class='telphone-title'>企业电话</view>
     <view>
-      <input maxlength='20' bindinput='telphoneInput' class='input-telphone' placeholder='请输入企业电话' placeholder-class='placeholder-telphone'></input>
+      <input maxlength='20' bindinput='telphoneInput' value='{{telphone}}' class='input-telphone' placeholder='请输入企业电话' placeholder-class='placeholder-telphone'></input>
     </view>
   </view>
 </view>
@@ -71,7 +71,7 @@
 <view class='flex mui-view-space company-detai-info' catchtap='checkRichtext'>
   <view class='flex mui-align-center'>
     <view class='company-detai-info-title'>企业介绍</view>
-    <view wx:if="{{companyDetaiInfo!=''}}">
+    <view wx:if="{{companyDetailInfo!=''}}">
     </view>
     <view wx:else>
       <text class='information'>描述信息</text>

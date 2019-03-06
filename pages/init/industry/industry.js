@@ -111,7 +111,7 @@ Page({
     let pages = getCurrentPages(); //当前页面
     let prevPage = pages[pages.length - 2]; //上一页面  
     prevPage.setData({ //直接给上移页面赋值
-      instury: selected
+      industry: selected
     });
     wx.navigateBack({ //返回
       delta: 1
@@ -128,10 +128,11 @@ Page({
         var data = res.data.data;
         var parentIndustry = []; //父标签
         var industry = data.industry;
-        var currentName = ""; //找到第一个存在集合中的下表
+        var currentName = ""; //找到第一个存在集合中的
         for (var item in industry) {
           parentIndustry.push(item);
-          if (selected.length != 0 && curentIndex == -1) {
+          // 如果找到了第一个就不再去循环
+          if (currentName == "") {
             for (var j = 0; j < selected.length; j++) {
               // 找到selected中第一个存在的标签下表
               var index = that.findIndustryIndex(industry[item], 'id', selected[j].id);
@@ -154,7 +155,7 @@ Page({
             industry: industry,
             parentIndustry: parentIndustry,
             currentName: currentName,
-            industryTagList: data[currentName]
+            industryTagList: industry[currentName]
           });
         }
       }
@@ -172,9 +173,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    if (options.instury != undefined) {
+    if (options.industry != undefined) {
       this.setData({
-        selected: JSON.parse(options.instury)
+        selected: JSON.parse(options.industry)
       });
     }
     // 请求行业标签

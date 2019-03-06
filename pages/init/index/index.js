@@ -44,9 +44,8 @@ Page({
     var that = this;
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
-      var userinfo = e.detail.userInfo;
-      app.globalData.user = userinfo;
-      var openid = app.globalData.openid;
+      // var userinfo = e.detail.userInfo;
+      // var openid = app.globalData.openid;
       // http.httpPost(domainUrl + "/api/auth/updateUser", {
       //   "openId": openid,
       //   "city": userinfo.city,
@@ -64,9 +63,9 @@ Page({
       //   that.setData({
       //     userObj: user
       //   });
-      //   wx.navigateTo({
-      //     url: '../../cardCase/addEnterpriseCard/addEnterpriseCard?status=add&nickName=' + user.nickName + '&avatarUrl=' + user.avatarUrl + '&openId=' + user.openId
-      //   })
+      wx.navigateTo({
+        url: '../addCompany/addCompany?type=openComapny'
+      })
       // }).catch((errMsg) => {
       //   wx.showModal({
       //     content: '网络异常',
@@ -310,7 +309,7 @@ Page({
    */
   onShow: function() {
     var that = this;
-
+    console.log("首页");
     let pages = getCurrentPages();
     let currPage = pages[pages.length - 1];
     // 判断搜索的内容是否为空

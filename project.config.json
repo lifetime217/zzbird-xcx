@@ -28,13 +28,53 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "编辑企业",
+					"pathName": "pages/init/addCompany/addCompany",
+					"query": "type=edit",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新增课程",
+					"pathName": "pages/init/addCourse/addCourse",
+					"query": "type=addCompany",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新增企业",
+					"pathName": "pages/init/addCompany/addCompany",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "修改课程",
+					"pathName": "pages/init/addCourse/addCourse",
+					"query": "courseId=14635fb4b3b745969c09b9e486b21801&type=edit",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "课程详情",
+					"pathName": "pages/course/courseDetail/courseDetail",
+					"query": "courseId=33f5ca984bd848919a4dfecf56c2db6a",
+					"scene": null
+				}
+			]
 		}
 	}
 }

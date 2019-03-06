@@ -1,1 +1,39 @@
 /* pages/course/courseDetail/courseDetail.wxss */
+@import "../../../common/style/common.wxss";
+@import "../../../common/style/iconfont.wxss";
+
+page {
+  background: #f5f5f5;
+}
+
+.container {
+  padding-top: 3vh;
+  background: #fff;
+}
+
+.course-information {
+  height: 20.5vh;
+  padding-top: 3vh;
+  border-radius: 1vw;
+  box-shadow: -1px 0px 10px #f4f4f4,
+                0px -4px 10px #f4f4f4,
+                1px 0px 10px #f4f4f4,
+                0px 4px 10px #f4f4f4;
+  padding: 3vw 4vw 2vw 4vw;
+  margin: 0vw 2vw;
+}
+
+.course-information>view:last-child {
+  padding-left: 3.5vw;
+}
+
+.ordinary-company-img {
+  position: relative;
+  bottom: 4vh;
+}
+
+.ordinary-company-img image {
+  width: 28vw;
+  height: 23.5vh;
+  border-radius: 2vw;
+}

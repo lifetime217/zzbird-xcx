@@ -8,23 +8,25 @@ Page({
    * 页面的初始数据
    */
   data: {
+    type: "", // 来源 判断是从哪里跳转过过来的
     imgUrls: [], // 访问图片集合
     imgUrlName: [], // 图片名字集合
-    instury: [], //选择的标签
+    industry: [], //选择的标签
     companyName: "", //输入的企业名称
     telphone: "", //输入的企业电话
     companyAddress: "", //公司地址
     companySimpleAddress: "", //公司的简称
     lat: "", //纬度
     lng: "", //经度
-    companyDetaiInfo: "", //描述信息
+    companyDetailInfo: "", //描述信息
   },
   /**
    * 跳转富文本
    */
   checkRichtext: function() {
+    var companyDetailInfo = this.data.companyDetailInfo;
     wx.navigateTo({
-      url: '../richText/richText'
+      url: '../richText/richText?type=company&companyDetailInfo=' + escape(companyDetailInfo)
     })
   },
   /**
@@ -114,11 +116,156 @@ Page({
     })
   },
   /**
+   * 新增企业
+   */
+  onFinish: function() {
+    var that = this;
+    that.showLoad();
+    var type = that.data.type;
+    var imgUrlName = that.data.imgUrlName;
+    var industry = that.data.industry;
+    var companyName = that.data.companyName;
+    var telphone = that.data.telphone;
+    var companyAddress = that.data.companyAddress;
+    var companySimpleAddress = that.data.companySimpleAddress;
+    var lat = that.data.lat;
+    var lng = that.data.lng;
+    var companyDetailInfo = that.data.companyDetailInfo;
+    if (imgUrlName.length == 0) {
+      wx.showToast({
+        title: '请上传图片',
+        icon: 'none'
+      })
+      return;
+    }
+    if (companyName == "") {
+      wx.showToast({
+        title: '请输入公司名字',
+        icon: 'none'
+      })
+      return;
+    }
+    if (industry.length == 0) {
+      wx.showToast({
+        title: '请选择标签',
+        icon: 'none'
+      })
+      return;
+    }
+    if (telphone == "") {
+      wx.showToast({
+        title: '请输入电话',
+        icon: 'none'
+      })
+      return;
+    }
+    if (companyAddress == "") {
+      wx.showToast({
+        title: '请选择地址',
+        icon: 'none'
+      })
+      return;
+    }
+    var industryStr = ""
+    var industryId = "";
+    // 拼接标签的id和标签的名字的数组
+    for (var i = 0; i < industry.length; i++) {
+      if (i == industry.length - 1) {
+        industryId += industry[i].id;
+        industryStr += industry[i].tagName;
+      } else {
+        industryId += industry[i].id + ",";
+        industryStr += industry[i].tagName + ",";
+      }
+    }
+    // 拼接图片名字的id
+    var imgUrlNameStr = imgUrlName.join(",");
+    var params = {
+      "companyName": companyName,
+      "companyAddress": companyAddress,
+      "telphone": telphone,
+      "industryListName": industryStr,
+      "industryListId": industryId,
+      "companySimpleAddress": companySimpleAddress,
+      "lat": lat,
+      "lng": lng,
+      "bannerImgs": imgUrlNameStr,
+      "companyDetailInfo": companyDetailInfo
+    }
+    var url;
+    if (type == "edit") {
+      params.id = app.globalData.companyid;
+      url = domainUrl + "/company/updateCompany";
+    } else {
+      url = domainUrl + "/company/addCompany"
+    }
+    http.httpPost(url, params).then((res) => {
+      if (res.data.statusCode == 200) {
+        var data = res.data.data;
+        if (type == "edit") {
+          //修改
+          wx.showModal({
+            content: '修改成功',
+            showCancel: false,
+            success: function(res) {
+              if (res.confirm) {
+                // 用户点击确定 返回企业详情展示 
+                wx.navigateTo({
+                  url: '../companyDetail/companyDetail?type=editCompany&companyId=' + app.globalData.companyid
+                })
+              }
+            }
+          })
+
+        } else {
+          // 新增
+          // 新建公司成功更新app.js的公司id和判断是否是新老用户
+          app.globalData.companyid = data.companyId;
+          app.globalData.isNew = false;
+          wx.showModal({
+            title: '新建成功',
+            content: '是否继续添加课程',
+            showCancel: true,
+            success: function(res) {
+              if (res.confirm) {
+                // 用户点击确定  跳转新建课程页面
+                wx.navigateTo({
+                  url: '../addCourse/addCourse?type=addCompany'
+                })
+              } else if (res.cancel) {
+                // 用户点击取消
+                wx.switchTab({
+                  url: '../index/index'
+                })
+              }
+            }
+          })
+        }
+
+      } else {
+        wx.showModal({
+          content: '网络异常',
+          showCancel: false,
+        })
+      }
+      that.hideTime();
+    }).catch((errMsg) => {
+      console.log(errMsg);
+      wx.showModal({
+        content: '网络异常',
+        showCancel: false,
+      })
+      that.hideTime();
+    });
+
+  },
+  /**
    * 选择产业类型
    */
   checkindustry: function() {
+    var industry = this.data.industry;
     wx.navigateTo({
-      url: '../industry/industry'
+      url: '../industry/industry?industry=' + JSON.stringify(industry)
     })
   },
   /**
@@ -178,7 +325,6 @@ Page({
       })
       return;
     }
-    console.log(imgUrlName.length);
     wx.chooseImage({
       count: 4 - imgUrlName.length,
       sizeType: ['compressed'], //使用的压缩图还是原图片
@@ -249,10 +395,58 @@ Page({
     })
   },
   /**
+   * 编辑企业查询公司的信息
+   */
+  queryCompany: function() {
+    var that = this;
+    that.showLoad();
+    var comapnyId = app.globalData.companyid;
+    http.httpGet(domainUrl + "/company/queryCompanyByCompanyId/" + comapnyId, {}).then((res) => {
+      if (res.data.statusCode == 200) {
+        var data = res.data.data;
+        var company = data.company;
+        that.setData({
+          industry: data.industry,
+          imgUrlName: data.bannerImgsName,
+          imgUrls: data.banner,
+          companyName: company.companyName,
+          companyAddress: company.companyAddress,
+          telphone: company.telphone,
+          companySimpleAddress: company.companySimpleAddress,
+          companyDetailInfo: company.companyDetailInfo
+        });
+      } else {
+        wx.showModal({
+          content: '网络异常',
+          showCancel: false,
+        })
+      }
+      that.hideTime();
+    }).catch((errMsg) => {
+      console.log(errMsg);
+      wx.showModal({
+        content: '网络异常',
+        showCancel: false,
+      })
+      that.hideTime();
+    });
+  },
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    if (options.type != undefined) {
+      this.setData({
+        type: options.type
+      });
+      if (options.type = "edit") {
+        wx.setNavigationBarTitle({
+          title: '编辑企业'
+        })
+        // 如是编辑企业就根据公司id查询信息
+        this.queryCompany();
+      }
+    }
   },
 
   /**
@@ -270,15 +464,15 @@ Page({
     let pages = getCurrentPages();
     let currPage = pages[pages.length - 1];
     // 获取选择标签返回的标签
-    if (currPage.data.instury != null) {
+    if (currPage.data.industry != null) {
       that.setData({
-        instury: currPage.data.instury
+        industry: currPage.data.industry
       })
     }
     // 编辑文本返回获取
-    if (currPage.data.companyDetaiInfo != null) {
+    if (currPage.data.companyDetailInfo != null) {
       that.setData({
-        companyDetaiInfo: currPage.data.companyDetaiInfo
+        companyDetailInfo: currPage.data.companyDetailInfo
       })
     }
   },
