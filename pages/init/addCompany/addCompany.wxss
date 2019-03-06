@@ -48,7 +48,7 @@ page {
   line-height: 8vh;
 }
 
-.check-picture, .placeholder-companyname, .check-industry, .placeholder-telphone,
+.check-picture, .placeholder-companyName, .check-industry, .placeholder-telphone,
 .information {
   color: #d4d4d4;
   font-size: 4.5vw;

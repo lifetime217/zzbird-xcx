@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    companyDetaiInfo: ""
+    detailInfo: "",
+    type: "" //来源，（公司，课程）
   },
 
   /**
@@ -14,9 +15,15 @@ Page({
   save: function(e) {
     let pages = getCurrentPages(); //当前页面
     let prevPage = pages[pages.length - 2]; //上一页面  
-    prevPage.setData({ //直接给上移页面赋值
-      companyDetaiInfo: e.detail.content
-    });
+    if (this.data.type == "company") {
+      prevPage.setData({ //给添加公司页面赋值
+        companyDetailInfo: e.detail.content
+      });
+    } else {
+      prevPage.setData({ //给添加课程页面赋值
+        courseDetailInfo: e.detail.content
+      });
+    }
     wx.navigateBack({ //返回
       delta: 1
     })
@@ -25,25 +32,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    if (options.companyDetaiInfo != undefined) {
+    if (options.companyDetailInfo != undefined) {
+      // 公司的详情
       this.setData({
-        companyDetaiInfo: options.companyDetaiInfo
+        detailInfo: unescape(options.companyDetailInfo),
+        type: options.type
+      });
+    } else if (options.courseDetailInfo != undefined) {
+      // 课程的详情
+      this.setData({
+        detailInfo: unescape(options.courseDetailInfo),
+        type: options.type
+      });
+    } else {
+      this.setData({
+        type: options.type
       });
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
+  }
 
 })

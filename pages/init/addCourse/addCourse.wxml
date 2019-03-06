@@ -1,2 +1,97 @@
 <!--pages/init/addCourse/addCourse.wxml-->
-<text>pages/init/addCourse/addCourse.wxml</text>
+<!-- 照片 -->
+<wxs src="../../../util/util.wxs" module="tools" />
+<view class='flex mui-view-space course-picture' catchtap='checkpicture'>
+  <view class='flex mui-align-center'>
+    <view class='course-title'>课程图片</view>
+    <view wx:if="{{imgUrls.length>0}}" class="flex mui-align-center">
+      <block wx:for="{{imgUrls}}" wx:for-item="on" wx:key="{{imgUrls}}">
+        <image src='{{on.url}}' catchlongpress='deletImg' data-name='{{on.name}}' class='course-image'></image>
+      </block>
+    </view>
+    <view wx:else>
+      <text class='check-picture'>请选择图片(长按删除图片)</text>
+    </view>
+  </view>
+  <view>
+    <text class='iconfont icon-arrowright'></text>
+  </view>
+</view>
+<!-- 名称 -->
+<view class='flex mui-view-space course-name'>
+  <view class='flex mui-align-center'>
+    <view class='courseName-title'>课程名称</view>
+    <view>
+      <input maxlength='20' bindinput='courseNameInput' value='{{courseName}}' class='input-coursename' placeholder='请输入企业名称' placeholder-class='placeholder-courseName'></input>
+    </view>
+  </view>
+</view>
+<!-- 上课时间 -->
+<view class='flex mui-view-space school-time'>
+  <view class='flex mui-align-center '>
+    <view class='schooltime-title'>上课时间</view>
+    <view class='flex mui-align-center '>
+      <picker mode="time" bindchange="bindTimeChange" data-type='0'>
+        <view class="picker" style="{{startTime==''?'height:3vh':'line-height: 3vh;'}}">{{startTime}} </view>
+      </picker>
+      <view class="school">至</view>
+      <picker mode="time" start="{{startTime}}" bindchange="bindTimeChange" data-type='1'>
+        <view class="picker" style="{{endTime==''?'height:3vh':'line-height: 3vh;'}}">{{endTime}} </view>
+      </picker>
+    </view>
+  </view>
+</view>
+<!-- 年龄范围 -->
+<view class=' ageRange' catchtap="kindToggle">
+  <view class="flex mui-view-space ageRang-select  ageRang-item-hd {{isShow ? 'ageRang-item-hd-show' : ''}} ">
+    <view class='flex mui-align-center'>
+      <view class='ageRange-title'>年龄范围</view>
+      <view class='select'>{{ageRange}}</view>
+    </view>
+    <view>
+      <text class="iconfont icon-arrowright {{isShow ? 'normal' : 'triangle'}}"></text>
+    </view>
+  </view>
+  <view class="ageRang-bd {{isShow ? 'ageRang-bd-show' : ''}}">
+    <view class="ageRang-item {{isShow ? 'ageRang-item-show' : ''}}">
+      <block wx:for-items="{{ages}}" wx:key="{{ages}}">
+        <view class="ageRang" data-index='{{index}}' data-type='{{item}}' catchtap='checkAge'>
+          <view class="ageRang-text">{{item}}</view>
+          <radio value="{{item}}" class='age-option' color='#14a1fd' checked="{{ageIndex==index}}" />
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+<!-- 课时选择 -->
+<view class='flex mui-view-space class-time-choose'>
+  <view class='flex mui-align-center '>
+    <view class='class-time-choose-title'>课时选择</view>
+    <view>
+      <label bindtap="checkClassTimeChange" wx:for-item="on" data-type="{{on.value}}" data-index="{{index}}" class='radio-class-time' wx:for="{{classTime}}" wx:key="key">
+        <radio class="checkbox" color='#14a1fd' value="{{on.value}}" checked="{{on.checked}}" />
+        <text class='classhour-option'> {{on.value}}</text>
+      </label>
+    </view>
+  </view>
+</view>
+
+<!-- 课程简介 -->
+<view class='flex mui-view-space course-detai-info' catchtap='checkRichtext'>
+  <view class='flex mui-align-center'>
+    <view class='course-detai-info-title'>课程简介</view>
+    <view wx:if="{{courseDetailInfo!=''}}">
+    </view>
+    <view wx:else>
+      <text class='information'>描述信息</text>
+    </view>
+  </view>
+  <view>
+    <text class='iconfont icon-arrowright'></text>
+  </view>
+</view>
+
+<!-- 按钮 -->
+<view class='btn'>
+  <button class="editor-submit-btn" style="" bindtap="onFinish">完成</button>
+</view>

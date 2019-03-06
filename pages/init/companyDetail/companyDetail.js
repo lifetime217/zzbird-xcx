@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    type: "", // 来源（判断页面的来源）
     bannerList: [], //头部图片
     companyDetail: {}, //公司详情
     teaList: [], //教师列表
@@ -81,6 +82,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    if (options.type != undefined) {
+      this.setData({
+        type: options.type
+      });
+    }
     var companyId = options.companyId;
     // var companyId = "f06f6cccc4b34543bddb9568a86495e9";
     this.queryCompanyDetail(companyId);
@@ -112,7 +118,11 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    if (this.data.type == "editCompany") {
+        wx.switchTab({
+          url: '../index/index'
+        })
+    }
   },
 
 })

@@ -177,7 +177,6 @@ Component({
                   },
                   success: res1 => {
                     var data = JSON.parse(res1.data);
-                    console.log(data);
                     // 判断是否上传成功
                     if (data.data.flag) {
                       const node = {
