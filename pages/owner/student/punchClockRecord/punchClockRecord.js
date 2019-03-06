@@ -9,47 +9,86 @@ Page({
    * 页面的初始数据
    */
   data: {
-    page: 0,
-    pageSize: 20,
-    channel: false,
-    statDate: 0,
-    endDate: 0,
-    punchList:[],
+    channel: false, //选择时间列表
+    statDate: 0, //开始日期
+    endDate: 0, //结束日期
+    monthList: [], //按月查的集合
+    checkIndex: 0, //选择时间的下标索引
+    layout: 0, //布局切换索引
+    courseList:[],//按课程查询的聚合
   },
 
   // 显示加载框
-  showLoad: function () {
+  showLoad: function() {
     wx.showLoading({
       title: '加载中...',
       mask: true
     })
   },
   // 隐藏加载框
-  hideTime: function () {
-    setTimeout(function () {
+  hideTime: function() {
+    setTimeout(function() {
       wx.hideLoading();
     }, 1000);
   },
 
   choiceItem: function(e) {
+    var that = this;
     var item = e.currentTarget.dataset.item;
+    var roleId = app.globalData.roleId;
+    //按课程查询
     if (item == 1) {
-
+      that.queryPunchClockListByCourse(roleId);
+      that.setData({
+        layout: 1,
+        channel: false
+      });
     }
+    //按时间查询
     if (item == 2) {
-      if (this.data.channel) {
-        this.setData({
-          channel: false
+      if (that.data.channel) {
+        that.setData({
+          channel: false,
         });
       } else {
-        this.setData({
+        that.setData({
           channel: true
         });
       }
     }
   },
   chiceIndex: function(e) {
-    var item = e.currentTarget.dataset.item;
+    var that = this;
+    var item = e.currentTarget.dataset.index;
+    that.changeDateType(item);
+    var roleId = app.globalData.roleId;
+    var statDate = that.data.statDate;
+    var endDate = that.data.endDate;
+    //当月
+    if (item == 0) {
+      that.queryPunchClockListByMonth(roleId, statDate, endDate);
+      that.setData({
+        checkIndex: item,
+      });
+    }
+    //最近一个季度
+    if (item == 1) {
+      that.queryPunchClockListByMonth(roleId, statDate, endDate);
+      that.setData({
+        checkIndex: item,
+      });
+    }
+    //最近一年
+    if (item == 2) {
+      that.queryPunchClockListByMonth(roleId, statDate, endDate);
+      that.setData({
+        checkIndex: item,
+      });
+    }
+    that.setData({
+      channel: false,
+      layout: 0,
+    });
   },
 
   //变更开始日期和结束日期，传入下标
@@ -81,7 +120,7 @@ Page({
     }
   },
 
-  getQuarterStartMonth: function () {
+  getQuarterStartMonth: function() {
     let now = new Date();
     let nowMonth = now.getMonth();
     var quarterStartMonth = 0;
@@ -105,30 +144,46 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
-    var openid = app.globalData.openid;
-    var roleType = app.globalData.roleType;
-    var companyid = app.globalData.companyid;
+    that.changeDateType(2);
+    var roleId = app.globalData.roleId;
     var statDate = that.data.statDate;
     var endDate = that.data.endDate;
-    that.changeDateType(0);
+    endDate = "1577668188";
+    that.queryPunchClockListByMonth(roleId, statDate, endDate);
   },
   /**
    * 查询打卡记录按时间查询
    */
-  queryPunchClockList: function (page, pageSize, openId, companyId, statDate, endDate){
+  queryPunchClockListByMonth: function(roleId, statDate, endDate) {
     var that = this;
     that.showLoad();
     return new Promise((resolve, reject) => {
       var that = this;
-      http.httpPost(domainUrl + "", {
-        "page": page,
-        "openId": openId,
-        "companyId": companyId,
+      http.httpPost(domainUrl + "dakarecord/queryPunchListByMonth", {
+        "roleId": roleId,
         "statDate": statDate,
         "endDate": endDate,
-        "pageSize": pageSize
       }).then((res) => {
-        
+        var data = res.data;
+        //查询成功
+        if (data.statusCode == 200) {
+          var monthList = res.data.data;
+          //算出星期几
+
+          for (var i = 0; i < monthList.length; i++) {
+            var punchList = monthList[i].punchList;
+            for (var j = 0; j < punchList.length; j++) {
+              var date = that.getTime(punchList[j].dakaTime);
+              var week = that.getWeek(date);
+              punchList[j].week = week;
+            }
+          }
+          //封装数据
+          that.setData({
+            monthList: monthList,
+          })
+        }
+        that.hideTime();
       }).catch((errMsg) => {
         wx.showModal({
           content: '网络异常',
@@ -138,6 +193,62 @@ Page({
       });
     })
   },
+
+  /**
+   * 跟据日期算出是星期几
+   */
+  getWeek: function(time) {
+    var weekArray = new Array("日", "一", "二", "三", "四", "五", "六");
+    var week = time.getDay();
+    return "星期" + weekArray[week];
+  },
+  /**
+   * 字符串转为时间格式
+   */
+  getTime: function(timeStr) {
+    var dateStr = timeStr.replace(/-/g, "/");
+    return new Date(dateStr);
+  },
+
+  queryPunchClockListByCourse: function (roleId) {
+    var that = this;
+    that.showLoad();
+    return new Promise((resolve, reject) => {
+      var that = this;
+      http.httpPost(domainUrl + "dakarecord/queryPunchListByCourse", {
+        "roleId": roleId,
+      }).then((res) => {
+        var data = res.data;
+        //查询成功
+        if (data.statusCode == 200) {
+          var courseList = res.data.data;
+          //算出星期几
+          for (var i = 0; i < courseList.length; i++) {
+            var punchList = courseList[i].punchList;
+            for (var j = 0; j < punchList.length; j++) {
+              var date = that.getTime(punchList[j].dakaTime);
+              var week = that.getWeek(date);
+              punchList[j].week = week;
+            }
+          }
+         
+          //封装数据
+          that.setData({
+            courseList: courseList,
+          })
+        }
+        that.hideTime();
+      }).catch((errMsg) => {
+        wx.showModal({
+          content: '网络异常',
+          showCancel: false,
+        })
+        that.hideTime();
+      });
+    })
+  },
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -170,7 +281,18 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    var that = this;
+    var layout = that.data.layout;
+    var statDate = that.data.statDate;
+    var enddate = that.data.endDate;
+    var roleId = app.globalData.roleId;
+    if (layout == 0){
+      that.queryPunchClockListByMonth(roleId, statDate, enddate);
+    }
+    if (layout == 1){
+      that.queryPunchClockListByCourse(roleId);
+    }
+    wx.stopPullDownRefresh();
   },
 
   /**

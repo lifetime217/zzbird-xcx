@@ -15,6 +15,12 @@ var subLength = function(str, length) {
 var subStr = function(str, length) {
   return str.substring(0, length);
 }
+/**
+ * 截取字符串有头有尾
+ */
+var subStrStatEnd = function (str, stat, end) {
+  return str.substring(stat,end);
+}
 
 /**
  * 验证某个元素是否存在元素当中，存在返回下标，否则返回-1
@@ -41,5 +47,6 @@ module.exports = {
   subLength: subLength,
   validateId: validateId,
   subStr: subStr,
+  subStrStatEnd: subStrStatEnd,
   splitFirstImg: splitFirstImg
 }

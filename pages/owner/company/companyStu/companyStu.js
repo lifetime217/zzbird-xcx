@@ -1,66 +1,157 @@
 // pages/owner/company/companyStu/companyStu.js
+var app = getApp();
+var util = require('../../../../util/util.js');
+var domainUrl = app.globalData.domainUrl;
+var http = require("../../../../util/request/request.js");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    hasMore: true, //判断是否还有跟多
+    stuList: [], //学生的集合
+    page: '', //分页的页数
+    hasData:true,//是否页面有数据
+  },
 
+  // 显示加载框
+  showLoad: function() {
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
+  },
+  // 隐藏加载框
+  hideTime: function() {
+    setTimeout(function() {
+      wx.hideLoading();
+    }, 1000);
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    var that = this;
+    var roleId = app.globalData.roleId;
+    that.setData({
+      page: 1
+    })
+    that.queryStudentList(that.data.page, roleId);
   },
-
+  queryStudentList: function(page, roleId) {
+    var that = this;
+    that.showLoad();
+    return new Promise((resolve, reject) => {
+      var that = this;
+      http.httpPost(domainUrl + "companycourseuser/queryCompanyStudent", {
+        "page": page,
+        "roleId": roleId,
+      }).then((res) => {
+        var data = res.data;
+        //查询成功
+        if (data.statusCode == 200) {
+          var stuList = data.data;
+          var oldList = that.data.stuList;
+          var myHasMore = (data.page * data.pageSize) < data.totalRow;
+          //分页的叠加数据
+          if (data.page > 1 && oldList.length > 0) {
+            for (var i = 0; i < stuList.length; i++) {
+              oldList.push(stuList[i])
+            }
+            //封装数据
+            that.setData({
+              page: data.page,
+              stuList: oldList,
+              hasMore: myHasMore,
+              hasData:true,
+            })
+            //判断没有查询到数据
+          } else if (stuList.length == 0 && data.page == 1) {
+            //封装数据
+            that.setData({
+              page: data.page,
+              stuList: [],
+              hasMore: myHasMore,
+              hasData: false,
+            })
+          } else {
+            //首次加载数据
+            that.setData({
+              page: data.page,
+              stuList: stuList,
+              hasMore: myHasMore,
+              hasData: true,
+            })
+          }
+        }
+        that.hideTime();
+      }).catch((errMsg) => {
+        wx.showModal({
+          content: '网络异常',
+          showCancel: false,
+        })
+        that.hideTime();
+      });
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
+  onPullDownRefresh: function() {
+    var that = this;
+    var roleId = app.globalData.roleId;
+    that.queryStudentList(1, roleId);
+    wx.stopPullDownRefresh();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
+  onReachBottom: function() {
+    var that = this;
+    var roleId = app.globalData.roleId;
+    var page = that.data.page + 1;
+    var hasMore =  that.data.hasMore;
+    if (hasMore){
+      that.queryStudentList(page, roleId);
+    }
+   
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
