@@ -1,2 +1,7 @@
 <!--pages/owner/index/index.wxml-->
-<text>pages/owner/index/index.wxml</text>
+<wxs src="../../../util/util.wxs" module="tools" />
+<view class='userInfo flex'>
+  <view class = "flex mui-col-sm-25 mui-align-center mui-view-center userImgView">
+    
+  </view>
+</view>

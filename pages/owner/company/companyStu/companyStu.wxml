@@ -1,18 +1,19 @@
 <!--pages/owner/company/companyStu/companyStu.wxml-->
 <wxs src="../../../../util/util.wxs" module="tools" />
 <view class="mainBody">
-  <view class='flex line' wx:for="{{stuList}}" wx:for-item="on" wx:key="{{stuList}}">
+  <view class='flex line' wx:for="{{userList}}" wx:for-item="on" wx:key="{{userList}}">
     <view class="flex mui-col-sm-20 mui-align-center mui-view-center  imgView">
-      <image class='img' src='{{on.stuImg}}'></image>
+      <image class='img' src='{{on.userImg}}'></image>
     </view>
     <view class="mui-col-sm-80 detail">
-      <view class='stuName'>{{on.stuName}}</view>
+      <view class='userName'>{{on.userName}}</view>
       <view class="flex">
         <view wx:for="{{on.courseList}}" wx:for-item="list" wx:key="{{on.courseList}}">
-          <view class="stuCourse" wx:if="{{index<4}}">{{list.courseName}}</view>
+          <view class="userCourse" wx:if="{{index<4}}">{{list.courseName}}</view>
         </view>
+        <view  class="noUserCourse" wx:if="{{on.courseList.length == 0}}">暂无课程</view>
       </view>
-      <view class="stuCompany">{{on.stuCompanyName}}</view>
+      <view class="userCompany">{{on.userCompanyName}}</view>
     </view>
   </view>
   <view wx:if="{{!hasData}}" class='flex NoEnterprise mui-align-center mui-view-center'>
