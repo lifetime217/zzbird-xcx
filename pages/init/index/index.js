@@ -233,60 +233,40 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    //设置首页可执行onshow方法
-    // app.globalData.isCompanyShow = true;
     var that = this;
-
-    that.authAddress(1, "");
-    var isNew = app.globalData.isNew;
-    that.setData({
-      isNew: isNew
-    })
-    if (isNew) {
-      wx.hideTabBar({
-        aniamtion: true
-      })
-    } else {
-      wx.showTabBar({
-        aniamtion: true
-      })
-    }
-    // 携带的参数，scene
-    // if (JSON.stringify(options) == "{}" && options.scene != undefined && options.scene) {
-    //   var scene = decodeURIComponent(options.scene);
-    // } else {}
-    if (app.globalData.openid && app.globalData.openid != "") {
+    if (app.globalData.sessionKey && app.globalData.sessionKey != "") {
       var isNew = app.globalData.isNew;
       that.setData({
         isNew: isNew
       })
-      // if (isNew) {
-      //   wx.hideTabBar({
-      //     aniamtion: true
-      //   })
-      // } else {
-      //   wx.showTabBar({
-      //     aniamtion: true
-      //   })
-      // }
-      // that.distinguishAddress(1, "");
+      if (isNew) {
+        wx.hideTabBar({
+          aniamtion: true
+        })
+      } else {
+        wx.showTabBar({
+          aniamtion: true
+        })
+      }
+      that.authAddress(1, "");
     } else {
       // 由于请求是网络请求，可能会在 Page.onLoad执行 之后才返回
       // 所以此处加入 callback 以防止这种情况
-      // app.openIdCallback = openid => {
-      //   var isNew = app.globalData.isNew;
-      //   that.setData({
-      //     isNew: isNew
-      //   })
-      //   if (isNew) {
-      //     wx.hideTabBar({
-      //       aniamtion: true
-      //     })
-      //   }
-      //   if (openid != '') {
-      //     that.distinguishAddress(1, "");
-      //   }
-      // }
+      
+      app.sessionKeyCallback = sessionKey => {
+        var isNew = app.globalData.isNew;
+        that.setData({
+          isNew: isNew
+        })
+        if (isNew) {
+          wx.hideTabBar({
+            aniamtion: true
+          })
+        }
+        if (sessionKey != '') {
+          that.authAddress(1, "");
+        }
+      }
     }
   },
   // 新增企业按钮

@@ -1,7 +1,6 @@
-
-function getRole(){
+function getRole() {
   var obj = wx.getStroge('sessionObj');
-  if (obj != null && obj.role){
+  if (obj != null && obj.role) {
     return obj.role;
   }
 }
@@ -12,6 +11,10 @@ function getRole(){
  * 封装post请求
  */
 function httpPost(url, params) {
+  var app = getApp();
+  if (params.zzbird_XcxSessionKey == undefined) {
+    params.zzbird_XcxSessionKey = app.globalData.sessionKey;
+  }
   /*
   if(!checkSessionKey()){
     post('/auth',function(res){
@@ -42,6 +45,10 @@ function httpPost(url, params) {
  * 封装get请求
  */
 function httpGet(url, params) {
+  var app = getApp();
+  if (params.zzbird_XcxSessionKey == undefined) {
+    params.zzbird_XcxSessionKey = app.globalData.sessionKey;
+  }
   var promise = new Promise((resolve, reject) => {
     //网络请求
     wx.request({

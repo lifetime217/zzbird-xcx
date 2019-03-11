@@ -2,7 +2,7 @@
 <wxs src="../../../util/util.wxs" module="tools" />
 <!-- 课程基本信息 -->
 <view class='container'>
-  <view class='course-information flex mui-align-center'>
+  <view class='course-information flex '>
     <view class='ordinary-company-img'>
       <image src='{{imgUrls[0].url}}'></image>
     </view>

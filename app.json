@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/init/addCompany/addCompany",
     "pages/init/index/index",
+    "pages/init/addCompany/addCompany",
     "pages/init/companyDetail/companyDetail",
     "pages/course/index/index",
     "pages/course/courseDetail/courseDetail",

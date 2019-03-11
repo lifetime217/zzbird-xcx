@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -68,10 +68,17 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "课程详情",
 					"pathName": "pages/course/courseDetail/courseDetail",
-					"query": "courseId=33f5ca984bd848919a4dfecf56c2db6a",
+					"query": "courseId=11111111111111111111111",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "课时账单",
+					"pathName": "pages/owner/student/punchClockRecord/punchClockRecord",
+					"query": "",
 					"scene": null
 				}
 			]
