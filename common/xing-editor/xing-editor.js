@@ -1,7 +1,6 @@
 // components/xing-editor.js
 var app = getApp();
 var domainUrl = app.globalData.domainUrl;
-var http = require('../../util/request/request.js');
 Component({
   /**
    * 组件的属性列表

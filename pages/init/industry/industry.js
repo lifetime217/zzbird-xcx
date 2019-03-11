@@ -123,7 +123,7 @@ Page({
   queryInstryType: function() {
     var that = this;
     var selected = that.data.selected;
-    http.httpPost(domainUrl + "/industry/queryIndustry", {}).then((res) => {
+    http.httpPost(domainUrl + "/api/industry/queryIndustry", {}).then((res) => {
       if (res.data.statusCode == 200) {
         var data = res.data.data;
         var parentIndustry = []; //父标签

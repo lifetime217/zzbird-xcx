@@ -50,7 +50,7 @@ Page({
       "companyId": companyId
     }
     // var roleType = app.globalData.roleType;
-    http.httpPost(domainUrl + "/company/queryCompanyDetail", params).then((res) => {
+    http.httpPost(domainUrl + "/api/company/queryCompanyDetail", params).then((res) => {
       // 查询成功
       if (res.data.statusCode == 200) {
         var data = res.data.data;
