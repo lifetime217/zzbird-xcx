@@ -10,7 +10,7 @@ Page({
    */
   data: {
     hasMore: true, //判断是否还有跟多
-    stuList: [], //学生的集合
+    userList: [], //学生的集合
     page: '', //分页的页数
     hasData:true,//是否页面有数据
   },
@@ -38,41 +38,42 @@ Page({
     that.setData({
       page: 1
     })
-    that.queryStudentList(that.data.page, roleId);
+    that.queryUserList(that.data.page, roleId);
   },
-  queryStudentList: function(page, roleId) {
+  queryUserList: function(page, roleId) {
     var that = this;
     that.showLoad();
     return new Promise((resolve, reject) => {
       var that = this;
-      http.httpPost(domainUrl + "companycourseuser/queryCompanyStudent", {
+      http.httpPost(domainUrl + "/companycourseuser/queryCompanyUser", {
         "page": page,
         "roleId": roleId,
+        "roleType":30
       }).then((res) => {
         var data = res.data;
         //查询成功
         if (data.statusCode == 200) {
-          var stuList = data.data;
-          var oldList = that.data.stuList;
+          var userList = data.data;
+          var oldList = that.data.userList;
           var myHasMore = (data.page * data.pageSize) < data.totalRow;
           //分页的叠加数据
           if (data.page > 1 && oldList.length > 0) {
-            for (var i = 0; i < stuList.length; i++) {
-              oldList.push(stuList[i])
+            for (var i = 0; i < userList.length; i++) {
+              oldList.push(userList[i])
             }
             //封装数据
             that.setData({
               page: data.page,
-              stuList: oldList,
+              userList: oldList,
               hasMore: myHasMore,
               hasData:true,
             })
             //判断没有查询到数据
-          } else if (stuList.length == 0 && data.page == 1) {
+          } else if (userList.length == 0 && data.page == 1) {
             //封装数据
             that.setData({
               page: data.page,
-              stuList: [],
+              userList: [],
               hasMore: myHasMore,
               hasData: false,
             })
@@ -80,7 +81,7 @@ Page({
             //首次加载数据
             that.setData({
               page: data.page,
-              stuList: stuList,
+              userList: userList,
               hasMore: myHasMore,
               hasData: true,
             })
@@ -130,7 +131,7 @@ Page({
   onPullDownRefresh: function() {
     var that = this;
     var roleId = app.globalData.roleId;
-    that.queryStudentList(1, roleId);
+    that.queryUserList(1, roleId);
     wx.stopPullDownRefresh();
   },
 
@@ -143,7 +144,7 @@ Page({
     var page = that.data.page + 1;
     var hasMore =  that.data.hasMore;
     if (hasMore){
-      that.queryStudentList(page, roleId);
+      that.queryUserList(page, roleId);
     }
    
   },

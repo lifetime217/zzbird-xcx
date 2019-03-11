@@ -1,1 +1,17 @@
 /* pages/owner/index/index.wxss */
+@import "../../../common/style/iconfont.wxss";
+@import "../../../common/style/common.wxss";
+page{
+  height: 100%;
+  width: 100%;
+  background-color: #F5F5F5;
+}
+.userInfo{
+  margin: 1vw 0vw 1vh 0vw;
+  height: 15vh;
+  background-color: darkcyan;
+}
+
+.userImgView{
+  background-color: bisque;
+}

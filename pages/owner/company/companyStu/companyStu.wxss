@@ -25,18 +25,24 @@ page{
   height: 100%;
 }
 
-.stuName {
+.userName {
   margin: 1vh 1vw 0.5vh 1vw;
   font-size: 4.5vw;
 }
 
-.stuCourse {
+.userCourse {
    margin: 0.3vh 1vw 0.3vh 1vw;
   font-size: 3.8vw;
   color: #777676;
 }
 
-.stuCompany {
+.noUserCourse {
+   margin: 0.3vh 1vw 0.3vh 1vw;
+  font-size: 3.8vw;
+  color: #f0c44c;
+}
+
+.userCompany {
    margin: 0.5vh 1vw 0.8vh 1vw;
   font-size: 3.8vw;
    color: #777676;
