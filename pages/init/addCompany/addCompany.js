@@ -194,10 +194,9 @@ Page({
     }
     var url;
     if (type == "edit") {
-      params.id = app.globalData.companyid;
-      url = domainUrl + "/company/updateCompany";
+      url = domainUrl + "/api/company/updateCompany";
     } else {
-      url = domainUrl + "/company/addCompany"
+      url = domainUrl + "/api/company/addCompany"
     }
     http.httpPost(url, params).then((res) => {
       if (res.data.statusCode == 200) {
@@ -211,16 +210,14 @@ Page({
               if (res.confirm) {
                 // 用户点击确定 返回企业详情展示 
                 wx.navigateTo({
-                  url: '../companyDetail/companyDetail?type=editCompany&companyId=' + app.globalData.companyid
+                  url: '../companyDetail/companyDetail?type=editCompany&companyId=' + data.companyId
                 })
               }
             }
           })
-
         } else {
           // 新增
           // 新建公司成功更新app.js的公司id和判断是否是新老用户
-          app.globalData.companyid = data.companyId;
           app.globalData.isNew = false;
           wx.showModal({
             title: '新建成功',
@@ -346,7 +343,7 @@ Page({
               return;
             }
             wx.uploadFile({
-              url: domainUrl + '/upload/pic?_t=' + new Date().getTime(),
+              url: domainUrl + '/upload/pic?_t=' + new Date().getTime() + "&zzbird_XcxSessionKey=" + app.globalData.sessionKey,
               filePath: tempFiles[i].path,
               name: "img",
               header: {
@@ -400,8 +397,7 @@ Page({
   queryCompany: function() {
     var that = this;
     that.showLoad();
-    var comapnyId = app.globalData.companyid;
-    http.httpGet(domainUrl + "/company/queryCompanyByCompanyId/" + comapnyId, {}).then((res) => {
+    http.httpGet(domainUrl + "/api/company/queryCompanyByCompanyId", {}).then((res) => {
       if (res.data.statusCode == 200) {
         var data = res.data.data;
         var company = data.company;

@@ -37,43 +37,31 @@ Page({
   },
   // 开通企业
   openEnterprise: function(e) {
-    //开通企业，只是新增了企业表数据，并没有新增企业用户数据
-    // wx.navigateTo({
-    //   url: '../../cardCase/addEnterpriseCard/addEnterpriseCard?status=add'
-    // })
     var that = this;
+    that.showLoad();
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
-      // var userinfo = e.detail.userInfo;
-      // var openid = app.globalData.openid;
-      // http.httpPost(domainUrl + "/api/auth/updateUser", {
-      //   "openId": openid,
-      //   "city": userinfo.city,
-      //   "country": userinfo.country,
-      //   "gender": userinfo.gender,
-      //   "language": userinfo.language,
-      //   "province": userinfo.province,
-      //   "avatarUrl": userinfo.avatarUrl,
-      //   "nickName": userinfo.nickName,
-      //   //"isEdit": 0
-      // }).then((res) => {
-      //   var user = res.data.userInfo;
-      //   user.nickName = userinfo.nickName;
-      //   user.avatarUrl = userinfo.avatarUrl;
-      //   that.setData({
-      //     userObj: user
-      //   });
-      wx.navigateTo({
-        url: '../addCompany/addCompany?type=openComapny'
-      })
-      // }).catch((errMsg) => {
-      //   wx.showModal({
-      //     content: '网络异常',
-      //     showCancel: false,
-      //   })
-      //   that.hideTime();
-      //   wx.stopPullDownRefresh();
-      // });
+      var userinfo = e.detail.userInfo;
+      http.httpPost(domainUrl + "/api/xcxuser/addUser", {
+        "city": userinfo.city,
+        "country": userinfo.country,
+        "gender": userinfo.gender,
+        "language": userinfo.language,
+        "province": userinfo.province,
+        "avatarUrl": userinfo.avatarUrl,
+        "nickName": userinfo.nickName
+      }).then((res) => {
+        wx.navigateTo({
+          url: '../addCompany/addCompany?type=openComapny'
+        })
+      }).catch((errMsg) => {
+        wx.showModal({
+          content: '网络异常',
+          showCancel: false,
+        })
+        that.hideTime();
+        wx.stopPullDownRefresh();
+      });
     }
   },
 
@@ -160,7 +148,7 @@ Page({
     var that = this;
     that.showLoad();
     // var roleType = app.globalData.roleType;
-    http.httpPost(domainUrl + "/company/queryCompanyPage", params).then((res) => {
+    http.httpPost(domainUrl + "/api/company/queryCompanyPage", params).then((res) => {
       var data = res.data.data;
       // 查询成功
       if (res.data.statusCode == 200) {
@@ -252,7 +240,7 @@ Page({
     } else {
       // 由于请求是网络请求，可能会在 Page.onLoad执行 之后才返回
       // 所以此处加入 callback 以防止这种情况
-      
+
       app.sessionKeyCallback = sessionKey => {
         var isNew = app.globalData.isNew;
         that.setData({

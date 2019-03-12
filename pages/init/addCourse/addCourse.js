@@ -247,7 +247,7 @@ Page({
     that.showLoad();
     var classTime = that.data.classTime; //课时选择数组
     var ages = that.data.ages; //年龄选择数组
-    http.httpGet(domainUrl + "/companycourse/queryCourseDetailByCourseId/" + courseId, {}).then((res) => {
+    http.httpGet(domainUrl + "/api/companycourse/queryCourseDetailByCourseId/" + courseId, {}).then((res) => {
       if (res.data.statusCode == 200) {
         var data = res.data.data;
         var course = data.course;
@@ -353,7 +353,6 @@ Page({
     }
     var imgUrlNameStr = imgUrlName.join(",");
     var params = {
-      "companyId": app.globalData.companyid,
       "courseName": courseName,
       "courseHour": classTimeSelect,
       "ageRange": ageRange,
@@ -365,9 +364,9 @@ Page({
     var url;
     if (type == "edit") {
       params.id = that.data.courseId;
-      url = domainUrl + "/companycourse/updateCourse";
+      url = domainUrl + "/api/companycourse/updateCourse";
     } else {
-      url = domainUrl + "/companycourse/addCourse"
+      url = domainUrl + "/api/companycourse/addCourse"
     }
     http.httpPost(url, params).then((res) => {
       if (res.data.statusCode == 200) {
