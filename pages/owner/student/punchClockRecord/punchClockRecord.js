@@ -162,8 +162,7 @@ Page({
     that.showLoad();
     return new Promise((resolve, reject) => {
       var that = this;
-      http.httpPost(domainUrl + "/dakarecord/queryPunchListByMonth", {
-        "roleId": roleId,
+      http.httpPost(domainUrl + "/api/dakarecord/queryPunchListByMonth", {
         "statDate": statDate,
         "endDate": endDate,
       }).then((res) => {
@@ -225,8 +224,7 @@ Page({
     that.showLoad();
     return new Promise((resolve, reject) => {
       var that = this;
-      http.httpPost(domainUrl + "/dakarecord/queryPunchListByCourse", {
-        "roleId": roleId,
+      http.httpPost(domainUrl + "/api/dakarecord/queryPunchListByCourse", {
       }).then((res) => {
         var data = res.data;
         //查询成功

@@ -1,2 +1,62 @@
 <!--pages/course/punchClock/punchClock.wxml-->
-<text>pages/course/punchClock/punchClock.wxml</text>
+<wxs src="../../../util/util.wxs" module="tools" />
+<view class='userInfo'>
+  <view class='flex info'>
+    <view class='flex mui-col-sm-25 mui-align-center mui-view-center imgView left-m'>
+      <image class='img' src='https://img2.woyaogexing.com/2019/03/11/84d31835180bfe8d!400x400_big.jpg'></image>
+    </view>
+    <view class='flex mui-col-sm-25 mui-align-center mui-view-center dakaDay right-m'>
+      <text class="day">247</text>
+    </view>
+  </view>
+  <view class='flex infoText'>
+    <view class='flex mui-col-sm-25 mui-align-center mui-view-center teaName left-m'>
+      <text class="name">李老师</text>
+    </view>
+    <view class='flex mui-col-sm-25 mui-align-center mui-view-center dayCount right-m'>
+      <text class="count">打卡天数</text>
+    </view>
+  </view>
+</view>
+<!-- 未打卡 -->
+<view class='flex mui-align-center title'>今日为未打卡学员</view>
+<view class='weidaka flex mui-view-wrap'>
+
+  <view class='stu-info' data-id='123' catchtap='clockCase'>
+    <view class="flex mui-view-center">
+      <image class='stu-img' src='https://img2.woyaogexing.com/2019/03/11/d41d484e6bb13bfe!400x400_big.jpg'></image>
+    </view>
+    <view class="flex mui-view-center">
+      <text class="stu-name">小龙女</text>
+    </view>
+    <text wx:if="{{tools.validateId(clickList,'id','123') != -1}}" class="iconfont icon-gou"></text>
+    <text wx:else class='iconfont icon-gou-no'></text>
+  </view>
+  
+</view>
+
+
+
+
+<view class='flex mui-align-center title'>已打卡</view>
+<view class='yidaka flex mui-view-wrap'>
+  <view class='stu-info' catchtap='deleteCase' data-id='456'>
+    <view class="flex mui-view-center">
+      <image class='stu-img' src='https://img2.woyaogexing.com/2019/03/11/d41d484e6bb13bfe!400x400_big.jpg'></image>
+    </view>
+    <view class="flex mui-view-center">
+      <text class="stu-name">小龙女</text>
+    </view>
+  </view>
+</view>
+
+
+<!-- 打卡按钮 -->
+<view class='flex mui-align-center mui-view-center betton'>
+  <view wx:if="{{clickList.length > 0}}" catchtap='punchClock' class='flex mui-align-center mui-view-center foot-btn'>
+    <view>打卡</view>
+  </view>
+  <view wx:else catchtap='punchClock' class='flex mui-align-center mui-view-center foot-btn gray'>
+    <view>打卡</view>
+  </view>
+</view>
