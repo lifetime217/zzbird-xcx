@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -78,6 +78,27 @@
 					"id": -1,
 					"name": "课时账单",
 					"pathName": "pages/owner/student/punchClockRecord/punchClockRecord",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "课程详情",
+					"pathName": "pages/course/punchClock/punchClock",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "打卡",
+					"pathName": "pages/course/punchClock/punchClock",
+					"query": "id=1237",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/owner/index/index",
 					"query": "",
 					"scene": null
 				}
