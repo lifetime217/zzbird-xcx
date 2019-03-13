@@ -449,8 +449,6 @@ Page({
     var type = this.data.type;
     // 判断如果是从新建企业过来的就直接返回首页
     if (type == "addCompany") {
-      console.log(type);
-      console.log("新建企业返回返回首页");
       wx.switchTab({
         url: '/pages/init/index/index',
       })

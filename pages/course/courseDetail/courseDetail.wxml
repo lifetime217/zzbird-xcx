@@ -1,15 +1,31 @@
 <!--pages/course/courseDetail/courseDetail.wxml-->
 <wxs src="../../../util/util.wxs" module="tools" />
 <!-- 课程基本信息 -->
-<view class='container'>
-  <view class='course-information flex '>
-    <view class='ordinary-company-img'>
-      <image src='{{imgUrls[0].url}}'></image>
+<view class='course-container'>
+  <view class='course-information  '>
+    <view class='flex'>
+      <view class='ordinary-company-img'>
+        <image src='{{imgUrls[0].url}}'></image>
+      </view>
+      <view class='course-basics-information'>
+        <view class='courseName'>{{courseName}}</view>
+        <view class='teacher'>
+          <text wx:for="{{teacher}}" wx:if="{{index<3}}" wx:for-item="on" wx:key="{{teacher}}">{{tools.subStr(on.name,3)}}</text>
+        </view>
+        <view class='companyName'>{{companyName}}</view>
+      </view>
     </view>
-    <view>
-      <view>{{courseName}}</view>
-      <view>{{companyName}}</view>
-      <view>{{companyName}}</view>
+    <view class='flex mui-align-center mui-view-space course-material-information'>
+      <view>课时:{{classTimeSelect}}</view>
+      <view>时间:{{startTime}}~{{endTime}}</view>
+      <view>当前学生:{{personNumber}}人</view>
     </view>
   </view>
+</view>
+<view class='course-desc-container' wx:if="{{courseDetailInfo!=''}}">
+  {{courseDetailInfo}}
+</view>
+
+<view >
+
 </view>

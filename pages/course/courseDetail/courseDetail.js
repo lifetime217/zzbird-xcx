@@ -14,11 +14,14 @@ Page({
     courseName: "", //课程名字
     startTime: "", //开始时间
     endTime: "", //结束时间
+    teacher: [], //老师列表
     personNumber: "", //学生人数
     classTimeSelect: "", // 课时选择
     ageRange: "", //年龄范围选择
     courseDetailInfo: "", //课程介绍
-    companyName:"",// 公司名称
+    companyName: "", // 公司名称
+    inviteSessionKey: "", //邀请人的sesionKey
+
   },
   /**
    * 查询课程
@@ -26,21 +29,36 @@ Page({
   queryCouse: function(courseId) {
     var that = this;
     that.showLoad();
-    http.httpGet(domainUrl + "/companycourse/queryCourseAndCompany/" + courseId, {}).then((res) => {
+    http.httpGet(domainUrl + "/api/companycourse/queryCourseAndCompany/" + courseId, {}).then((res) => {
       console.log(res);
       if (res.data.statusCode == 200) {
         var data = res.data.data;
         var course = data.course;
+        // data.teacher = [{
+        //   name: "张三连死啊",
+        //   headImg: ""
+        // }, {
+        //   name: "张三连死啊",
+        //   headImg: ""
+        // }, {
+        //   name: "张三连死啊",
+        //   headImg: ""
+        // }, {
+        //   name: "张三连死啊",
+        //   headImg: ""
+        // }]
+        // course.courseName ="是滴是滴一等死啊对啊噢请问定级赛大家三口京东卡看"
         that.setData({
           imgUrls: data.courseImgsUrl,
           courseName: course.courseName,
           startTime: course.startTime,
           endTime: course.endTime,
+          teacher: data.teacher,
           personNumber: course.personNumber,
           classTimeSelect: course.courseHour,
           ageRange: course.ageRange,
           courseDetailInfo: course.courseDesc,
-          companyName:data.companyName
+          companyName: data.companyName
         });
       } else {
         wx.showModal({
@@ -76,13 +94,25 @@ Page({
    */
   onLoad: function(options) {
     if (options.type != undefined) {
+      var type = options.type;
       this.setData({
-        type: options.type
+        type: type
       });
+      if (type == 'inviteTea' || type == 'inviteStu') {
+        console.log(options)
+        this.setData({
+          companyName: options.companyName,
+          companyId: options.companyId,
+          courseName: options.courseName,
+          courseId: options.courseId,
+          inviteSessionKey: options.inviteSessionKey
+        });
+      }
     }
     this.setData({
       courseId: options.courseId
     });
+    console.log(options.courseId);
     this.queryCouse(options.courseId);
   },
 
@@ -115,7 +145,12 @@ Page({
     if (type == "courseEdit") {
       // 如果是编辑课程页面过来返回就返回课程列表页面
       wx.switchTab({
-        url: '/pages/course/index/index'
+        url: '/pages/course/index/index',
+        success: function() {
+          var page = getCurrentPages().pop();
+          if (page == undefined || page == null) return;
+          page.onLoad();
+        }
       })
     }
   },

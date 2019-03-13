@@ -198,7 +198,7 @@ Page({
 
       } else {
         wx.showModal({
-          content: res.data.msg,
+          content: "查询失败！",
           showCancel: false,
         })
       }
@@ -216,6 +216,28 @@ Page({
     });
 
   },
+  /**
+   * 检验新老用户
+   */
+  validateUser: function() {
+    var roleVal = app.globalData.roleVal;
+    var isNew = true;
+    if (roleVal == "") {
+      //新用户
+      wx.hideTabBar({
+        aniamtion: true
+      })
+    } else {
+      //老用户
+      wx.showTabBar({
+        aniamtion: true
+      })
+      isNew = false;
+    }
+    this.setData({
+      isNew: isNew
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -223,34 +245,13 @@ Page({
   onLoad: function(options) {
     var that = this;
     if (app.globalData.sessionKey && app.globalData.sessionKey != "") {
-      var isNew = app.globalData.isNew;
-      that.setData({
-        isNew: isNew
-      })
-      if (isNew) {
-        wx.hideTabBar({
-          aniamtion: true
-        })
-      } else {
-        wx.showTabBar({
-          aniamtion: true
-        })
-      }
+      that.validateUser();
       that.authAddress(1, "");
     } else {
       // 由于请求是网络请求，可能会在 Page.onLoad执行 之后才返回
       // 所以此处加入 callback 以防止这种情况
-
       app.sessionKeyCallback = sessionKey => {
-        var isNew = app.globalData.isNew;
-        that.setData({
-          isNew: isNew
-        })
-        if (isNew) {
-          wx.hideTabBar({
-            aniamtion: true
-          })
-        }
+        that.validateUser();
         if (sessionKey != '') {
           that.authAddress(1, "");
         }
@@ -277,7 +278,6 @@ Page({
    */
   onShow: function() {
     var that = this;
-    console.log("首页");
     let pages = getCurrentPages();
     let currPage = pages[pages.length - 1];
     // 判断搜索的内容是否为空

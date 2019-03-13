@@ -71,13 +71,20 @@
 					"id": 4,
 					"name": "课程详情",
 					"pathName": "pages/course/courseDetail/courseDetail",
-					"query": "courseId=11111111111111111111111",
+					"query": "courseId=76de9953443a4826810aff5d89fb1c34",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "课时账单",
 					"pathName": "pages/owner/student/punchClockRecord/punchClockRecord",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "三大按钮课程列表",
+					"pathName": "pages/course/index/index",
 					"query": "",
 					"scene": null
 				}

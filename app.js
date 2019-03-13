@@ -4,7 +4,7 @@ App({
   onLaunch: function() {
     var that = this;
     // 获取sessionKey
-    that.queryUserRole().then(function (sessionKey) {
+    that.queryUserRole().then(function(sessionKey) {
       if (that.sessionKeyCallback) {
         that.sessionKeyCallback(sessionKey);
       }
@@ -17,9 +17,9 @@ App({
     }
   },
   globalData: {
-    sessionKey: "", // 与后台交互的标识  代替了openid
+    sessionKey: "A86AF68596912C7E8E4E204F19F16133", // 与后台交互的标识  代替了openid
     searchHistory: [], //搜索历史
-    isNew: false, //判断是否是新老用户
+    roleVal: "10", //用户角色
     domainUrl: "http://192.168.1.101", //本机
     flagback: 0, //搜索页面返回首页 0左上角返回 1按钮返回或者历史返回
     // domainUrl:  "http://192.168.0.105/", //本机
@@ -39,10 +39,13 @@ App({
               "zzbird_XcxSessionKey": "loginCode"
             }).then((res) => {
               var data = res.data.data;
-              if (data.flag) {
+              if (res.data.statusCode == 200) {
                 that.globalData.sessionKey = data.sessionKey;
-                that.globalData.isNew = data.isNew;
+                //方便onshow方法判断(第一次不执行)
                 that.globalData.isFirstRequest = 1;
+                if (data.roleVal != undefined) {
+                  that.globalData.roleVal = data.roleVal;
+                }
                 resolve(data.sessionKey);
               } else {
                 wx.showModal({
