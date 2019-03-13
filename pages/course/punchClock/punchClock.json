@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "打卡",
+  "navigationBarBackgroundColor": "#61B4FF",
+  "backgroundTextStyle": "light",
+  "navigationBarTextStyle": "white"
 }

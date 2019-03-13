@@ -1,7 +1,280 @@
 <!--pages/owner/index/index.wxml-->
-<wxs src="../../../util/util.wxs" module="tools" />
-<view class='userInfo flex'>
-  <view class = "flex mui-col-sm-25 mui-align-center mui-view-center userImgView">
-    
+<wxs src="../../../util/util.wxs" module="tools"/>
+<!-- 用户信息 -->
+<view class='userInfo flex' catchtap=''>
+  <view class="flex mui-align-center mui-view-center userImgView">
+    <image class='img' src='https://img2.woyaogexing.com/2019/03/06/0b44e9b905b0443d8e0c092cca3c0494!400x400.jpeg'></image>
+  </view>
+  <view class="flex mui-view-wrap userTitle">
+    <view class='flex userName'>
+      <!-- TODU name -->
+      <text>张小怪</text>
+      <view class='flex mui-align-center mui-view-center roleType'>
+        <text>企业</text>
+      </view>
+    </view>
+    <view class='flex introduce'>
+      <!-- TODU introduce -->
+      <text>姿势改变世界</text>
+    </view>
+    <text class='iconfont icon-arrowright icon-arrowright-tag'></text>
+  </view>
+</view>
+
+
+<!-- 企业数据 -->
+<view wx:if="{{layout == 10}}" class='flex mui-view-wrap layout'>
+  <view class='flex details mui-align-center mui-view-center'>
+    <view class='flex mui-align-center mui-view-center mui-view-wrap block-view'>
+      <view class='number'>
+        <text>10</text>
+      </view>
+      <view class='word'>
+        <text>我的查看</text>
+      </view>
+    </view>
+    <view class='vertical'></view>
+    <view class='flex mui-align-center mui-view-center mui-view-wrap block-view'>
+      <view class='number'>
+        <text>10</text>
+      </view>
+      <view class='word'>
+        <text>我的分享</text>
+      </view>
+    </view>
+    <view class='vertical'></view>
+    <view class='flex mui-align-center mui-view-center mui-view-wrap block-view'>
+      <view class='number'>
+        <text>10</text>
+      </view>
+      <view class='word'>
+        <text>累计课程</text>
+      </view>
+    </view>
+  </view>
+  <!-- 块 一 -->
+  <view class='flex mui-view-wrap kuai'>
+    <!-- 平均每周课时 -->
+    <view class='flex line'>
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont icon-dangqiankecheng label'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>平均每周课时</text>
+      </view>
+    </view>
+    <!-- 课程列表 -->
+    <view class='flex line'>
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont icon-dangqiankecheng label'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>课程列表</text>
+      </view>
+      <text class='iconfont icon-arrowright icon-arrowright-line'></text>
+    </view>
+  </view>
+  <!-- 块 二 -->
+  <view class='flex mui-view-wrap kuai'>
+    <!-- 企业老师 -->
+    <view class='flex line'>
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont icon-dangqiankecheng label'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>企业老师</text>
+      </view>
+      <text class='iconfont icon-arrowright icon-arrowright-line'></text>
+    </view>
+    <!-- 企业学生 -->
+    <view class='flex line'>
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont icon-dangqiankecheng label'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>企业学生</text>
+      </view>
+      <text class='iconfont icon-arrowright icon-arrowright-line'></text>
+    </view>
+    <!-- 消息列表 -->
+    <view class='flex line'>
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont icon-dangqiankecheng label'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>消息列表</text>
+      </view>
+      <text class='iconfont icon-arrowright icon-arrowright-line'></text>
+    </view>
+  </view>
+  <!-- 块 三 -->
+  <view class='flex mui-view-wrap kuai'>
+    <!-- 切换身份 -->
+    <view class='flex line'>
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont icon-dangqiankecheng label'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>切换身份</text>
+      </view>
+      <text class='iconfont icon-arrowright icon-arrowright-line'></text>
+    </view>
+    <!-- 编辑企业 -->
+    <view class='flex line'>
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont icon-dangqiankecheng label'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>编辑企业</text>
+      </view>
+      <text class='iconfont icon-arrowright icon-arrowright-line'></text>
+    </view>
+  </view>
+</view>
+
+<!-- 老师数据 -->
+<view wx:if="{{layout == 20}}" class='flex mui-view-wrap layout'>
+  <view class='flex details mui-align-center mui-view-center'>
+    <view class='flex mui-align-center mui-view-center mui-view-wrap block-view'>
+      <view class='number'>
+        <text>10</text>
+      </view>
+      <view class='word'>
+        <text>当前课程</text>
+      </view>
+    </view>
+    <view class='vertical'></view>
+    <view class='flex mui-align-center mui-view-center mui-view-wrap block-view'>
+      <view class='number'>
+        <text>10</text>
+      </view>
+      <view class='word'>
+        <text>当前学生</text>
+      </view>
+    </view>
+    <view class='vertical'></view>
+    <view class='flex mui-align-center mui-view-center mui-view-wrap block-view'>
+      <view class='number'>
+        <text>10</text>
+      </view>
+      <view class='word'>
+        <text>累计课时</text>
+      </view>
+    </view>
+  </view>
+  <!-- 块 一 -->
+  <view class='flex mui-view-wrap kuai'>
+    <!-- 课程列表 -->
+    <view class='flex line'>
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont icon-dangqiankecheng label'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>课程列表</text>
+      </view>
+      <text class='iconfont icon-arrowright icon-arrowright-line'></text>
+    </view>
+    <!-- 学生列表 -->
+    <view class='flex line'>
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont icon-dangqiankecheng label'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>学生列表</text>
+      </view>
+      <text class='iconfont icon-arrowright icon-arrowright-line'></text>
+    </view>
+    <!-- 消息列表 -->
+    <view class='flex line'>
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont icon-dangqiankecheng label'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>消息列表</text>
+      </view>
+      <text class='iconfont icon-arrowright icon-arrowright-line'></text>
+    </view>
+  </view>
+  <!-- 块 二 -->
+  <view class='flex mui-view-wrap kuai'>
+    <!-- 切换身份 -->
+    <view class='flex line'>
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont icon-dangqiankecheng label'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>切换身份</text>
+      </view>
+      <text class='iconfont icon-arrowright icon-arrowright-line'></text>
+    </view>
+  </view>
+</view>
+
+
+<!-- 老师数据 -->
+<view wx:if="{{layout == 30}}" class='flex mui-view-wrap layout'>
+  <view class='flex details mui-align-center mui-view-center'>
+    <view class='flex mui-align-center mui-view-center mui-view-wrap block-view'>
+      <view class='number'>
+        <text>10</text>
+      </view>
+      <view class='word'>
+        <text>当前课程</text>
+      </view>
+    </view>
+    <view class='vertical'></view>
+    <view class='flex mui-align-center mui-view-center mui-view-wrap block-view'>
+      <view class='number'>
+        <text>10</text>
+      </view>
+      <view class='word'>
+        <text>本月课时</text>
+      </view>
+    </view>
+    <view class='vertical'></view>
+    <view class='flex mui-align-center mui-view-center mui-view-wrap block-view'>
+      <view class='number'>
+        <text>10</text>
+      </view>
+      <view class='word'>
+        <text>累计课时</text>
+      </view>
+    </view>
+  </view>
+   <!-- 块 一 -->
+  <view class='flex mui-view-wrap kuai'>
+    <!-- 课时账单 -->
+    <view class='flex line'>
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont icon-dangqiankecheng label'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>课时账单</text>
+      </view>
+      <text class='iconfont icon-arrowright icon-arrowright-line'></text>
+    </view>
+    <!-- 消息列表 -->
+    <view class='flex line'>
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont icon-dangqiankecheng label'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>消息列表</text>
+      </view>
+      <text class='iconfont icon-arrowright icon-arrowright-line'></text>
+    </view>
+  </view>
+   <!-- 块 二 -->
+  <view class='flex mui-view-wrap kuai'>
+    <!-- 切换身份 -->
+    <view class='flex line'>
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont icon-dangqiankecheng label'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>切换身份</text>
+      </view>
+      <text class='iconfont icon-arrowright icon-arrowright-line'></text>
+    </view>
   </view>
 </view>

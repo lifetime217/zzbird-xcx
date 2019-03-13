@@ -34,20 +34,18 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
-    var roleId = app.globalData.roleId;
     that.setData({
       page: 1
     })
-    that.queryUserList(that.data.page, roleId);
+    that.queryUserList(that.data.page);
   },
-  queryUserList: function(page, roleId) {
+  queryUserList: function(page) {
     var that = this;
     that.showLoad();
     return new Promise((resolve, reject) => {
       var that = this;
-      http.httpPost(domainUrl + "/companycourseuser/queryCompanyUser", {
+      http.httpPost(domainUrl + "/api/companycourseuser/queryCompanyUser", {
         "page": page,
-        "roleId": roleId,
         "roleType":30
       }).then((res) => {
         var data = res.data;
@@ -130,8 +128,7 @@ Page({
    */
   onPullDownRefresh: function() {
     var that = this;
-    var roleId = app.globalData.roleId;
-    that.queryUserList(1, roleId);
+    that.queryUserList(1);
     wx.stopPullDownRefresh();
   },
 
@@ -140,11 +137,10 @@ Page({
    */
   onReachBottom: function() {
     var that = this;
-    var roleId = app.globalData.roleId;
     var page = that.data.page + 1;
     var hasMore =  that.data.hasMore;
     if (hasMore){
-      that.queryUserList(page, roleId);
+      that.queryUserList(page);
     }
    
   },

@@ -1,2 +1,63 @@
 <!--pages/course/punchClock/punchClock.wxml-->
-<text>pages/course/punchClock/punchClock.wxml</text>
+<wxs src="../../../util/util.wxs" module="tools" />
+<view class='userInfo'>
+  <view class='flex info'>
+    <view class='flex mui-col-sm-25 mui-align-center mui-view-center imgView left-m'>
+      <image class='img' src='{{teaImg}}'></image>
+    </view>
+    <view class='flex mui-col-sm-25 mui-align-center mui-view-center dakaDay right-m'>
+      <text class="day">{{teaDakaDays}}</text>
+    </view>
+  </view>
+  <view class='flex infoText'>
+    <view class='flex mui-col-sm-25 mui-align-center mui-view-center teaName left-m'>
+      <text class="name">{{teaName}}</text>
+    </view>
+    <view class='flex mui-col-sm-25 mui-align-center mui-view-center dayCount right-m'>
+      <text class="count">打卡天数</text>
+    </view>
+  </view>
+</view>
+<!-- 未打卡 -->
+<view class='flex mui-align-center title'>今日为未打卡学员</view>
+<view class='weidaka flex mui-view-wrap'>
+
+  <view class="{{tools.validateId(clickList,'id',on.id) != -1?'stu-info-on' : 'stu-info'}}" data-id='{{on.id}}' catchtap='clockCase' wx:for="{{weiDaka}}" wx:for-item="on" wx:key="{{weiDaka}}">
+    <view class="flex mui-view-center">
+      <image class='stu-img' src='{{on.roleHeadimg}}'></image>
+    </view>
+    <view class="flex mui-view-center">
+      <text class="stu-name">{{on.roleName}}</text>
+    </view>
+    <!-- <view wx:if="{{tools.validateId(clickList,'id',on.id) != -1}}" class="iconfont icon-gou"></view>
+    <view wx:else class='iconfont icon-gou-no'></view> -->
+  </view>
+  
+</view>
+
+
+
+<!-- 已打卡 -->
+<view class='flex mui-align-center title'>已打卡</view>
+<view class='yidaka flex mui-view-wrap'>
+
+  <view class="stu-info" data-id='{{on.dakaId}}' bindlongtap='deleteStu' wx:for="{{yiDaka}}" wx:for-item="on" wx:key="{{yiDaka}}">
+    <view class="flex mui-view-center">
+      <image class='stu-img' src='{{on.roleHeadimg}}'></image>
+    </view>
+    <view class="flex mui-view-center">
+      <text class="stu-name">{{on.roleName}}</text>
+    </view>
+  </view>
+</view>
+
+
+<!-- 打卡按钮 -->
+<view class='flex mui-align-center mui-view-center betton'>
+  <view wx:if="{{clickList.length > 0}}" catchtap='punchClock' class='flex mui-align-center mui-view-center foot-btn'>
+    <view>打卡</view>
+  </view>
+  <view wx:else class='flex mui-align-center mui-view-center foot-btn gray'>
+    <view>打卡</view>
+  </view>
+</view>

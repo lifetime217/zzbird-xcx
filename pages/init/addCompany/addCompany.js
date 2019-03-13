@@ -435,7 +435,7 @@ Page({
       this.setData({
         type: options.type
       });
-      if (options.type = "edit") {
+      if (options.type == "edit") {
         wx.setNavigationBarTitle({
           title: '编辑企业'
         })
