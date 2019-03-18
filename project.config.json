@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 14,
 			"list": [
 				{
 					"id": -1,
@@ -135,6 +135,12 @@
 					"name": "老师学生列表",
 					"pathName": "pages/owner/teacher/stuList/stuList",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "老师课程列表",
+					"pathName": "pages/owner/teacher/courseList/courseList",
 					"scene": null
 				}
 			]
