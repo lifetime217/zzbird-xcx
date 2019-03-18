@@ -1,1 +1,110 @@
 /* pages/owner/teacher/courseList/courseList.wxss */
+@import "../../../../common/style/common.wxss";
+
+.img image {
+  border-radius: 2vw;
+  width: 25vw;
+  height: 25vw;
+}
+
+.course-information {
+  padding-left: 4vw;
+}
+
+.courseName {
+  color: #61b5fe;
+}
+
+.course-information>view {
+  padding: 1.3vw 0;
+}
+
+.personNumber, .time, .companyName {
+  font-size: 4vw;
+}
+
+.course-container {
+  box-shadow: -1px 0px 10px #f4f4f4,
+                0px -4px 10px #f4f4f4,
+                1px 0px 10px #f4f4f4,
+                0px 4px 10px #f4f4f4;
+  border-radius: 2vw;
+  margin: 2vw;
+  padding: 3vw;
+}
+
+.company-btn .invite-tea {
+  position: relative;
+  top: 8vw;
+  right: 3vw;
+}
+
+.teacher-btn .invite-stu {
+  position: relative;
+  right: 3vw;
+}
+
+.teacher-btn .punchRecord {
+  position: relative;
+  top: 4vw;
+  right: 3vw;
+}
+
+.invite-tea {
+  background: #fbd83c;
+  color: #fff;
+}
+
+.invite-stu {
+  background: #fbd83c;
+  color: #fff;
+}
+
+.punchRecord {
+  background: #61b5fe;
+  color: #fff;
+}
+
+button {
+  line-height: 8vw;
+  /* border-bottom-left-radius: 4vw;
+  border-top-right-radius: 4vw;
+  border-bottom-right-radius: 4vw; */
+  font-size: 3.5vw;
+}
+
+.button::after {
+  border: none;
+}
+
+.addCourse {
+  position: fixed;
+  bottom: 13px;
+  right: 2vw;
+  background: #50acff;
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #ccc;
+  z-index: 11;
+}
+
+.addCourse view:first-child {
+  margin-top: 9px;
+}
+
+.addCourse view {
+  display: block;
+  line-height: 13px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.NoCourse image {
+  width: 50vw;
+  height: 50vw;
+  margin: 2vw 0;
+  position: relative;
+  top: 26vh;
+}

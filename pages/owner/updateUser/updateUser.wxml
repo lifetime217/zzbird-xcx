@@ -1,2 +1,21 @@
 <!--pages/owner/updateUser/updateUser.wxml-->
-<text>pages/owner/updateUser/updateUser.wxml</text>
+<view class='flex mui-align-center img-line'>
+  <view class='flex mui-align-center mui-view-center title'>
+    <text>更换头像</text>
+  </view>
+  <view class='flex mui-align-center  edit' catchtap='checkpicture'>
+    <image class='img' src='{{imgUrl}}'></image>
+  </view>
+  <text class='iconfont icon-arrowright icon-arrowright-tag'></text>
+</view>
+<view class='flex mui-align-center name-line'>
+  <view class='flex mui-align-center mui-view-center title'>
+    <text>更换头像</text>
+  </view>
+  <view class='flex mui-align-center  edit'>
+    <input maxlength="15" class="input" value='{{nickName}}' placeholder="请输入昵称" bindinput='inputName'></input>
+  </view>
+</view>
+ <view class='flex mui-view-center'>
+    <button catchtap='finish' class='btn mui-col-sm-80'>保存设置</button>
+</view>

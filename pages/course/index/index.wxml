@@ -15,7 +15,7 @@
     </view>
     <view wx:elif="{{roleVal==20}}" class='teacher-btn' catchtap="stopBubbles">
       <button open-type='share' data-invite='inviteStu' data-coursename='{{on.courseName}}'  data-companyname='{{on.companyname}}'  data-companyid='{{on.companyId}}' data-id='{{on.id}}' class='invite-stu'>邀请学生</button>
-      <button catchtap='punchRecord' class='punchRecord'>打卡</button>
+      <button data-id='{{on.id}}' catchtap='punchRecord' class='punchRecord'>打卡</button>
     </view>
     <view wx:elif="{{roleVal==30}}" class='student-btn'>
     </view>
