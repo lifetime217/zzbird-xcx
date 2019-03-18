@@ -45,7 +45,7 @@ Page({
       switchIdentity: {
         text: '切换身份',
         type: 'switchIdentity',
-        url: '',
+        url: '/pages/owner/checkRole/checkRole',
         icon: 'icon-xiaoxiliebiao'
       },
       updateCompany: {
@@ -77,7 +77,7 @@ Page({
       switchIdentity: {
         text: '切换身份',
         type: 'switchIdentity',
-        url: '',
+        url: '/pages/owner/checkRole/checkRole',
         icon: 'icon-xiaoxiliebiao'
       }
     },
@@ -97,7 +97,7 @@ Page({
       switchIdentity: {
         text: '切换身份',
         type: 'switchIdentity',
-        url: '',
+        url: '/pages/owner/checkRole/checkRole',
         icon: 'icon-xiaoxiliebiao'
       }
     }
@@ -258,7 +258,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    if (app.globalData.ownerReload){
+      if (getCurrentPages().length != 0) {
+        //刷新当前页面的数据
+        getCurrentPages()[getCurrentPages().length - 1].onLoad();
+        app.globalData.ownerReload = false;
+      }
+    }
   },
 
   /**

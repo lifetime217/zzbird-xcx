@@ -224,7 +224,9 @@ Page({
     var that = this;
     that.showLoad();
     return new Promise(function(resolve, reject) {
-      http.httpGet(domainUrl + "/api/companycourse/queryCourseAndCompany/" + courseId, {}).then((res) => {
+      http.httpGet(domainUrl + "/api/companycourse/queryCourseAndCompany/" + courseId, {
+        "type":that.data.type
+      }).then((res) => {
         if (res.data.statusCode == 200) {
           var data = res.data.data;
           var course = data.course;

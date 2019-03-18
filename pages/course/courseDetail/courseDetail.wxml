@@ -40,7 +40,7 @@
   <text class='BackIndex' catchtap='backIndex'>返回首页</text>
 </view>
 
-<view wx:if="{{roleVal=='30'}}">
+<view wx:if="{{roleVal=='30'&& type!='inviteTea' && type!='inviteStu'}}">
   <button catchtap='share' class='mui-col-sm-100 blue share'>生成分享海报</button>
 </view>
 

@@ -14,7 +14,9 @@ Page({
     companyDetail: {}, //公司详情
     teaList: [], //教师列表
     industry: [], //标签集合
-
+    imgLeft: "", //图片左
+    imgCenter: "", //图片中
+    imgRight: "", //图片右
   },
 
   // 显示加载框
@@ -55,11 +57,28 @@ Page({
       if (res.data.statusCode == 200) {
         var data = res.data.data;
         WxParse.wxParse("article", "html", data.companyDetail.companyDetailInfo, this, 0)
+        var bannerList = data.bannerList;
+        var imgLeft = "";
+        var imgCenter = "";
+        var imgRight = "";
+        if (bannerList.length == 1) {
+          imgCenter = bannerList[0];
+        } else if (bannerList.length == 2){
+          imgLeft = bannerList[0];
+          imgCenter = bannerList[1];
+        }else{
+          imgLeft = bannerList[0];
+          imgCenter = bannerList[1];
+          imgRight = bannerList[2];
+        }
         that.setData({
           industry: data.industry,
-          bannerList: data.bannerList,
+          bannerList,
           companyDetail: data.companyDetail,
-          teaList: data.companyTeacher
+          teaList: data.companyTeacher,
+          imgLeft,
+          imgCenter,
+          imgRight
         });
       } else {
         wx.showModal({
@@ -119,9 +138,9 @@ Page({
    */
   onUnload: function() {
     if (this.data.type == "editCompany") {
-        wx.switchTab({
-          url: '../index/index'
-        })
+      wx.switchTab({
+        url: '../index/index'
+      })
     }
   },
 

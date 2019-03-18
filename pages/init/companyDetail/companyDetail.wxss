@@ -7,8 +7,8 @@
 }
 
 .banner image {
-  height: 30vh;
-  width: 100%;
+  height: 20vh;
+  width: 20vw;
 }
 
 .company-detail {

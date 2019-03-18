@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 13,
 			"list": [
 				{
 					"id": -1,
@@ -132,8 +132,9 @@
 				},
 				{
 					"id": -1,
-					"name": "老师课程列表",
-					"pathName": "pages/owner/teacher/courseList/courseList",
+					"name": "企业详情",
+					"pathName": "pages/init/companyDetail/companyDetail",
+					"query": "companyId=t1110qew3d1d48fa9cc33a4568331f2a",
 					"scene": null
 				}
 			]

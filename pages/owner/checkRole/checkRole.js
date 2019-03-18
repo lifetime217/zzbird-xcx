@@ -28,12 +28,10 @@ Page({
     http.httpPost(domainUrl + "/api/xcxuserrole/updateActive", {
       "id": id
     }).then((res) => {
-      console.log(res);
       if (res.data.statusCode == 200) {
-        app.globalData.roleval = res.data.data.roleVal;
+        app.globalData.roleVal = res.data.data.roleVal;
         app.globalData.courseReload = true;
         app.globalData.ownerReload = true;
-        console.log(app.globalData.roleval);
         wx.navigateBack({
           delta: 1,
         })

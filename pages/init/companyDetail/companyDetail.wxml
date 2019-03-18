@@ -3,8 +3,16 @@
 <wxs src="../../../util/util.wxs" module="tools" />
 <!-- 上 -->
 <view>
-  <view class='banner'>
-    <image src='{{bannerList[0]}}' mode="scaleToFill"></image>
+  <view class='banner flex'>
+    <view data-url='{{imgLeft}}'>
+      <image src='{{imgLeft}}' mode="scaleToFill"></image>
+    </view>
+    <view data-url='{{imgCenter}}'>
+      <image src='{{imgCenter}}' mode="scaleToFill"></image>
+    </view>
+    <view data-url='{{imgright}}'>
+      <image src='{{imgright}}' mode="scaleToFill"></image>
+    </view>
   </view>
   <view class='company-detail'>
     <view class='flex mui-view-center company-name'>
@@ -66,8 +74,8 @@
 <!-- 底部电话 -->
 <view class='foot-view'>
   <!-- <view class='btn-phone-background'> -->
-    <view data-phone='{{companyDetail.telphone}}' class='btn-phone flex mui-align-center mui-view-center ' catchtap='callphone'>
-      <text class='iconfont icon-dianhua2'></text>
+  <view data-phone='{{companyDetail.telphone}}' class='btn-phone flex mui-align-center mui-view-center ' catchtap='callphone'>
+    <text class='iconfont icon-dianhua2'></text>
     <!-- </view> -->
   </view>
 </view>

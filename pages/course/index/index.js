@@ -138,6 +138,7 @@ Page({
   onShow: function() {
     if (app.globalData.courseReload) {
       this.queryCouse(1);
+      app.globalData.courseReload = false;
     }
   },
 
