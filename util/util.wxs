@@ -41,8 +41,6 @@ var splitFirstImg = function(imgs) {
   return imgs.substring(0, imgs.indexOf(","));
 }
 
-
-
 module.exports = {
   subLength: subLength,
   validateId: validateId,

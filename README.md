@@ -14,6 +14,7 @@ init
 owner
   index 个人中心首页
   message 个人中心消息
+  messageDetails 消息打开后详情
   updateUser 修改用户
   checkRole 选择角色
   company 

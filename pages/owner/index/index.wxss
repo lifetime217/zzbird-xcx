@@ -134,7 +134,7 @@ page {
 }
 
 .label {
-  font-size: 7vw;
+  font-size: 4vw;
 }
 
 .tga-name {
