@@ -1,0 +1,19 @@
+<!--pages/owner/messageDetails/messageDetails.wxml-->
+<view class='flex page'>
+  <view class="msg-head">
+    <text>{{msg.title}}</text>
+  </view>
+  <view class='line'></view>
+  <view class="msg-body">
+    <text>{{msg.content}}</text>
+  </view>
+  <view class='line'></view>
+  <view class="flex msg-user">
+    <view class='fromUser'>
+      <text>发送人：{{msg.roleName}}</text>
+    </view>
+    <view class="time">
+      <text>发送时间：{{msg.addTime}}</text>
+    </view>
+  </view>
+</view>

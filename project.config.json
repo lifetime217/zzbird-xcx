@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 13,
 			"list": [
 				{
 					"id": -1,
@@ -106,6 +106,34 @@
 					"id": -1,
 					"name": "三大按钮课程列表",
 					"pathName": "pages/course/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息列表",
+					"pathName": "pages/owner/message/message",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "企业学生",
+					"pathName": "pages/owner/company/companyStu/companyStu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "查看消息",
+					"pathName": "pages/owner/messageDetails/messageDetails",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "老师学生列表",
+					"pathName": "pages/owner/teacher/stuList/stuList",
 					"query": "",
 					"scene": null
 				},

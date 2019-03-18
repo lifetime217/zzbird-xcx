@@ -1,2 +1,25 @@
 <!--pages/owner/message/message.wxml-->
-<text>pages/owner/message/message.wxml</text>
+<wxs src="../../../util/util.wxs" module="tools"/>
+<view class="mainBody">
+  <view class='flex line' wx:for="{{messageList}}" wx:for-item="on" wx:key="{{messageList}}" data-id="{{on.id}}" catchtap='lookMsg' data-index="{{index}}">
+    <view class='flex mui-align-center mui-view-center img-view' >
+      <image class='img' src="{{on.sendImg}}"></image>
+    </view>
+    <view class='flex mui-flex-wrap detail'>
+      <view class='flex mui-align-center title'>
+        <text>{{on.title}}</text>
+      </view>
+      <view class='flex mui-align-center content'>
+        <text>{{on.content.length > 15 ? tools.subStr(on.content,14)+'...':on.content}}</text>
+      </view>
+    </view>
+    <view class='flex mui-flex-wrap exhibition'>
+      <view class='flex mui-align-center mui-view-center {{on.isToday?"time-view-red":"time-view"}}'>
+        <text>{{on.addTime}}</text>
+      </view>
+      <view class='flex mui-align-center mui-view-center state-view '>
+        <view wx:if="{{on.read == 0}}"></view>
+      </view>
+    </view>
+  </view>
+</view>
