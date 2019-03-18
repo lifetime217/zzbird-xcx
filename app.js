@@ -25,6 +25,8 @@ App({
     // domainUrl:  "http://192.168.0.105/", //本机
     // domainUrl: "https://zzn.luoran.net/zzn/",
     isFirstRequest: 0, //判断请求后台是否是第一次请求 0是第一次 
+    courseReload: false,//课程的刷新
+    ownerReload:false, //个人中心的刷新
   },
   /**
    * 判断用户是否是新老用户 如老用户则查询用户的角色和公司
