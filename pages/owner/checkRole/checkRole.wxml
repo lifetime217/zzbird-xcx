@@ -1,30 +1,33 @@
 <!--pages/owner/checkRole/checkRole.wxml-->
 <wxs src="../../../util/util.wxs" module="tools" />
 <view>
-  <view wx:for="{{companyAndUser}}" data-roletype='{{on.roleType}}' data-companyid='{{on.companyId}}' data-companyname='{{on.companyName}}' wx:key="{{companyAndUser}}" wx:for-item="on" catchtap='checkCompany' class='flex mui-view-space mui-align-center company-user'>
-    <view class='flex mui-align-center mui-col-sm-70'>
-      <view class='mui-col-sm-25 flex mui-view-center'>
-        <image src='{{on.userImg}}' class='img'></image>
+  <view wx:for="{{roleUser}}" data-id='{{on.id}}' wx:key="{{roleUser}}" wx:for-item="on" catchtap='checkCompany' class='flex mui-view-space mui-align-center company-user'>
+    <view class='flex mui-align-center mui-col-sm-80'>
+      <view class='mui-col-sm-20 flex mui-view-center'>
+        <image src='{{on.roleHeadimg}}' class='img'></image>
       </view>
-      <view class='mui-col-sm-75'>
+      <view class='mui-col-sm-80'>
         <view class='user-name'>
-          <text>{{on.userName}}</text>
-          <text class='iconfont icon-qiyexuesheng' wx:if="{{on.roleType==0}}"></text>
-          <text class='iconfont icon-qiyelaoshi' wx:elif="{{on.roleType==1}}"></text>
-          <text class='iconfont icon-xuexiao' wx:elif="{{on.roleType==2}}"></text>
+          <text>{{on.roleName}}</text>
+          <text class='iconfont icon-qiyexuesheng' wx:if="{{on.roleVal==30}}"></text>
+          <text class='iconfont icon-qiyelaoshi' wx:elif="{{on.roleVal==20}}"></text>
+          <text class='iconfont icon-xuexiao' wx:elif="{{on.roleVal==10}}"></text>
         </view>
-        <view wx:if="{{on.companyName.length > 13}}" class='company-name'>{{tools.subStr(on.companyName,13)}}...</view>
-        <view wx:else class='company-name'>{{on.companyName}}</view>
+        <view wx:if="{{on.companyname.length > 13}}" class='company-name'>{{tools.subStr(on.companyname,16)}}...</view>
+        <view wx:else class='company-name'>{{on.companyname}}</view>
       </view>
     </view>
-    <view wx:if="{{on.ischeck}}" class='check'>
+    <view wx:if="{{on.currentActive==1}}" class='check'>
       <text class='iconfont icon-gou'></text>
     </view>
   </view>
-  <view class='flex mui-align-center add-container'>
-    <view>
-      <text class='iconfont icon-tianjia'></text>
+  <view class='flex mui-align-center add-container mui-col-sm-100' wx:if="{{roleUser.length>0}}">
+    <view class=' flex mui-align-center  mui-col-sm-80'>
+      <view class='mui-col-sm-15 flex mui-view-center'>
+        <text class='iconfont icon-tianjia'></text>
+      </view>
+      <view class='add-company mui-col-sm-80' catchtap='addCompany'>新增企业</view>
     </view>
-    <view class='add-company' catchtap='addCompany'>新增企业</view>
   </view>
+
 </view>

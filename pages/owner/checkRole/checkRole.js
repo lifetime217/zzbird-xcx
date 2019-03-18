@@ -8,72 +8,41 @@ Page({
    * 页面的初始数据
    */
   data: {
-    companyAndUser: [], //公司用户表
+    roleUser: [], //公司用户表
   },
   /**
    * 添加企业
    */
-  addCompany: function () {
+  addCompany: function() {
     wx.navigateTo({
-      url: '../../cardCase/addEnterpriseCard/addEnterpriseCard?status=add'
+      url: '../../init/addCompany/addCompany'
     })
   },
   /**
    * 选择账号切换
    */
-  checkCompany: function (e) {
+  checkCompany: function(e) {
     var that = this;
-    var companyId = e.currentTarget.dataset.companyid;
-    var companyName = e.currentTarget.dataset.companyname;
-    var openId = app.globalData.openid;
-    // var openId = "o4yrj5KMLmD3xkmRdZcdj7rFzrhA";
-    var roleType = e.currentTarget.dataset.roletype;
-    // //修改上次登录的次数
-    that.updateLastLogin(companyId, roleType, openId).then(function (res) {
-      app.globalData.companyId = companyId;
-      app.globalData.companyName = companyName;
-      app.globalData.roleType = roleType;
-      // that.swichCompany.hide();
-      that.hideTime();
-      // 返回上一页并刷新数据
-      //设置页面可执行onshow方法
-      app.globalData.isCompanyShow = true;
-      app.globalData.isCourseShow = true;
-      app.globalData.isOwnerShow = true;
-      let pages = getCurrentPages();
-      let prevPage = pages[pages.length - 2];
-      prevPage.setData({
-        flag: true
-      })
-      wx.navigateBack({
-        delta: 1
-      })
-    });
-  },
-  /**
-  * 查询用户对应的公司和角色
-  */
-  queryCompanyAndUser: function (openId) {
-    var that = this;
+    var id = e.currentTarget.dataset.id;
     that.showLoad();
-    http.httpPost(domainUrl + "/company/queryUserCompany", {
-      "openId": openId
+    http.httpPost(domainUrl + "/api/xcxuserrole/updateActive", {
+      "id": id
     }).then((res) => {
-      var companyAndUser = res.data.data.companyAndUser;
-      var companyId = app.globalData.companyId;
-      var roleType = app.globalData.roleType;
-      // 找出当前用户对应的公司角色
-      for (var item in companyAndUser) {
-        if (companyId == companyAndUser[item].companyId && roleType == companyAndUser[item].roleType) {
-          companyAndUser[item].ischeck = true;
-          // break;
-        } else {
-          companyAndUser[item].ischeck = false;
-        }
+      console.log(res);
+      if (res.data.statusCode == 200) {
+        app.globalData.roleval = res.data.data.roleVal;
+        app.globalData.courseReload = true;
+        app.globalData.ownerReload = true;
+        console.log(app.globalData.roleval);
+        wx.navigateBack({
+          delta: 1,
+        })
+      } else {
+        wx.showModal({
+          content: '网络异常',
+          showCancel: false,
+        })
       }
-      that.setData({
-        companyAndUser: companyAndUser
-      });
       that.hideTime();
     }).catch((errMsg) => {
       wx.showModal({
@@ -84,9 +53,36 @@ Page({
     });
   },
   /**
-  * 显示加载框
-  */
-  showLoad: function () {
+   * 查询用户对应的公司和角色
+   */
+  queryRole: function() {
+    var that = this;
+    that.showLoad();
+    http.httpPost(domainUrl + "/api/xcxuserrole/queryRole", {}).then((res) => {
+      if (res.data.statusCode == 200) {
+        that.setData({
+          roleUser: res.data.data.RoleUser
+        });
+      } else {
+        wx.showModal({
+          content: '网络异常',
+          showCancel: false,
+        })
+      }
+
+      that.hideTime();
+    }).catch((errMsg) => {
+      wx.showModal({
+        content: '网络异常',
+        showCancel: false,
+      })
+      that.hideTime();
+    });
+  },
+  /**
+   * 显示加载框
+   */
+  showLoad: function() {
     wx.showLoading({
       title: '加载中...',
       mask: true
@@ -95,18 +91,15 @@ Page({
   /**
    *  隐藏加载框
    */
-  hideTime: function () {
-    setTimeout(function () {
+  hideTime: function() {
+    setTimeout(function() {
       wx.hideLoading();
     }, 1000);
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var openId = app.globalData.openid;
-    // var openId = "o4yrj5KMLmD3xkmRdZcdj7rFzrhA";
-    // 查询用户所对应的所有头像
-    this.queryCompanyAndUser(openId);
+  onLoad: function(options) {
+    this.queryRole();
   },
 })

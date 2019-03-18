@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 12,
 			"list": [
 				{
 					"id": -1,
@@ -110,34 +110,6 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "消息列表",
-					"pathName": "pages/owner/message/message",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "企业学生",
-					"pathName": "pages/owner/company/companyStu/companyStu",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 12,
-					"name": "查看消息",
-					"pathName": "pages/owner/messageDetails/messageDetails",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "老师学生列表",
-					"pathName": "pages/owner/teacher/stuList/stuList",
-					"query": "",
-					"scene": null
-				},
-				{
 					"id": 10,
 					"name": "邀请老师",
 					"pathName": "pages/course/courseDetail/courseDetail",
@@ -149,6 +121,13 @@
 					"name": "邀请学生",
 					"pathName": "pages/course/courseDetail/courseDetail",
 					"query": "type=inviteStu&companyId=f06f6cccc4b34543bddb9568a86495e9&courseId=76de9953443a4826810aff5d89fb1c34&companyName=化妆培训&courseName=111&inviteSessionKey=A86AF68596912C7E8E4E204F19F16133&roleVal=20",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "切换角色",
+					"pathName": "pages/owner/checkRole/checkRole",
+					"query": "",
 					"scene": null
 				}
 			]
