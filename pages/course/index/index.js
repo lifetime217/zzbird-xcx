@@ -33,8 +33,12 @@ Page({
   /**
    * 跳转到打卡页面
    */
-  punchRecord: function() {
-
+  punchRecord: function(e) {
+    var that = this;
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../punchClock/punchClock?id=' + id
+    })
   },
   /**
    * 跳转课程详情

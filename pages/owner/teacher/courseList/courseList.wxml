@@ -1,2 +1,32 @@
 <!--pages/owner/teacher/courseList/courseList.wxml-->
-<text>pages/owner/teacher/courseList/courseList.wxml</text>
+<view>
+  <view wx:for="{{courseList}}" class='flex mui-view-space mui-align-center course-container' catchtap='navCourseDetail' wx:for-item="on" wx:key="{{courseList}}" data-id='{{on.id}}'>
+    <view class='img flex mui-align-center'>
+      <image src='{{on.courseImg}}'></image>
+      <view class='course-information'>
+        <view class='courseName'>{{on.courseName}}</view>
+        <view class='personNumber'>当前学员{{on.personNumber}}人</view>
+        <view class='time' wx:if="{{roleVal==10}}">{{on.startTime}}~{{on.endTime}}</view>
+        <view class='companyName' wx:elif="{{roleVal==20}}">{{on.companyname}}</view>
+      </view>
+    </view>
+    <view wx:if="{{roleVal==10}}" class='company-btn' catchtap="stopBubbles">
+      <button open-type='share' data-invite='inviteTea' data-coursename='{{on.courseName}}'  data-companyname='{{on.companyname}}'  data-companyid='{{on.companyId}}' data-id='{{on.id}}' class='invite-tea'>邀请老师</button>
+    </view>
+    <view wx:elif="{{roleVal==20}}" class='teacher-btn' catchtap="stopBubbles">
+      <!-- <button open-type='share' data-invite='inviteStu' data-coursename='{{on.courseName}}'  data-companyname='{{on.companyname}}'  data-companyid='{{on.companyId}}' data-id='{{on.id}}' class='invite-stu'>邀请学生</button>
+      <button catchtap='punchRecord' class='punchRecord'>打卡</button> -->
+    </view>
+    <view wx:elif="{{roleVal==30}}" class='student-btn'>
+    </view>
+  </view>
+   <view wx:if="{{!hasData}}" class='NoCourse flex mui-view-center'>
+      <image src='../../../images/no_course.png'></image>
+    </view>
+</view>
+
+
+<view class='addCourse' wx:if="{{roleVal==10}}" catchtap='addCourse'>
+  <view>新增</view>
+  <view>课程</view>
+</view>

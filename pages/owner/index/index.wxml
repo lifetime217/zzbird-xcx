@@ -1,7 +1,7 @@
 <!--pages/owner/index/index.wxml-->
 <wxs src="../../../util/util.wxs" module="tools"/>
 <!-- 用户信息 -->
-<view class='userInfo flex' catchtap=''>
+<view class='userInfo flex' catchtap='editUser'>
   <view class="flex mui-align-center mui-view-center userImgView">
     <image class='img' src='{{role.headImg}}'></image>
   </view>

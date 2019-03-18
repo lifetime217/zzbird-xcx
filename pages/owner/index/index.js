@@ -59,7 +59,7 @@ Page({
       course: {
         text: '课程列表',
         type: 'course',
-        url: '',
+        url: '/pages/owner/teacher/courseList/courseList',
         icon: 'icon-kechengliebiao'
       },
       stuList: {
@@ -113,6 +113,16 @@ Page({
     })
   },
 
+  /**
+   * 跳转修改个人信息
+   * 
+   */
+
+  editUser: function() {
+    wx.navigateTo({
+      url: "/pages/owner/updateUser/updateUser",
+    })
+  },
   // 显示加载框
   showLoad: function() {
     wx.showLoading({
