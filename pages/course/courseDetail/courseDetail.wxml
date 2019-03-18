@@ -15,7 +15,7 @@
         <view class='companyName'>{{companyName}}</view>
       </view>
     </view>
-    <view class='flex mui-align-center mui-view-space course-material-information'>
+    <view class='flex mui-align-center mui-view-space course-material-information' wx:if="{{classTimeSelect!=''}}">
       <view>课时:{{classTimeSelect}}</view>
       <view>时间:{{startTime}}~{{endTime}}</view>
       <view>当前学生:{{personNumber}}人</view>
@@ -26,6 +26,48 @@
   {{courseDetailInfo}}
 </view>
 
-<view >
+<view wx:if="{{roleVal=='30'&&classHour!=''}}" class="data-container flex">
+  <view class='class-hour mui-col-sm-25 ta-center '>
+    <view> {{classHour}}周</view>
+    <view>坚持学习</view>
+  </view>
+  <view class='study-week mui-col-sm-25 ta-center '>
+    <view> {{studyWeek}}课时</view>
+    <view>累计学习</view>
+  </view>
+</view>
+<view class='flex mui-view-center' wx:if="{{isback}}">
+  <text class='BackIndex' catchtap='backIndex'>返回首页</text>
+</view>
 
+<view wx:if="{{roleVal=='30'}}">
+  <button catchtap='share' class='mui-col-sm-100 blue share'>生成分享海报</button>
+</view>
+
+<canvas canvas-id="shareImg" style="width:545px;height:771px;"></canvas>
+
+<!-- 预览区域  -->
+<view hidden='{{canvasHidden}}' catchtap='hideCanvas' class='preview'>
+  <image src='{{prurl}}' mode='widthFix'></image>
+  <button type='primary' bindtap='saveImageToPhoto'>保存分享图</button>
+</view>
+
+<!-- 邀请信息 -->
+<view hidden='{{inviteHide}}' class='modal' style="transition: transform 300ms linear 0ms, opacity; transform-origin: 50% 50% 0px; opacity: 1;">
+  <view class='modal-mask'></view>
+  <view class='modal-layer modal-layer-md'>
+    <view class='modal-header'>
+      <text> 知吱鸟</text>
+    </view>
+    <view class='modal-body'>
+      <view class='modalbottom'>
+        {{invitationMessage}}
+      </view>
+      <view class='flex'>
+        <button class='cancelModal mui-col-sm-50' catchtap='cancelModal'> 拒绝 </button>
+        <button class='confirmModal mui-col-sm-50' open-type='getUserInfo' lang="zh_CN" bindgetuserinfo="confirmModal"> 接受 </button>
+      </view>
+    </view>
+
+  </view>
 </view>

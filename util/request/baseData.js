@@ -4,7 +4,6 @@ const base64src = function(base64data, FILE_BASE_NAME) {
   return new Promise((resolve, reject) => {
     // const [, format, bodyData] = /data:image\/(\w+);base64,(.*)/.exec(base64data) || [];
     const bodyData = base64data.replace(/^data:image\/\w+;base64,/, "")
-    console.log(FILE_BASE_NAME);
     // if (!format) {
     //   reject(new Error('ERROR_BASE64SRC_PARSE'));
     // }

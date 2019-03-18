@@ -1,1 +1,72 @@
 /* pages/owner/checkRole/checkRole.wxss */
+
+@import "../../../common/style/iconfont.wxss";
+@import "../../../common/style/common.wxss";
+
+.img {
+  width: 10vw;
+  height: 10vw;
+}
+
+.icon-gou {
+  font-size: 4vw;
+  color: #50acff;
+}
+
+.icon-qiyexuesheng, .icon-qiyelaoshi, .icon-xuexiao {
+  font-size: 4vw;
+  padding-left: 2vw;
+  font-weight:bold;
+}
+
+.icon-qiyexuesheng {
+  color: rgb(36, 154, 170);
+}
+
+.icon-qiyelaoshi {
+  color: #0dbe07;
+}
+
+.icon-xuexiao {
+  color: #8a2be2;
+}
+
+.icon-tianjia {
+  font-size: 5vw;
+  color: #50acff;
+  padding: 0 1.5vw;
+}
+
+.check {
+  padding-right: 3vw;
+}
+
+.company-user {
+  padding: 2vw;
+  border-top: 1px solid #b3b2b2;
+}
+
+.add-container {
+  padding: 3vw;
+  border-top: 1px solid #b3b2b2;
+  border-bottom: 1px solid #b3b2b2;
+}
+
+.add-company {
+  padding-left: 4vw;
+  color: #50acff;
+}
+
+/* .company-user:last-child {
+  border-bottom: 1px solid #b3b2b2;
+} */
+
+.user-name {
+  color: #636363;
+  font-size: 4vw;
+}
+
+.company-name {
+  font-size: 3.5vw;
+  color: #b3b2b2;
+}

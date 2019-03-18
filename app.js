@@ -19,7 +19,7 @@ App({
   globalData: {
     sessionKey: "A86AF68596912C7E8E4E204F19F16133", // 与后台交互的标识  代替了openid
     searchHistory: [], //搜索历史
-    roleVal: "10", //用户角色
+    roleVal: "30", //用户角色
     domainUrl: "http://192.168.1.101", //本机
     flagback: 0, //搜索页面返回首页 0左上角返回 1按钮返回或者历史返回
     // domainUrl:  "http://192.168.0.105/", //本机
