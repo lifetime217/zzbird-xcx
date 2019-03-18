@@ -116,7 +116,7 @@ Page({
     })
   },
   /**
-   * 新增企业
+   * 编辑企业
    */
   onFinish: function() {
     var that = this;

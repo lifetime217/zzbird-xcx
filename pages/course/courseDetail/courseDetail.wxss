@@ -62,3 +62,142 @@ page {
   font-size: 4vw;
   color: #888;
 }
+
+.data-container {
+  /* height: 10vh; */
+  background: #fff;
+  color: #6e6e6e;
+  margin-top: 2vh;
+}
+
+.study-week>view, .class-hour>view {
+  line-height: 4vh;
+}
+
+.data-container>view {
+  font-size: 4vw;
+  margin: 2vh 0 2vh 2vw;
+  border-right: 1px solid #c5c5c5;
+}
+
+.modalbottom {
+  /* background-color: white; */
+  padding: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.confirmModal {
+  color: #00a7f7;
+  font-weight: bold;
+}
+
+.confirmModal::after {
+  border: 0;
+}
+
+.cancelModal {
+  color: rgb(145, 145, 145);
+}
+
+.cancelModal::after {
+  border: 0;
+}
+
+.modal-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 97;
+  background-color: rgba(0, 0, 0, 0.30);
+}
+
+.modal-layer {
+  position: absolute;
+  background: transparent;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  z-index: 98;
+  box-shadow: 0 4rpx 14rpx rgba(0, 0, 0, 0.4);
+}
+
+.modal-layer-md {
+  width: 70%;
+  transform: translate3d(-50%, -50%, 0);
+  left: 50%;
+}
+
+.modal {
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.modal-header {
+  background: #f2f2f2;
+  color: #686868;
+  padding: 3vw;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+
+.modal-body {
+  background: #fff;
+}
+
+.BackIndex {
+  margin: 2vh 0;
+  color: #adadad;
+  font-size: 14px;
+}
+
+.share {
+  background: #1aac19;
+  color: white;
+  font-size: 5vw;
+  position: absolute;
+  bottom: 100rpx;
+  width: 70%;
+  left: 15%;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 100vw;
+}
+.preview {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  z-index: 2;
+  top: 0px;
+}
+
+.preview image {
+  width: 70%;
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  z-index: 3;
+  border: 1px dashed #fff;
+}
+
+.preview button {
+  width: 40%;
+  position: absolute;
+  bottom: 150rpx;
+  left: 30%;
+}

@@ -100,3 +100,11 @@ button {
   text-align: center;
   font-size: 13px;
 }
+
+.NoCourse image {
+  width: 50vw;
+  height: 50vw;
+  margin: 2vw 0;
+  position: relative;
+  top: 26vh;
+}

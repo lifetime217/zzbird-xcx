@@ -14,12 +14,15 @@
       <button open-type='share' data-invite='inviteTea' data-coursename='{{on.courseName}}'  data-companyname='{{on.companyname}}'  data-companyid='{{on.companyId}}' data-id='{{on.id}}' class='invite-tea'>邀请老师</button>
     </view>
     <view wx:elif="{{roleVal==20}}" class='teacher-btn' catchtap="stopBubbles">
-      <button open-type='share' data-invite='inviteStu' class='invite-stu'>邀请学生</button>
+      <button open-type='share' data-invite='inviteStu' data-coursename='{{on.courseName}}'  data-companyname='{{on.companyname}}'  data-companyid='{{on.companyId}}' data-id='{{on.id}}' class='invite-stu'>邀请学生</button>
       <button catchtap='punchRecord' class='punchRecord'>打卡</button>
     </view>
     <view wx:elif="{{roleVal==30}}" class='student-btn'>
     </view>
   </view>
+   <view wx:if="{{!hasData}}" class='NoCourse flex mui-view-center'>
+      <image src='../../../images/no_course.png'></image>
+    </view>
 </view>
 
 
