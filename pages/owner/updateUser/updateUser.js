@@ -174,8 +174,9 @@ Page({
                 wx.navigateBack({ //返回
                   delta: 1
                 })
+                
               },500)
-             
+              app.globalData.ownerReload = false;
             }
           })
 
