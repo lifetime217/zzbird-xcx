@@ -1,5 +1,4 @@
 /* pages/owner/checkRole/checkRole.wxss */
-
 @import "../../../common/style/iconfont.wxss";
 @import "../../../common/style/common.wxss";
 
@@ -16,7 +15,7 @@
 .icon-qiyexuesheng, .icon-qiyelaoshi, .icon-xuexiao {
   font-size: 4vw;
   padding-left: 2vw;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .icon-qiyexuesheng {
@@ -53,8 +52,9 @@
 }
 
 .add-company {
-  padding-left: 4vw;
   color: #50acff;
+  font-size: 4.5vw;
+  padding-left: 2vw;
 }
 
 /* .company-user:last-child {

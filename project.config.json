@@ -110,34 +110,6 @@
 				},
 				{
 					"id": -1,
-					"name": "消息列表",
-					"pathName": "pages/owner/message/message",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "企业学生",
-					"pathName": "pages/owner/company/companyStu/companyStu",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 12,
-					"name": "查看消息",
-					"pathName": "pages/owner/messageDetails/messageDetails",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "老师学生列表",
-					"pathName": "pages/owner/teacher/stuList/stuList",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "老师课程列表",
 					"pathName": "pages/owner/teacher/courseList/courseList",
 					"query": "",
@@ -148,6 +120,19 @@
 					"name": "修改用户",
 					"pathName": "pages/owner/updateUser/updateUser",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "切换角色",
+					"pathName": "pages/owner/checkRole/checkRole",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "老师课程列表",
+					"pathName": "pages/owner/teacher/courseList/courseList",
 					"scene": null
 				}
 			]
