@@ -26,20 +26,20 @@ Page({
       enterPriseToTea: {
         text: '企业老师',
         type: 'enterPriseToTea',
-        url: '',
+        url: '/pages/owner/company/companyTea/companyTea',
         icon: 'icon-qiyelaoshi'
       },
       enterpriseToStu: {
         text: '企业学生',
         type: 'enterpriseToStu',
-        url: '',
+        url: '/pages/owner/company/companyStu/companyStu',
         icon: 'icon-qiyexuesheng'
       },
 
       messageToEnter: {
         text: '消息列表',
         type: 'messageToEnter',
-        url: '',
+        url: '/pages/owner/message/message',
         icon: 'icon-xiaoxiliebiao'
       },
       switchIdentity: {
@@ -51,7 +51,7 @@ Page({
       updateCompany: {
         text: '编辑企业',
         type: 'updateCompany',
-        url: '',
+        url: '/pages/init/addCompany/addCompany?type=edit',
         icon: 'icon-xiugai'
       }
     },
@@ -65,13 +65,13 @@ Page({
       stuList: {
         text: '学生列表',
         type: 'stuList',
-        url: '',
+        url: '/pages/owner/teacher/stuList/stuList',
         icon: 'icon-xueshengliebiao'
       },
       messageToTea: {
         text: '消息列表',
         type: 'messageToTea',
-        url: '',
+        url: '/pages/owner/message/message',
         icon: 'icon-xiaoxiliebiao'
       },
       switchIdentity: {
@@ -91,7 +91,7 @@ Page({
       messageToStu: {
         text: '消息列表',
         type: 'messageToStu',
-        url: '',
+        url: '/pages/owner/message/message',
         icon: 'icon-xiaoxiliebiao'
       },
       switchIdentity: {
