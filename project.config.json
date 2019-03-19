@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 15,
+			"current": 14,
 			"list": [
 				{
 					"id": -1,
@@ -134,6 +134,13 @@
 					"name": "企业详情",
 					"pathName": "pages/init/companyDetail/companyDetail",
 					"query": "companyId=t1110qew3d1d48fa9cc33a4568331f2a",
+					"scene": null
+				},
+				{
+					"id": 14,
+					"name": "邀请学生",
+					"pathName": "pages/course/courseDetail/courseDetail",
+					"query": "type=inviteStu&companyId=f06f6cccc4b34543bddb9568a86495e9&courseId=92eb7e39af494fa4a382c9101b60d8ad&companyName=化妆培训&courseName=化妆课&inviteSessionKey=A86AF68596912C7E8E4E204F19F16133&roleVal=20",
 					"scene": null
 				}
 			]

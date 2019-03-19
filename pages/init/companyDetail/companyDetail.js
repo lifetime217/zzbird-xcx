@@ -18,6 +18,27 @@ Page({
     imgCenter: "", //图片中
     imgRight: "", //图片右
   },
+  /**
+   * 切换图片
+   */
+  switchImg: function(e) {
+    var bannerList = this.data.bannerList;
+    var index = e.currentTarget.dataset.index;
+    var type = e.currentTarget.dataset.type;
+    var imgLeft = "";
+    var imgCenter = "";
+    var imgRight = ""; //图片右
+    if (type != "center") {
+      imgLeft = index - 1;
+      imgCenter = index;
+      imgRight = index + 1;
+      this.setData({
+        imgLeft,
+        imgCenter,
+        imgRight
+      });
+    }
+  },
 
   // 显示加载框
   showLoad: function() {
@@ -58,18 +79,23 @@ Page({
         var data = res.data.data;
         WxParse.wxParse("article", "html", data.companyDetail.companyDetailInfo, this, 0)
         var bannerList = data.bannerList;
+        bannerList = [
+          'http://192.168.1.112/2de744b970d648fabcb293545c98e9be.jpg', 'http://192.168.1.112/d10d8f4d0231478ea11689e000e53de2.jpg',
+          'http://192.168.1.112/2de744b970d648fabcb293545c98e9be.jpg',
+          'http://192.168.1.112/d10d8f4d0231478ea11689e000e53de2.jpg'
+        ];
         var imgLeft = "";
         var imgCenter = "";
         var imgRight = "";
         if (bannerList.length == 1) {
-          imgCenter = bannerList[0];
-        } else if (bannerList.length == 2){
-          imgLeft = bannerList[0];
-          imgCenter = bannerList[1];
-        }else{
-          imgLeft = bannerList[0];
-          imgCenter = bannerList[1];
-          imgRight = bannerList[2];
+          imgCenter = 0;
+        } else if (bannerList.length == 2) {
+          imgLeft = 0;
+          imgCenter = 1;
+        } else {
+          imgLeft = 0;
+          imgCenter = 1;
+          imgRight = 2;
         }
         that.setData({
           industry: data.industry,

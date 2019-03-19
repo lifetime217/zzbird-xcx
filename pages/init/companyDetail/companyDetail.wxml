@@ -3,15 +3,15 @@
 <wxs src="../../../util/util.wxs" module="tools" />
 <!-- 上 -->
 <view>
-  <view class='banner flex'>
-    <view data-url='{{imgLeft}}'>
-      <image src='{{imgLeft}}' mode="scaleToFill"></image>
+  <view class='banner flex mui-align-center mui-view-center'>
+    <view data-url='{{bannerList[imgLeft]}}' data-type='left' data-index="{{imgLeft}}" class="{{bannerList[imgLeft]==undefined?'':'img-left'}}" catchtap="{{bannerList[imgLeft]==undefined?'':'switchImg'}}">
+      <image src='{{bannerList[imgLeft]}}' mode="scaleToFill"></image>
     </view>
-    <view data-url='{{imgCenter}}'>
-      <image src='{{imgCenter}}' mode="scaleToFill"></image>
+    <view data-url='{{bannerList[imgCenter]}}' data-type='center' data-index="{{imgCenter}}" catchtap='switchImg'>
+      <image src='{{bannerList[imgCenter]}}' class='img-center' mode="scaleToFill"></image>
     </view>
-    <view data-url='{{imgright}}'>
-      <image src='{{imgright}}' mode="scaleToFill"></image>
+    <view data-url='{{bannerList[imgRight]}}' data-type='right' data-index="{{imgRight}}" class="{{bannerList[imgRight]==undefined?'':'img-right'}}" catchtap="{{bannerList[imgRight]==undefined?'':'switchImg'}}">
+      <image src='{{bannerList[imgRight]}}' mode="scaleToFill"></image>
     </view>
   </view>
   <view class='company-detail'>

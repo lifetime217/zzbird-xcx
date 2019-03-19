@@ -3,12 +3,13 @@
 @import "../../../common/style/iconfont.wxss";
 
 .banner {
-  height: 30vh;
+  height: 28vh;
 }
 
 .banner image {
-  height: 20vh;
-  width: 20vw;
+  height: 23vh;
+  width: 28vw;
+  border-radius: 2vw;
 }
 
 .company-detail {
@@ -128,4 +129,31 @@
 .icon-dianhua2 {
   color: #fff;
   font-size: 5vh;
+}
+
+.img-center {
+  width: 32vw !important;
+  height: 26vh !important;
+  z-index: 2;
+  position: relative;
+}
+
+.img-left {
+  position: relative;
+  left: 2vw;
+}
+
+.img-right {
+  position: relative;
+  right: 2vw;
+}
+
+.img-right image, .img-left image {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+
+.img-left, .img-right {
+  background: #000;
+  border-radius: 2vw;
 }

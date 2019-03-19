@@ -34,6 +34,7 @@ Page({
     canvasHidden: true, //分享图片
     isback: false, //受邀请展示返回首页
     prurl: "", //保存相册使用的路劲
+    exist: false, // 受邀請進來已經是否是該課程的老師或者學生
   },
   hideCanvas: function() {
     this.setData({
@@ -220,12 +221,12 @@ Page({
   /**
    * 查询课程
    */
-  queryCouse: function(courseId) {
+  queryCouse: function(courseId, type) {
     var that = this;
     that.showLoad();
     return new Promise(function(resolve, reject) {
       http.httpGet(domainUrl + "/api/companycourse/queryCourseAndCompany/" + courseId, {
-        "type":that.data.type
+        "type": type
       }).then((res) => {
         if (res.data.statusCode == 200) {
           var data = res.data.data;
@@ -241,8 +242,14 @@ Page({
           var imgHeight = data.imgHeight; //背景图（海报）的高度
           var classHour = "";
           var studyWeek = "";
+          //判断收邀请进来的用户是否已经是老师或者是学生
+          if (data.exist != undefined) {
+            that.setData({
+              exist: true
+            });
+          }
           // 用户的课程和周数  二维码分享 图
-          if (roleVal == '30') {
+          if (roleVal == '30' && type != 'inviteStu' && type != 'inviteTea') {
             classHour = data.classHour;
             studyWeek = data.studyWeek;
             // 海报拼接
@@ -295,20 +302,21 @@ Page({
             })
           }
           that.setData({
-            courseId: courseId,
+            courseId,
             imgUrls: data.courseImgsUrl,
-            courseName: courseName,
+            courseName,
             startTime: course.startTime,
             endTime: course.endTime,
             teacher: data.teacher,
-            personNumber: personNumber,
+            personNumber,
             classTimeSelect: course.courseHour,
             ageRange: course.ageRange,
             courseDetailInfo: course.courseDesc,
-            companyName: companyName,
+            companyName,
             roleVal: app.globalData.roleVal,
-            studyWeek: studyWeek,
-            classHour: classHour
+            studyWeek,
+            classHour,
+            type
           });
           resolve();
         } else {
@@ -349,16 +357,30 @@ Page({
     var that = this;
     if (options.type != undefined) {
       var type = options.type;
-      that.setData({
-        type: type
-      });
-      if (type == 'inviteTea' || type == 'inviteStu') {
+      
+      if ( type == 'inviteTea' ||  type == 'inviteStu') {
+        var companyId = options.companyId;
+        var inviteSessionKey = options.inviteSessionKey;
         var invitationMessage = "";
         var companyName = options.companyName;
-        var companyId = options.companyId;
         var courseName = options.courseName;
-        var inviteSessionKey = options.inviteSessionKey;
         var inviteRoleVal = options.roleVal;
+        //老师或者学生不存在该课程中
+        var exist = that.data.exist;
+        if (exist){
+          wx.showModal({
+            content: '您已经是该课程的老师或者学生了',
+            showCancel: false,
+          })
+          that.setData({
+            inviteSessionKey,
+            companyId,
+            isback: true
+          });
+          return;
+        }
+        console.log("邀请学生");
+
         if (type == 'inviteTea') {
           //老师
           invitationMessage = companyName + "邀请你成为" + courseName + "的老师";
@@ -384,7 +406,7 @@ Page({
   onLoad: function(options) {
     var that = this;
     if (app.globalData.sessionKey && app.globalData.sessionKey != "") {
-      that.queryCouse(options.courseId).then(res => {
+      that.queryCouse(options.courseId, options.type).then(res => {
         that.handleInvite(options);
       });
     } else {
@@ -392,7 +414,7 @@ Page({
       // 所以此处加入 callback 以防止这种情况
       app.sessionKeyCallback = sessionKey => {
         if (sessionKey != '') {
-          that.queryCouse(options.courseId).then(res => {
+          that.queryCouse(options.courseId, options.type).then(res => {
             that.handleInvite(options);
           });
         }
