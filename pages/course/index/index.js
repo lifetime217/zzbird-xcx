@@ -46,7 +46,7 @@ Page({
   navCourseDetail: function(e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../courseDetail/courseDetail?courseId=' + id,
+      url: "../courseDetail/courseDetail?type='nav'&courseId=" + id,
     })
   },
   /**
@@ -177,14 +177,14 @@ Page({
       if (invite == "inviteTea") {
         return {
           title: companyName + '邀请你成为此课程的老师',
-          path: '/pages/course/courseDetail/courseDetail?type=inviteTea&companyId=' + companyId + '&courseId=' + id + '&companyName=' + companyName + '&courseName=' + courseName + '&inviteSessionKey=' + app.globalData.sessionKey + "&roleVal" + roleVal
+          path: '/pages/course/courseDetail/courseDetail?type=inviteTea&companyId=' + companyId + '&courseId=' + id + '&companyName=' + companyName + '&courseName=' + courseName + '&inviteSessionKey=' + app.globalData.sessionKey + "&roleVal=" + roleVal
         }
       }
       // 老师邀请学生
       else if (invite == "inviteStu") {
         return {
           title: '邀请你加入' + courseName,
-          path: '/pages/course/courseDetail/courseDetail?type=inviteStu&companyId=' + companyId + '&courseId=' + id + '&companyName=' + companyName + '&courseName=' + courseName + '&inviteSessionKey=' + app.globalData.sessionKey + "&roleVal" + roleVal
+          path: '/pages/course/courseDetail/courseDetail?type=inviteStu&companyId=' + companyId + '&courseId=' + id + '&companyName=' + companyName + '&courseName=' + courseName + '&inviteSessionKey=' + app.globalData.sessionKey + "&roleVal=" + roleVal
         }
       }
 

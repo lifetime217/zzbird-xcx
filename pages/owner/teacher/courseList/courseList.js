@@ -42,7 +42,7 @@ Page({
   navCourseDetail: function(e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../../../course/courseDetail/courseDetail?courseId=' + id,
+      url: "../../../course/courseDetail/courseDetail?type='nav'&&courseId=" + id,
     })
   },
 
