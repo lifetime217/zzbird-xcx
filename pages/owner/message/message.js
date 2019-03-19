@@ -61,12 +61,13 @@ Page({
     var that = this;
     if (list.length != 0) {
       for (var i = 0; i < list.length; i++) {
+        var l = list[i].addTime.length - 3;
         if (that.isToday(list[i].addTime)) {
-          var l = list[i].addTime.length
           var time = list[i].addTime.substring(11, l)
           list[i].addTime = time;
           list[i].isToday = true;
         } else {
+          var time = list[i].addTime.substring(0, l)
           list[i].isToday = false;
         }
 

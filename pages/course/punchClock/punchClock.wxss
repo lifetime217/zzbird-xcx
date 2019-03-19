@@ -103,7 +103,8 @@ page {
 }
 
 .stu-name {
-  font-size: 3.5vw;
+  margin: 0.5vh 0vw 0vh 0vw;
+  font-size: 3vw;
 }
 
 .icon-gou {

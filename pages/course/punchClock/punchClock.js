@@ -169,6 +169,7 @@ Page({
               //删除成功
               if (data.statusCode == 200) {
                 that.onShow();
+                app.globalData.ownerReload = true;
               } else {
                 that.onShow();
                 wx.showModal({

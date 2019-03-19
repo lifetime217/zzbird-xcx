@@ -41,7 +41,7 @@
       <text class='iconfont icon-dianhua'></text>
       <text class=''>{{companyDetail.telphone}}</text>
     </view>
-    <view class='flex mui-view-center company-address'>
+    <view class='flex mui-view-center company-address' catchtap='selectMap'>
       <text class='iconfont icon-weizhi'></text>
       <text>{{companyDetail.companyAddress}}</text>
     </view>

@@ -15,12 +15,12 @@
   font-size: 5vw;
   color: #6b6868;
   margin: 2vh 5vw 2vh 5vw;
-  min-height: 50vh;
+  min-height: 65vh;
 }
 
 .msg-user {
   width: 90%;
-  font-size: 5vw;
+  font-size: 3vw;
   color: #6b6868;
   margin: 2vh 5vw 2vh 5vw;
 }

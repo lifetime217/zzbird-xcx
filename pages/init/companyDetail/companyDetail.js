@@ -123,6 +123,21 @@ Page({
     });
 
   },
+
+
+  /**
+   * 地图导航
+   */
+  selectMap: function(e) {
+    var companyDetail = this.data.companyDetail;
+    wx.openLocation({
+      latitude: companyDetail.lat,
+      longitude: companyDetail.lng,
+      scale: 16,
+      name: companyDetail.companySimpleAddress,
+      address: companyDetail.companyAddress,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -158,16 +173,55 @@ Page({
   onHide: function() {
 
   },
+  /**
+   * 更新分享数据
+   * 
+   */
+  updateShareCount: function(companyId) {
+    var that = this;
+    http.httpPost(
+      domainUrl + "/api/company/updateShareCount", {
+        companyId: companyId
+      }).then((res) => {
+      var data = res.data;
+      if (data.statusCode == 200) {
+        console.log('分享次数累加成功')
+      } else {
+        console.log('分享次数累加失败')
+      }
+    }).catch((errMsg) => {
+      wx.showModal({
+        content: '网络异常',
+        showCancel: false,
+      })
+    });
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function(res) {
+    var that = this;
+    var companyId = that.data.companyDetail.id;
+    console.log('分享成功了');
+    that.updateShareCount(companyId);
+    return {
+      title: '企业详情',
+      path: '/pages/init/companyDetail/companyDetail?companyId=' + companyId
+    }
+  },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-    if (this.data.type == "editCompany") {
+    if (that.data.type == "editCompany") {
       wx.switchTab({
         url: '../index/index'
       })
     }
   },
+
+
 
 })
