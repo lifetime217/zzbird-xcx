@@ -379,8 +379,6 @@ Page({
           });
           return;
         }
-        console.log("邀请学生");
-
         if (type == 'inviteTea') {
           //老师
           invitationMessage = companyName + "邀请你成为" + courseName + "的老师";

@@ -379,7 +379,6 @@ Page({
           courseId = data.courseId;
           content = "新建成功";
         }
-        //修改
         wx.showModal({
           content: content,
           showCancel: false,
@@ -389,6 +388,7 @@ Page({
               that.setData({
                 type: ""
               });
+              app.globalData.courseReload =true;
               // 用户点击确定 返回详情展示 
               wx.navigateTo({
                 url: '../../course/courseDetail/courseDetail?type=courseEdit&courseId=' + courseId

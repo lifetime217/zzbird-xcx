@@ -38,8 +38,8 @@ Page({
   // 开通企业
   openEnterprise: function(e) {
     var that = this;
-    that.showLoad();
     if (e.detail.userInfo) {
+      that.showLoad();
       //用户按了允许授权按钮
       var userinfo = e.detail.userInfo;
       http.httpPost(domainUrl + "/api/xcxuser/addUser", {
@@ -54,6 +54,7 @@ Page({
         wx.navigateTo({
           url: '../addCompany/addCompany?type=openComapny'
         })
+        that.hideTime();
       }).catch((errMsg) => {
         wx.showModal({
           content: '网络异常',
@@ -293,6 +294,15 @@ Page({
         isFirstRequest: true,
         hasData: true
       });
+      this.authAddress(1, "");
+    }
+
+    if (app.globalData.companyReload) {
+      that.setData({
+        isFirstRequest: true,
+        hasData: true
+      })
+      that.validateUser();
       this.authAddress(1, "");
     }
 

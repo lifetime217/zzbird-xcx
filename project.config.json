@@ -140,7 +140,7 @@
 					"id": 14,
 					"name": "邀请学生",
 					"pathName": "pages/course/courseDetail/courseDetail",
-					"query": "type=inviteStu&companyId=f06f6cccc4b34543bddb9568a86495e9&courseId=92eb7e39af494fa4a382c9101b60d8ad&companyName=化妆培训&courseName=化妆课&inviteSessionKey=A86AF68596912C7E8E4E204F19F16133&roleVal=20",
+					"query": "type=inviteStu&companyId=637634e1418e40d4831ed06f6059f1bd&courseId=5f190044aab044a1ab8e279453b636b8&companyName=测试公司&courseName=你好啊&inviteSessionKey=F76E04BCF6AA34258ECCE149AB6FB975&roleVal=20",
 					"scene": null
 				}
 			]
