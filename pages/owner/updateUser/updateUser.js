@@ -176,7 +176,7 @@ Page({
                 })
                 
               },500)
-              app.globalData.ownerReload = false;
+              app.globalData.ownerReload = true;
             }
           })
 

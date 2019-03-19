@@ -135,7 +135,7 @@ Page({
             showCancel: false,
           })
         }
-        app.globalData.ownerReload = false;
+        app.globalData.ownerReload = true;
       }).catch((errMsg) => {
         wx.showModal({
           content: '网络异常',

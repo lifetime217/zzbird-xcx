@@ -66,7 +66,7 @@
       </view>
     </view>
     <!-- 课程列表 -->
-    <view class='flex line' data-type="{{menuitems_com.course}}"  catchtap="jumpPage">
+    <!-- <view class='flex line' data-type="{{menuitems_com.course}}"  catchtap="jumpPage">
       <view class='flex mui-align-center mui-view-center label-view'>
         <text class='iconfont {{menuitems_com.course.icon}} label'></text>
       </view>
@@ -74,7 +74,7 @@
         <text>{{menuitems_com.course.text}}</text>
       </view>
       <text class='iconfont icon-arrowright icon-arrowright-line'></text>
-    </view>
+    </view> -->
   </view>
   <!-- 块 二 -->
   <view class='flex mui-view-wrap kuai'>
