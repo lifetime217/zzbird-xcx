@@ -166,7 +166,6 @@ Page({
    */
   onShareAppMessage: function(res) {
     if (res.from == "button") {
-      console.log(res);
       var invite = res.target.dataset.invite;
       var id = res.target.dataset.id;
       var companyName = res.target.dataset.companyname;

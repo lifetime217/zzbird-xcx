@@ -224,6 +224,8 @@ Page({
             content: '是否继续添加课程',
             showCancel: true,
             success: function(res) {
+              app.globalData.roleVal = 10;
+              app.globalData.companyReload = true;
               if (res.confirm) {
                 // 用户点击确定  跳转新建课程页面
                 wx.navigateTo({

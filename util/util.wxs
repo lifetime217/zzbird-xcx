@@ -38,6 +38,9 @@ var validateId = function(arrayToSearch, attr, val) {
  * 截取第一张图片
  */
 var splitFirstImg = function(imgs) {
+  if (imgs.indexOf(",")==-1){
+    return imgs;
+  }
   return imgs.substring(0, imgs.indexOf(","));
 }
 

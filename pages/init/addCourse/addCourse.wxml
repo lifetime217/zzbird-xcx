@@ -22,7 +22,7 @@
   <view class='flex mui-align-center'>
     <view class='courseName-title'>课程名称</view>
     <view>
-      <input maxlength='20' bindinput='courseNameInput' value='{{courseName}}' class='input-coursename' placeholder='请输入企业名称' placeholder-class='placeholder-courseName'></input>
+      <input maxlength='20' bindinput='courseNameInput' value='{{courseName}}' class='input-coursename' placeholder='请输入课程名称' placeholder-class='placeholder-courseName'></input>
     </view>
   </view>
 </view>

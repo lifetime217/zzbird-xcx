@@ -79,11 +79,6 @@ Page({
         var data = res.data.data;
         WxParse.wxParse("article", "html", data.companyDetail.companyDetailInfo, this, 0)
         var bannerList = data.bannerList;
-        bannerList = [
-          'http://192.168.1.112/2de744b970d648fabcb293545c98e9be.jpg', 'http://192.168.1.112/d10d8f4d0231478ea11689e000e53de2.jpg',
-          'http://192.168.1.112/2de744b970d648fabcb293545c98e9be.jpg',
-          'http://192.168.1.112/d10d8f4d0231478ea11689e000e53de2.jpg'
-        ];
         var imgLeft = "";
         var imgCenter = "";
         var imgRight = "";
