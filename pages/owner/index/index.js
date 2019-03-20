@@ -15,7 +15,7 @@ Page({
     numberTow: 0, //界面第二行第二个模块
     numberThree: 0, //界面第二行第三个模块
     numberFour: 0, //企业平均每周课时
-    messageCount:0,//未读消息的数量
+    messageCount: 0, //未读消息的数量
     menuitems_com: {
       course: {
         text: '课程列表',
@@ -272,7 +272,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    if (app.globalData.ownerReload){
+    if (app.globalData.ownerReload) {
       if (getCurrentPages().length != 0) {
         //刷新当前页面的数据
         getCurrentPages()[getCurrentPages().length - 1].onLoad();

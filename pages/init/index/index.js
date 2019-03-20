@@ -212,7 +212,6 @@ Page({
         } else {
           list = ordinaryUser;
         }
-        console.log(list);
         that.setData({
           ordinaryUser: list,
           hasMore: hasMore,
