@@ -26,6 +26,13 @@
   color: #c5c5c5;
 }
 
+.telphone {
+  position: relative;
+  top: 6vh;
+  left: -2vw;
+  font-size: 3vw;
+}
+
 .company-count>view {
   padding: 0 1vw;
 }
@@ -38,7 +45,7 @@
 .industry>view {
   padding: 0.5vw 2vw;
   border-radius: 1vw;
-  border: 1px solid #50acff;
+  border: 1px solid #c5c5c5;
   margin: 0 2vw;
   line-height: 4vh;
 }
@@ -101,13 +108,11 @@
 
 .btn-phone {
   position: absolute;
-  /* bottom: 1vh;
-  left: 2vw; */
-  bottom: 4vh;
+  bottom: 5vh;
   left: 40.4vw;
   border-radius: 50%;
-  width: 10vh;
-  height: 10vh;
+  width: 9vh;
+  height: 9vh;
   background: #50acff;
   z-index: 11;
 }
@@ -156,4 +161,12 @@
 .img-left, .img-right {
   background: #000;
   border-radius: 2vw;
+}
+
+.wxParse-img {
+  width: 100% !important;
+  margin: 1vh 0vw;
+}
+.company-detail-wxParse{
+  padding: 0vh 3vw;
 }

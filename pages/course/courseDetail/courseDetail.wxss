@@ -38,7 +38,11 @@ page {
 }
 
 .teacher text {
-  padding-right: 2vw;
+  padding-right: 1vw;
+}
+
+.teacher {
+  height: 5vh;
 }
 
 .teacher, .companyName {
@@ -177,6 +181,7 @@ canvas {
   top: 0;
   left: 100vw;
 }
+
 .preview {
   width: 100%;
   height: 100%;
@@ -200,4 +205,35 @@ canvas {
   position: absolute;
   bottom: 150rpx;
   left: 30%;
+}
+
+.icon-xuexiao {
+  margin: 0vh 2vw 0vh 0vw;
+}
+
+.icon-qiyelaoshi {
+  font-size: 4vw;
+}
+
+.scroll {
+  width: 42vw;
+  height: 100%;
+  white-space: nowrap;
+}
+
+.scroll view {
+  display: inline-block;
+  margin: 0vh 1.5vw 0vh 1.5vw;
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.wxParse-img {
+  width: 100% !important;
+   margin: 1vh 0vw;
 }

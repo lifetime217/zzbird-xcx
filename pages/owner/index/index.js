@@ -15,6 +15,7 @@ Page({
     numberTow: 0, //界面第二行第二个模块
     numberThree: 0, //界面第二行第三个模块
     numberFour: 0, //企业平均每周课时
+    messageCount:0,//未读消息的数量
     menuitems_com: {
       course: {
         text: '课程列表',
@@ -184,6 +185,7 @@ Page({
             numberTow: data.data.shareCount,
             numberThree: data.data.courseCount,
             numberFour: data.data.average,
+            messageCount: data.data.messageCount,
           })
         }
         that.hideTime();
@@ -214,6 +216,7 @@ Page({
             numberOne: data.data.courseCount,
             numberTow: data.data.stuCount,
             numberThree: data.data.totalClassHour,
+            messageCount: data.data.messageCount,
           })
         }
         that.hideTime();
@@ -244,6 +247,7 @@ Page({
             numberOne: data.data.courseCount,
             numberTow: data.data.monthClassHourt,
             numberThree: data.data.totalClassHour,
+            messageCount: data.data.messageCount,
           })
         }
         that.hideTime();
@@ -302,13 +306,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
 
   }
 })

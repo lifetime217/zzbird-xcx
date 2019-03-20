@@ -71,7 +71,7 @@ page {
   right: 5vw;
   font-size: 3.5vw;
   font-weight: 900;
-  color: #C9C8CE;
+  color: #c9c8ce;
 }
 
 .details {
@@ -140,5 +140,15 @@ page {
 .tga-name {
   width: 88%;
   height: 100%;
-  font-size:4.2vw;
+  font-size: 4.2vw;
+}
+
+.weiDu {
+  position: relative;
+  background: red;
+  width: 3vw;
+  height: 3vw;
+  top: 3vh;
+  right: 9vw;
+  border-radius: 50% 50% 50% 50%;
 }

@@ -1,4 +1,5 @@
 <!--pages/course/courseDetail/courseDetail.wxml-->
+<import src="../../../util/wxParse/wxParse.wxml" />
 <wxs src="../../../util/util.wxs" module="tools" />
 <!-- 课程基本信息 -->
 <view class='course-container'>
@@ -9,10 +10,17 @@
       </view>
       <view class='course-basics-information'>
         <view class='courseName'>{{courseName}}</view>
-        <view class='teacher'>
-          <text wx:for="{{teacher}}" wx:if="{{index<3}}" wx:for-item="on" wx:key="{{teacher}}">{{tools.subStr(on.name,3)}}</text>
+        <view class='flex teacher'>
+          <!-- <text wx:for="{{teacher}}" wx:if="{{index<3}}" wx:for-item="on" wx:key="{{teacher}}">{{tools.subStr(on.name,3)}}</text> -->
+          <text class='iconfont icon-qiyelaoshi'></text>
+          <scroll-view class='scroll' scroll-x>
+            <view wx:for="{{teacher}}" wx:for-item="on" wx:key="{{teacher}}">{{on.name}}</view>
+          </scroll-view>
         </view>
-        <view class='companyName'>{{companyName}}</view>
+        <view class='flex companyName'>
+          <text class='iconfont icon-xuexiao'></text>
+          <text>{{companyName}}</text>
+        </view>
       </view>
     </view>
     <view class='flex mui-align-center mui-view-space course-material-information' wx:if="{{classTimeSelect!=''}}">
@@ -23,7 +31,8 @@
   </view>
 </view>
 <view class='course-desc-container' wx:if="{{courseDetailInfo!=''}}">
-  {{courseDetailInfo}}
+  <!-- {{courseDetailInfo}} -->
+  <template is="wxParse" data="{{wxParseData:article.nodes}}" />
 </view>
 
 <view wx:if="{{roleVal=='30'&&classHour!=''}}" class="data-container flex">
@@ -40,7 +49,7 @@
   <text class='BackIndex' catchtap='backIndex'>返回首页</text>
 </view>
 
-<view wx:if="{{roleVal=='30'&& type!='inviteTea' && type!='inviteStu'}}">
+<view wx:if="{{roleVal=='30'&&type!='inviteTea' && type!='inviteStu'}}">
   <button catchtap='share' class='mui-col-sm-100 blue share'>生成分享海报</button>
 </view>
 

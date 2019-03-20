@@ -37,10 +37,6 @@
         <text>{{item}}</text>
       </view>
     </view>
-    <view class='flex mui-view-center telphone'>
-      <text class='iconfont icon-dianhua'></text>
-      <text class=''>{{companyDetail.telphone}}</text>
-    </view>
     <view class='flex mui-view-center company-address' catchtap='selectMap'>
       <text class='iconfont icon-weizhi'></text>
       <text>{{companyDetail.companyAddress}}</text>
@@ -66,7 +62,7 @@
 <!-- 下 -->
 <view class='company-detail-info'>
   <view class='company-detail-info-title'>企业介绍</view>
-  <view>
+  <view class='company-detail-wxParse'>
     <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
 </view>
@@ -77,5 +73,9 @@
   <view data-phone='{{companyDetail.telphone}}' class='btn-phone flex mui-align-center mui-view-center ' catchtap='callphone'>
     <text class='iconfont icon-dianhua2'></text>
     <!-- </view> -->
+  </view>
+  <view class='flex mui-view-center  mui-align-center telphone'>
+      <!-- <text class='iconfont icon-dianhua'></text> -->
+      <text class=''>{{companyDetail.telphone}}</text>
   </view>
 </view>

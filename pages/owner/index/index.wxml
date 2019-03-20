@@ -106,6 +106,7 @@
       <view class='flex mui-align-center tga-name'>
         <text>{{menuitems_com.messageToEnter.text}}</text>
       </view>
+      <view wx:if="{{messageCount != 0}}" class='weiDu'></view>
       <text class='iconfont icon-arrowright icon-arrowright-line'></text>
     </view>
   </view>
@@ -194,6 +195,7 @@
       <view class='flex mui-align-center tga-name'>
         <text>{{menuitems_tea.messageToTea.text}}</text>
       </view>
+      <view wx:if="{{messageCount != 0}}" class='weiDu'></view>
       <text class='iconfont icon-arrowright icon-arrowright-line'></text>
     </view>
   </view>
@@ -263,6 +265,7 @@
       <view class='flex mui-align-center tga-name'>
         <text>{{menuitems_par.messageToStu.text}}</text>
       </view>
+      <view wx:if="{{messageCount != 0}}" class='weiDu'></view>
       <text class='iconfont icon-arrowright icon-arrowright-line'></text>
     </view>
   </view>

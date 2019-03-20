@@ -92,7 +92,7 @@ Page({
         that.setData({
           index:index,
         })
-
+        app.globalData.ownerReload = true;
       } else {
         wx.showModal({
           content: '网络异常',

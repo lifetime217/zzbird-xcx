@@ -1,16 +1,16 @@
 <!--pages/owner/updateUser/updateUser.wxml-->
-<view class='flex mui-align-center img-line'>
+<view class='flex mui-align-center img-line'catchtap='checkpicture'>
   <view class='flex mui-align-center mui-view-center title'>
     <text>更换头像</text>
   </view>
-  <view class='flex mui-align-center  edit' catchtap='checkpicture'>
+  <view class='flex mui-align-center  edit' >
     <image class='img' src='{{imgUrl}}'></image>
   </view>
   <text class='iconfont icon-arrowright icon-arrowright-tag'></text>
 </view>
 <view class='flex mui-align-center name-line'>
   <view class='flex mui-align-center mui-view-center title'>
-    <text>更换头像</text>
+    <text>更改昵称</text>
   </view>
   <view class='flex mui-align-center  edit'>
     <input maxlength="15" class="input" value='{{nickName}}' placeholder="请输入昵称" bindinput='inputName'></input>

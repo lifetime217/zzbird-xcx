@@ -1,5 +1,6 @@
 // pages/course/courseDetail/courseDetail.js
 var http = require('../../../util/request/request.js');
+var WxParse = require('../../../util/wxParse/wxParse.js');
 var app = getApp();
 var domainUrl = app.globalData.domainUrl;
 import {
@@ -232,6 +233,8 @@ Page({
           var data = res.data.data;
           var course = data.course;
           var roleVal = app.globalData.roleVal;
+          console.log(course.courseDesc);
+          WxParse.wxParse("article", "html", course.courseDesc, that, 0)
 
           var companyName = data.companyName;
           var courseName = course.courseName;
