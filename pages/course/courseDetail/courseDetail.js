@@ -36,6 +36,7 @@ Page({
     isback: false, //受邀请展示返回首页
     prurl: "", //保存相册使用的路劲
     exist: false, // 受邀請進來已經是否是該課程的老師或者學生
+    isEdit:false,//判断该用户是否是该课程的企业创建者
   },
   hideCanvas: function() {
     this.setData({
@@ -65,6 +66,19 @@ Page({
         })
         wx.hideLoading()
       }
+    })
+  },
+
+
+  /**
+   * 跳转编辑课程
+   * 
+   */
+
+  jumpEdit:function(){
+    var that = this;
+    wx.navigateTo({
+      url: '/pages/init/addCourse/addCourse?type=edit&courseId=' + that.data.courseId,
     })
   },
   /**
@@ -319,7 +333,8 @@ Page({
             roleVal: app.globalData.roleVal,
             studyWeek,
             classHour,
-            type
+            type,
+            isEdit: data.isEdit,
           });
           resolve();
         } else {
