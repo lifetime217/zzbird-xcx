@@ -120,6 +120,9 @@ Page({
   onLoad: function(options) {
     // 隐藏右上角分享按钮
     wx.hideShareMenu()
+    wx.showTabBar({
+      aniamtion: true
+    })
     this.queryCouse(1);
   },
   // 显示加载框

@@ -407,6 +407,8 @@ Page({
           industry: data.industry,
           imgUrlName: data.bannerImgsName,
           imgUrls: data.banner,
+          lat: company.lat,
+          lng: company.lng,
           companyName: company.companyName,
           companyAddress: company.companyAddress,
           telphone: company.telphone,

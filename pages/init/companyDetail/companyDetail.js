@@ -210,9 +210,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-    if (that.data.type == "editCompany") {
+    if (this.data.type == "editCompany") {
       wx.switchTab({
-        url: '../index/index'
+        url: '../../owner/index/index'
       })
     }
   },
