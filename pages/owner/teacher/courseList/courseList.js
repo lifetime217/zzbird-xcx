@@ -178,35 +178,7 @@ Page({
     if (this.data.hasMore) {
       this.queryCouse(this.data.page);
     }
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-    if (res.from == "button") {
-      console.log(res);
-      var invite = res.target.dataset.invite;
-      var id = res.target.dataset.id;
-      var companyName = res.target.dataset.companyname;
-      var companyId = res.target.dataset.companyid;
-      var courseName = res.target.dataset.coursename;
-      var roleVal = this.data.roleVal;
-      // 企业邀请老师
-      if (invite == "inviteTea") {
-        return {
-          title: companyName + '邀请你成为此课程的老师',
-          path: '/pages/course/courseDetail/courseDetail?type=inviteTea&companyId=' + companyId + '&courseId=' + id + '&companyName=' + companyName + '&courseName=' + courseName + '&inviteSessionKey=' + app.globalData.sessionKey + "&roleVal" + roleVal
-        }
-      }
-      // 老师邀请学生
-      else if (invite == "inviteStu") {
-        return {
-          title: '邀请你加入' + courseName,
-          path: '/pages/course/courseDetail/courseDetail?type=inviteStu&companyId=' + companyId + '&courseId=' + id + '&companyName=' + companyName + '&courseName=' + courseName + '&inviteSessionKey=' + app.globalData.sessionKey + "&roleVal" + roleVal
-        }
-      }
-
-    }
   }
+
+ 
 })
