@@ -215,7 +215,7 @@ Page({
         url: '../../owner/index/index'
       })
     }
-  },
+  }
 
 
 
