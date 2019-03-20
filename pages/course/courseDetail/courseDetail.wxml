@@ -53,6 +53,10 @@
   <button catchtap='share' class='mui-col-sm-100 blue share'>生成分享海报</button>
 </view>
 
+<view wx:if="{{roleVal=='10'&&isEdit}}">
+  <button catchtap='jumpEdit' class='mui-col-sm-100 blue jumpEdit'>修改课程</button>
+</view>
+
 <canvas canvas-id="shareImg" style="width:545px;height:771px;"></canvas>
 
 <!-- 预览区域  -->

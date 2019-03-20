@@ -52,7 +52,7 @@ Page({
           var year = date.substring(0, 4);
           var month = date.substring(5, 7);
           var day = date.substring(8, 10);
-          var time = date.substring(11, date.length);
+          var time = date.substring(11, date.length-3);
 
           var newDate = year + "年" + month + "月" + day + "日 " + time
           msg.addTime = newDate;

@@ -168,12 +168,10 @@ page {
   background: #1aac19;
   color: white;
   font-size: 5vw;
-  position: absolute;
-  bottom: 100rpx;
   width: 70%;
-  left: 15%;
-  height: 100rpx;
-  line-height: 100rpx;
+  height: 100rpx; 
+  margin: 3vh 0vw;
+  right:-15vw;
 }
 
 canvas {
@@ -235,5 +233,15 @@ canvas {
 
 .wxParse-img {
   width: 100% !important;
-   margin: 1vh 0vw;
+  margin: 1vh 0vw;
+}
+
+.jumpEdit {
+  background: #4d89e2;
+  color: white;
+  font-size: 5vw;
+  width: 70%;
+  height: 100rpx; 
+  margin: 3vh 0vw;
+  right:-15vw;
 }
