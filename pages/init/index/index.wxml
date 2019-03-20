@@ -58,10 +58,10 @@
   <view>
     <view wx:if="{{ordinaryUser.length>0}}">
       <view wx:for="{{ordinaryUser}}" class='ordinary-company-container flex' wx:for-item="on" catchtap='navCompanyDetail' data-id='{{on.id}}' wx:key="{{ordinaryUser}}">
-        <view class='ordinary-company-img'>
+        <view class='ordinary-company-img mui-col-sm-35'>
           <image src='{{tools.splitFirstImg(on.bannerImgs)}}'></image>
         </view>
-        <view>
+        <view class='mui-col-sm-65'>
           <view class='ordinary-companyName'>
             {{on.companyName}}
           </view>
@@ -78,11 +78,17 @@
             <text class='iconfont icon-dianhua'></text>
             <text> {{on.telphone}}</text>
           </view>
-          <view class='ordinary-companySimpleAddress'>
-            <text class='iconfont icon-weizhi'></text>
-            <text>{{tools.subLength(on.companySimpleAddress,8)}}</text>
+          <view class='flex mui-view-space'>
+            <view class='ordinary-companySimpleAddress'>
+              <text class='iconfont icon-weizhi'></text>
+              <text>{{tools.subLength(on.companySimpleAddress,8)}}</text>
+            </view>
+            <view class='distance' wx:if="{{on.distance!=undefined}}">
+              <text>{{on.distance}}</text>
+            </view>
           </view>
         </view>
+
       </view>
     </view>
     <view wx:if="{{!hasData}}" class='NoEnterprise flex mui-view-center'>

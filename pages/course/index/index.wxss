@@ -52,12 +52,12 @@
 
 .invite-tea {
   background: #fbd83c;
-  color: #fff;
+  color: rgb(179, 180, 120);
 }
 
 .invite-stu {
   background: #fbd83c;
-  color: #fff;
+  color: rgb(179, 180, 120);
 }
 
 .punchRecord {
