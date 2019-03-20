@@ -35,7 +35,9 @@
 .mui-col-sm-33 {
   width: 33%;
 }
-
+.mui-col-sm-35 {
+  width: 35%;
+}
 
 .mui-col-sm-40 {
   width: 40%;

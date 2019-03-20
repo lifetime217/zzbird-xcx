@@ -86,19 +86,6 @@ Page({
     // this.callPhoneModal.hide();
   },
   /**
-   * 判断两个经纬度地址的距离
-   */
-  // getDistance: function(la1, lo1, la2, lo2) {
-  //   var La1 = la1 * Math.PI / 180.0;
-  //   var La2 = la2 * Math.PI / 180.0;
-  //   var La3 = La1 - La2;
-  //   var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
-  //   var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
-  //   s = s * 6378.137; //地球半径
-  //   s = Math.round(s * 10000) / 10000;
-  //   return s;
-  // },
-  /**
    * 比较数组当中的大小
    */
   compare: function(property) {
@@ -122,6 +109,19 @@ Page({
     }, 1000);
   },
   /**
+   * 判断两个经纬度地址的距离
+   */
+  getDistance: function(la1, lo1, la2, lo2) {
+    var La1 = la1 * Math.PI / 180.0;
+    var La2 = la2 * Math.PI / 180.0;
+    var La3 = La1 - La2;
+    var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+    s = s * 6378.137; //地球半径
+    s = Math.round(s * 10000) / 10000;
+    return s;
+  },
+  /**
    * 区分是否授权地址
    */
   authAddress: function(page, search) {
@@ -134,32 +134,39 @@ Page({
       success: function(res) {
         params.latitude = res.latitude;
         params.longitude = res.longitude;
-        that.queryEnterprise(params, search);
+        that.queryEnterprise(params, search, true);
       },
       fail: function() {
-        that.queryEnterprise(params, search);
+        that.queryEnterprise(params, search, false);
       }
     })
 
   },
   /**
+   * 比较数组当中的大小
+   */
+  compare: function(property) {
+    return function(a, b) {
+      var value1 = a[property];
+      var value2 = b[property];
+      return value1 - value2;
+    }
+  },
+  /**
    * 查询企业
    */
-  queryEnterprise: function(params, search) {
+  queryEnterprise: function(params, search, flag) {
     var that = this;
     that.showLoad();
-    // var roleType = app.globalData.roleType;
     http.httpPost(domainUrl + "/api/company/queryCompanyPage", params).then((res) => {
       var data = res.data.data;
       // 查询成功
       if (res.data.statusCode == 200) {
         // 查询的用户列表
-        var ordinaryUser = data.ordinaryUser.list;
+        var ordinaryUser = data.ordinaryUser;
         var page = params.page;
         var list;
-        var hasMore = true; //判断下一次是否可以继续上拉刷新
         var hasData = true; //是否有数据
-
         if (that.data.isFirstRequest) {
           hasData = ordinaryUser.length != 0;
           // 赋值isFirstRequest为false
@@ -168,7 +175,31 @@ Page({
             hasData: hasData
           });
         }
-
+        if (flag) {
+          var latitude1 = params.latitude;
+          var longitude1 = params.longitude;
+          //算出两个经纬度的距离
+          for (var i = 0; i < ordinaryUser.length; i++) {
+            var latitude2 = ordinaryUser[i].lat;
+            var longitude2 = ordinaryUser[i].lng;
+            var distance = that.getDistance(latitude1, longitude1, latitude2, longitude2);
+            if (distance * 1000 < 500) {
+              ordinaryUser[i].distance = "500米以内";
+            } else if (distance * 1000 < 1000) {
+              ordinaryUser[i].distance = "1公里以内";
+            } else {
+              ordinaryUser[i].distance = Math.round(distance) + "公里";
+            }
+            ordinaryUser[i].distanceNum = Math.round(distance * 1000);
+          }
+          // 根据距离从小到大排序
+          ordinaryUser.sort(that.compare('distanceNum'));
+        }
+        //判断下一次是否可以继续上拉刷新
+        var pageNumber = data.ordPageNumber;
+        var totalRow = data.ordRotalRow;
+        var pageSize = data.ordPageSize;
+        var hasMore = pageNumber * pageSize < totalRow;
         if (page > 1) {
           //查询第一页以后的数据
           var oldList = that.data.ordinaryUser;
@@ -176,18 +207,12 @@ Page({
             for (var i = 0; i < ordinaryUser.length; i++) {
               oldList.push(ordinaryUser[i]);
             }
-          } else {
-            hasMore = false;
           }
           list = oldList;
         } else {
-          //第一次查询数据
-          if (ordinaryUser.length == 0) {
-            hasMore = false;
-          }
           list = ordinaryUser;
-
         }
+        console.log(list);
         that.setData({
           ordinaryUser: list,
           hasMore: hasMore,
@@ -287,14 +312,14 @@ Page({
         isFirstRequest: true,
         hasData: true
       });
-      this.authAddress(1, currPage.data.search);
+      that.authAddress(1, currPage.data.search);
     } else if (!that.data.isFirstRequest && app.globalData.flagback == 1) {
       // search为空时查询所有的数据
       that.setData({
         isFirstRequest: true,
         hasData: true
       });
-      this.authAddress(1, "");
+      that.authAddress(1, "");
     }
 
     if (app.globalData.companyReload) {
@@ -303,7 +328,8 @@ Page({
         hasData: true
       })
       that.validateUser();
-      this.authAddress(1, "");
+      that.authAddress(1, "");
+      app.globalData.companyReload = false;
     }
 
   },
