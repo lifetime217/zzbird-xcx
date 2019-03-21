@@ -43,7 +43,6 @@ page {
   font-size: 4.9vw;
 }
 
-
 .content {
   width: 100%;
   height: 50%;
@@ -71,7 +70,7 @@ page {
   color: #b7b7b7;
 }
 
-.time-view-red{
+.time-view-red {
   width: 100%;
   height: 50%;
   font-size: 2.8vw;
@@ -88,4 +87,12 @@ page {
   height: 3vw;
   background: red;
   border-radius: 50% 50% 50% 50%;
+}
+
+.no_message image {
+  width: 100%;
+  height: 88vw;
+  margin: 2vw 0;
+  position: relative;
+  top: -2vh;
 }

@@ -1,8 +1,8 @@
 <!--pages/owner/message/message.wxml-->
-<wxs src="../../../util/util.wxs" module="tools"/>
+<wxs src="../../../util/util.wxs" module="tools" />
 <view class="mainBody">
   <view class='flex line' wx:for="{{messageList}}" wx:for-item="on" wx:key="{{messageList}}" data-id="{{on.id}}" catchtap='lookMsg' data-index="{{index}}">
-    <view class='flex mui-align-center mui-view-center img-view' >
+    <view class='flex mui-align-center mui-view-center img-view'>
       <image class='img' src="{{on.sendImg}}"></image>
     </view>
     <view class='flex mui-flex-wrap detail'>
@@ -21,5 +21,8 @@
         <view wx:if="{{on.read == 0}}"></view>
       </view>
     </view>
+  </view>
+  <view wx:if="{{!hasData}}" class='no_message flex mui-view-center'>
+    <image src='../../../images/no_message.png'></image>
   </view>
 </view>
