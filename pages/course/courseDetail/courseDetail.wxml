@@ -53,7 +53,7 @@
   <button catchtap='share' class='mui-col-sm-100 blue share'>生成分享海报</button>
 </view>
 
-<view wx:if="{{roleVal=='10'&&isEdit}}">
+<view wx:if="{{roleVal=='10'&&isEdit&&type!='inviteTea' && type!='inviteStu'}}">
   <button catchtap='jumpEdit' class='mui-col-sm-100 blue jumpEdit'>修改课程</button>
 </view>
 
