@@ -3,6 +3,10 @@ var http = require('../../../util/request/request.js');
 var WxParse = require('../../../util/wxParse/wxParse.js');
 var app = getApp();
 var domainUrl = app.globalData.domainUrl;
+let touchDotX = 0; //X按下时坐标
+let touchDotY = 0; //y按下时坐标
+let interval; //计时器
+let time = 0; //从按下到松开共多少时间*100
 Page({
 
   /**
@@ -19,14 +23,87 @@ Page({
     imgRight: "", //图片右
   },
   /**
+   * 图片滑动开始监听
+   */
+  touchStart: function(e) {
+    touchDotX = e.touches[0].pageX; // 获取触摸时的原点
+    touchDotY = e.touches[0].pageY;
+    // 使用js计时器记录时间    
+    interval = setInterval(function() {
+      time++;
+    }, 100);1
+  },
+  /**
+   * 图片滑动结束监听
+   */
+  touchEnd: function(e) {
+    let touchMoveX = e.changedTouches[0].pageX;
+    let touchMoveY = e.changedTouches[0].pageY;
+    let tmX = touchMoveX - touchDotX;
+    let tmY = touchMoveY - touchDotY;
+    if (time < 20) {
+      let absX = Math.abs(tmX);
+      let absY = Math.abs(tmY);
+      if (absX > 2 * absY) {
+        var imgLeft = parseInt(this.data.imgLeft); //图片左
+        var imgCenter = parseInt(this.data.imgCenter); //图片中
+        var imgRight = parseInt(this.data.imgRight); //图片右
+        if (tmX < 0) {
+          if (imgRight == this.data.bannerList.length) {
+            this.clearInterval();
+            return;
+          }
+          this.setData({
+            imgLeft: imgCenter,
+            imgCenter: imgRight,
+            imgRight: imgRight + 1
+          });
+        } else {
+          if (imgLeft == -1) {
+            this.clearInterval();
+            return;
+          }
+          this.setData({
+            imgLeft: imgLeft - 1,
+            imgCenter: imgLeft,
+            imgRight: imgCenter
+          });
+        }
+      }
+      if (absY > absX * 2 && tmY < 0) {
+        console.log("上滑动=====")
+      }
+    }
+    this.clearInterval();
+  },
+  /**
+   * 清楚计时器
+   */
+  clearInterval:function(){
+    clearInterval(interval); // 清除setInterval
+    time = 0;
+  },
+
+  /**
+   * 预览图片
+   */
+  previewImg: function(e) {
+    var img = e.currentTarget.dataset.url;
+
+    wx.previewImage({
+      current: img, // 当前显示图片的http链接
+      urls: this.data.bannerList // 需要预览的图片http链接列表
+    })
+  },
+  /**
    * 切换图片
    */
   switchImg: function(e) {
     var bannerList = this.data.bannerList;
     var index = e.currentTarget.dataset.index;
     var type = e.currentTarget.dataset.type;
-    var imgLeft = "";
-    var imgCenter = "";
+    var imgLeft = ""; //图片左
+    var imgCenter = ""; //图片中
     var imgRight = ""; //图片右
     if (type != "center") {
       imgLeft = index - 1;
@@ -137,15 +214,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var that = this;
     if (options.type != undefined) {
-      this.setData({
+      that.setData({
         type: options.type
       });
     }
     var companyId = options.companyId;
-    // var companyId = "f06f6cccc4b34543bddb9568a86495e9";
-    this.queryCompanyDetail(companyId);
-
+    if (app.globalData.sessionKey && app.globalData.sessionKey != "") {
+      that.queryCompanyDetail(companyId);
+    } else {
+      // 由于请求是网络请求，可能会在 Page.onLoad执行 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.sessionKeyCallback = sessionKey => {
+        if (sessionKey != '') {
+          that.queryCompanyDetail(companyId);
+        }
+      }
+    }
   },
 
   /**

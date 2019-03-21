@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 13,
 			"list": [
 				{
 					"id": -1,
@@ -130,10 +130,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 13,
 					"name": "企业详情",
 					"pathName": "pages/init/companyDetail/companyDetail",
-					"query": "companyId=t1110qew3d1d48fa9cc33a4568331f2a",
+					"query": "companyId=ab5a1eb07b1543ad8a215dac06000380",
 					"scene": null
 				},
 				{
