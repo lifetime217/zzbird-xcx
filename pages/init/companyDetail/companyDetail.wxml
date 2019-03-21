@@ -3,7 +3,7 @@
 <wxs src="../../../util/util.wxs" module="tools" />
 <!-- 上 -->
 <view>
-  <view class='banner flex mui-align-center mui-view-center'>
+  <view class='banner flex mui-align-center mui-view-center'  bindtouchstart='touchStart' bindtouchend='touchEnd'>
     <view data-url='{{bannerList[imgLeft]}}' data-type='left' data-index="{{imgLeft}}" class="{{bannerList[imgLeft]==undefined?'':'img-left'}}" catchtap="{{bannerList[imgLeft]==undefined?'':'switchImg'}}">
       <image src='{{bannerList[imgLeft]}}' mode="scaleToFill"></image>
     </view>

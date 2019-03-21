@@ -16,6 +16,7 @@ Page({
     numberThree: 0, //界面第二行第三个模块
     numberFour: 0, //企业平均每周课时
     messageCount: 0, //未读消息的数量
+    isFirstRequest:true,//是否是第一次请求
     menuitems_com: {
       course: {
         text: '课程列表',
@@ -171,7 +172,6 @@ Page({
    */
   queryCompanyInfo: function() {
     var that = this;
-    that.showLoad();
     return new Promise((resolve, reject) => {
       var that = this;
       http.httpPost(domainUrl + "/api/company/selectCompany", {}).then((res) => {
@@ -186,15 +186,14 @@ Page({
             numberThree: data.data.courseCount,
             numberFour: data.data.average,
             messageCount: data.data.messageCount,
+            isFirstRequest: false
           })
         }
-        that.hideTime();
       }).catch((errMsg) => {
         wx.showModal({
           content: '网络异常',
           showCancel: false,
         })
-        that.hideTime();
       });
     })
   },
@@ -203,7 +202,6 @@ Page({
    */
   queryTeacherInfo: function() {
     var that = this;
-    that.showLoad();
     return new Promise((resolve, reject) => {
       var that = this;
       http.httpPost(domainUrl + "/api/companycourseuser/selectTeacher", {}).then((res) => {
@@ -217,15 +215,14 @@ Page({
             numberTow: data.data.stuCount,
             numberThree: data.data.totalClassHour,
             messageCount: data.data.messageCount,
+            isFirstRequest: false
           })
         }
-        that.hideTime();
       }).catch((errMsg) => {
         wx.showModal({
           content: '网络异常',
           showCancel: false,
         })
-        that.hideTime();
       });
     })
   },
@@ -234,7 +231,6 @@ Page({
    */
   queryStudentInfo: function() {
     var that = this;
-    that.showLoad();
     return new Promise((resolve, reject) => {
       var that = this;
       http.httpPost(domainUrl + "/api/companycourseuser/selectStudent", {}).then((res) => {
@@ -248,15 +244,14 @@ Page({
             numberTow: data.data.monthClassHourt,
             numberThree: data.data.totalClassHour,
             messageCount: data.data.messageCount,
+            isFirstRequest:false
           })
         }
-        that.hideTime();
       }).catch((errMsg) => {
         wx.showModal({
           content: '网络异常',
           showCancel: false,
         })
-        that.hideTime();
       });
     })
   },
@@ -272,13 +267,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    if (app.globalData.ownerReload) {
+    if(!this.data.isFirstRequest){
       if (getCurrentPages().length != 0) {
         //刷新当前页面的数据
         getCurrentPages()[getCurrentPages().length - 1].onLoad();
         app.globalData.ownerReload = false;
       }
     }
+   
   },
 
   /**

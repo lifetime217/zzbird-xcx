@@ -7,7 +7,7 @@
 }
 
 .banner image {
-  height: 23vh;
+  height: 24vh;
   width: 28vw;
   border-radius: 2vw;
 }
@@ -159,7 +159,7 @@
 }
 
 .img-left, .img-right {
-  background: #000;
+  /* background: #000; */
   border-radius: 2vw;
 }
 
