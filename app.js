@@ -38,7 +38,6 @@ App({
       wx.login({
         success: function(res) {
           if (res.code) {
-            console.log(res.code);
             util.httpGet(that.globalData.domainUrl + "/login/getXcxUserOpenid/" + res.code, {
               "zzbird_XcxSessionKey": "loginCode"
             }).then((res) => {
