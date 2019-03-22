@@ -35,7 +35,7 @@ Page({
         text: '企业学生',
         type: 'enterpriseToStu',
         url: '/pages/owner/company/companyStu/companyStu',
-        icon: 'icon-qiyexuesheng'
+        icon: 'icon-xueshengliebiao'
       },
 
       messageToEnter: {
@@ -48,7 +48,7 @@ Page({
         text: '切换身份',
         type: 'switchIdentity',
         url: '/pages/owner/checkRole/checkRole',
-        icon: 'icon-xiaoxiliebiao'
+        icon: 'icon-icon-qihuan'
       },
       updateCompany: {
         text: '编辑企业',
@@ -80,7 +80,7 @@ Page({
         text: '切换身份',
         type: 'switchIdentity',
         url: '/pages/owner/checkRole/checkRole',
-        icon: 'icon-xiaoxiliebiao'
+        icon: 'icon-icon-qihuan'
       }
     },
     menuitems_par: {
@@ -100,7 +100,7 @@ Page({
         text: '切换身份',
         type: 'switchIdentity',
         url: '/pages/owner/checkRole/checkRole',
-        icon: 'icon-xiaoxiliebiao'
+        icon: 'icon-icon-qihuan'
       }
     }
   },
