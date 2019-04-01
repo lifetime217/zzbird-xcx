@@ -27,7 +27,7 @@
       <image class='stu-img' src='{{on.roleHeadimg}}'></image>
     </view>
     <view class="flex mui-view-center">
-      <text class="stu-name">{{on.roleName}}</text>
+      <text class="stu-name">{{on.roleName.length>5?tools.subStr(on.roleName,5):on.roleName}}</text>
     </view>
     <!-- <view wx:if="{{tools.validateId(clickList,'id',on.id) != -1}}" class="iconfont icon-gou"></view>
     <view wx:else class='iconfont icon-gou-no'></view> -->
