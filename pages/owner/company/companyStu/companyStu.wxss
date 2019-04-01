@@ -1,14 +1,18 @@
 /* pages/owner/company/companyStu/companyStu.wxss */
 @import "../../../../common/style/iconfont.wxss";
 @import "../../../../common/style/common.wxss";
-page{
+
+page {
   height: 100%;
   width: 100%;
+  background: #f5f5f5;
 }
+
 .line {
-  height: 15vh;
+  height: 12vh;
   border-bottom: 0.2vw solid #e9e9e9;
   border-top: 0.2vw solid #e9e9e9;
+  background: white;
 }
 
 .imgView {
@@ -26,26 +30,26 @@ page{
 }
 
 .userName {
-  margin: 1vh 1vw 0.5vh 1vw;
+  margin:0.1vh 1vw 0.2vh 1vw;
   font-size: 4.5vw;
 }
 
 .userCourse {
-   margin: 0.3vh 1vw 0.3vh 1vw;
+  margin: 0vh 1vw 0vh 1vw;
   font-size: 3.8vw;
   color: #777676;
 }
 
 .noUserCourse {
-   margin: 0.3vh 1vw 0.3vh 1vw;
+  margin: 0.3vh 1vw 0.3vh 1vw;
   font-size: 3.8vw;
   color: #f0c44c;
 }
 
 .userCompany {
-   margin: 0.5vh 1vw 0.8vh 1vw;
+  margin: 0.3vh 1vw 0vh 1vw;
   font-size: 3.8vw;
-   color: #777676;
+  color: #777676;
 }
 
 .NoEnterprise image {
@@ -53,13 +57,13 @@ page{
   height: 65vw;
   margin: 2vw 0;
 }
-.NoEnterprise{
-  width:100%;
-  height:100%;
+
+.NoEnterprise {
+  width: 100%;
+  height: 100%;
 }
 
-.mainBody{
-  width:100%;
-  height:100%;
+.mainBody {
+  width: 100%;
+  height: 100%;
 }
-
