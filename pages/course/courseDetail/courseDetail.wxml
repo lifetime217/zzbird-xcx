@@ -10,10 +10,10 @@
       </view>
       <view class='course-basics-information'>
         <view class='courseName'>
-          <scroll-view  scroll-x>
+          <scroll-view scroll-x>
             <text>{{courseName}}</text>
           </scroll-view>
-          </view>
+        </view>
         <view class='flex teacher'>
           <!-- <text wx:for="{{teacher}}" wx:if="{{index<3}}" wx:for-item="on" wx:key="{{teacher}}">{{tools.subStr(on.name,3)}}</text> -->
           <text class='iconfont icon-qiyelaoshi'></text>
@@ -23,7 +23,7 @@
         </view>
         <view class='flex companyName'>
           <text class='iconfont icon-xuexiao'></text>
-          <scroll-view  scroll-x>
+          <scroll-view scroll-x>
             <text>{{companyName}}</text>
           </scroll-view>
         </view>

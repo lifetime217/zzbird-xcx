@@ -12,6 +12,12 @@
   border-radius: 2vw;
 }
 
+.roleName>scroll-view {
+  width: 18vw;
+  height: 100%;
+  white-space: nowrap;
+}
+
 .company-detail {
   margin: 1vh 0;
 }
@@ -167,6 +173,7 @@
   width: 100% !important;
   margin: 1vh 0vw;
 }
-.company-detail-wxParse{
+
+.company-detail-wxParse {
   padding: 0vh 3vw;
 }

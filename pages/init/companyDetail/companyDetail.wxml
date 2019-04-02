@@ -3,7 +3,7 @@
 <wxs src="../../../util/util.wxs" module="tools" />
 <!-- 上 -->
 <view>
-  <view class='banner flex mui-align-center mui-view-center'  bindtouchstart='touchStart' bindtouchend='touchEnd'>
+  <view class='banner flex mui-align-center mui-view-center' bindtouchstart='touchStart' bindtouchend='touchEnd'>
     <view data-url='{{bannerList[imgLeft]}}' data-type='left' data-index="{{imgLeft}}" class="{{bannerList[imgLeft]==undefined?'':'img-left'}}" catchtap="{{bannerList[imgLeft]==undefined?'':'switchImg'}}">
       <image src='{{bannerList[imgLeft]}}' mode="scaleToFill"></image>
     </view>
@@ -53,7 +53,9 @@
           <image src='{{on.roleHeadimg}}'></image>
         </view>
         <view class='roleName flex mui-view-center'>
-          <text> {{tools.subLength(on.roleName,3)}}</text>
+          <scroll-view scroll-x>
+            <text>{{on.roleName}}</text>
+          </scroll-view>
         </view>
       </view>
     </view>
@@ -75,7 +77,7 @@
     <!-- </view> -->
   </view>
   <view class='flex mui-view-center  mui-align-center telphone'>
-      <!-- <text class='iconfont icon-dianhua'></text> -->
-      <text class=''>{{companyDetail.telphone}}</text>
+    <!-- <text class='iconfont icon-dianhua'></text> -->
+    <text class=''>{{companyDetail.telphone}}</text>
   </view>
 </view>
