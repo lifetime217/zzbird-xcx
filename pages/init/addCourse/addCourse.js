@@ -30,6 +30,7 @@ Page({
     ageIndex: 0, // 年龄范围索引
     courseDetailInfo: "", //课程介绍
     courseId: "", //编辑课程
+    deleteImg: [], //保存删除的图片
   },
   /**
    * 选择图片
@@ -120,6 +121,7 @@ Page({
     var name = e.currentTarget.dataset.name;
     var imgUrlName = that.data.imgUrlName;
     var imgUrls = that.data.imgUrls;
+    var deleteImg = that.data.deleteImg;
     wx.showModal({
       title: '提示',
       content: '是否删除图片',
@@ -133,9 +135,11 @@ Page({
               break;
             }
           }
+          deleteImg.push(name);
           that.setData({
-            imgUrlName: imgUrlName,
-            imgUrls: imgUrls
+            imgUrlName,
+            imgUrls,
+            deleteImg
           });
         }
       }
@@ -329,6 +333,7 @@ Page({
     var ageRange = that.data.ageRange;
     var classTimeSelect = that.data.classTimeSelect;
     var courseDetailInfo = that.data.courseDetailInfo;
+    var deleteImg = that.data.deleteImg;
     var type = that.data.type;
     if (imgUrlName.length == 0) {
       wx.showToast({
@@ -359,7 +364,8 @@ Page({
       "startTime": startTime,
       "endTime": endTime,
       "courseDesc": courseDetailInfo,
-      "courseImg": imgUrlNameStr
+      "courseImg": imgUrlNameStr,
+      "deleteImg": deleteImg.join(",")
     }
     var url;
     if (type == "edit") {
@@ -388,7 +394,7 @@ Page({
               that.setData({
                 type: ""
               });
-              app.globalData.courseReload =true;
+              app.globalData.courseReload = true;
               // 用户点击确定 返回详情展示 
               wx.navigateTo({
                 url: '../../course/courseDetail/courseDetail?type=courseEdit&courseId=' + courseId

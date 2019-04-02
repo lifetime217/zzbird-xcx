@@ -31,7 +31,8 @@ Page({
     // 使用js计时器记录时间    
     interval = setInterval(function() {
       time++;
-    }, 100);1
+    }, 100);
+    1
   },
   /**
    * 图片滑动结束监听
@@ -42,6 +43,11 @@ Page({
     let tmX = touchMoveX - touchDotX;
     let tmY = touchMoveY - touchDotY;
     if (time < 20) {
+      console.log(this.data.bannerList.length);
+      if (this.data.bannerList.length == 1) {
+        this.clearInterval();
+        return;
+      }
       let absX = Math.abs(tmX);
       let absY = Math.abs(tmY);
       if (absX > 2 * absY) {
@@ -79,7 +85,7 @@ Page({
   /**
    * 清楚计时器
    */
-  clearInterval:function(){
+  clearInterval: function() {
     clearInterval(interval); // 清除setInterval
     time = 0;
   },

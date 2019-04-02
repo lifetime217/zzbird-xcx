@@ -6,7 +6,7 @@
     <view class='picture-title'>企业照片</view>
     <view wx:if="{{imgUrls.length>0}}" class="flex mui-align-center">
       <block wx:for="{{imgUrls}}" wx:for-item="on" wx:key="{{imgUrls}}">
-        <image src='{{on.url}}' catchlongpress='deletImg' data-name='{{on.name}}' class='company-image'></image>
+        <image src='{{on.url}}' catchlongpress='deleteImg' data-name='{{on.name}}' class='company-image'></image>
       </block>
     </view>
     <view wx:else>
