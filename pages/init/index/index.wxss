@@ -20,6 +20,19 @@
   font-size: 4vw;
 }
 
+.ordinary-companyName>scroll-view {
+  width: 55vw;
+  height: 100%;
+  white-space: nowrap;
+}
+
+.ordinary-companySimpleAddress>scroll-view {
+  width: 31vw;
+  height: 100%;
+  white-space: nowrap;
+}
+
+
 .iconfont {
   font-size: 3.5vw;
   align-items: center;
@@ -197,9 +210,7 @@ swiper {
 
 .distance {
   color: red;
-  font-size: 3.5vw;
+  font-size: 3vw;
   line-height: 4vh;
   position: relative;
 }
-
-

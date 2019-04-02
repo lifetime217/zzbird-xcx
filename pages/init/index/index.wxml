@@ -63,7 +63,9 @@
         </view>
         <view class='mui-col-sm-65'>
           <view class='ordinary-companyName'>
-            {{on.companyName}}
+            <scroll-view  scroll-x>
+              <text>{{on.companyName}}</text>
+            </scroll-view>
           </view>
           <view class='ordinary-industryListName'>
             <text class='iconfont icon-chanyeleixing'></text>
@@ -79,9 +81,11 @@
             <text> {{on.telphone}}</text>
           </view>
           <view class='flex mui-view-space'>
-            <view class='ordinary-companySimpleAddress'>
+            <view class='ordinary-companySimpleAddress flex'>
               <text class='iconfont icon-weizhi'></text>
-              <text>{{tools.subLength(on.companySimpleAddress,8)}}</text>
+              <scroll-view  scroll-x>
+                <text>{{on.companySimpleAddress}}</text>
+              </scroll-view>
             </view>
             <view class='distance' wx:if="{{on.distance!=undefined}}">
               <text>{{on.distance}}</text>
