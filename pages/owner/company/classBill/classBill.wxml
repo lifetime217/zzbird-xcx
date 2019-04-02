@@ -1,4 +1,4 @@
-<!--pages/owner/student/punchClockRecord/punchClockRecord.wxml-->
+<!--pages/owner/company/classBill/classBill.wxml-->
 <wxs src="../../../../util/util.wxs" module="tools" />
 <view>
   <view class='flex header' catchtouchmove='ture'>
@@ -28,9 +28,7 @@
         <text>最近一年</text>
         <radio value='2' color='#60B4FE' class="radio" checked='{{checkIndex==2}}'></radio>
       </view>
-
     </view>
-
   </view>
   <!-- 按月份查询打卡 -->
   <view class='body-item' wx:if="{{layout == 0}}">
@@ -48,13 +46,8 @@
               <view class="item-body-line">
                 <view class="text-course">{{list.coursename}}</view>
                 <view class='flex'>
-                  <view class="text-date flex mui-col-sm-70">
-                    <view class="week">{{list.week}}</view>{{tools.subStrStatEnd(list.dakaTime,0,16)}}</view>
-                  <view class="text-username mui-col-sm-30">
-                    <scroll-view scroll-x>
-                      <text>{{list.teaName}}</text>
-                    </scroll-view>
-                  </view>
+                  <view class="text-date flex mui-col-sm-70"><view class="week">{{list.week}}</view>{{tools.subStrStatEnd(list.dakaTime,0,16)}}</view>
+                  <view class="text-username mui-col-sm-30">{{list.teaName}}</view>
                 </view>
               </view>
             </view>
@@ -68,13 +61,13 @@
     </view>
   </view>
 
-  <!-- 按课程查询打卡 -->
+   <!-- 按课程查询打卡 -->
   <view class='body-item' wx:if="{{layout == 1}}">
     <view class="tab-right">
       <view class="scroll-view-y">
 
         <view class="item" wx:for="{{courseList}}" wx:for-item="on" wx:key="{{courseList}}">
-          <!-- 课程抬头 -->
+        <!-- 课程抬头 -->
           <view class="item-head flex">
             <view class='mui-col-sm-50 item-head-text'>{{on.courseName}}</view>
             <view class='mui-col-sm-50 item-head-text'>课程打卡{{on.punCount}}次</view>
@@ -84,13 +77,8 @@
             <view class="{{index % 2==0?'item-body-line': 'item-body-lineOu'}}">
               <view class="item-body-line">
                 <view class='flex'>
-                  <view class="text-date flex mui-col-sm-70">
-                    <view class="week">{{list.week}}</view>{{tools.subStrStatEnd(list.dakaTime,0,16)}}</view>
-                  <view class="text-username mui-col-sm-30">
-                    <scroll-view scroll-x>
-                      <text>{{list.teaName}}</text>
-                    </scroll-view>
-                  </view>
+                  <view class="text-date flex mui-col-sm-70"><view class="week">{{list.week}}</view>{{tools.subStrStatEnd(list.dakaTime,0,16)}}</view>
+                  <view class="text-username mui-col-sm-30">{{list.teaName}}</view>
                 </view>
               </view>
             </view>

@@ -19,6 +19,7 @@ Page({
     lat: "", //纬度
     lng: "", //经度
     companyDetailInfo: "", //描述信息
+    deleteImg: [], //保存删除的图片名字
   },
   /**
    * 跳转富文本
@@ -131,6 +132,7 @@ Page({
     var lat = that.data.lat;
     var lng = that.data.lng;
     var companyDetailInfo = that.data.companyDetailInfo;
+    var deleteImg = that.data.deleteImg;
     if (imgUrlName.length == 0) {
       wx.showToast({
         title: '请上传图片',
@@ -190,7 +192,8 @@ Page({
       "lat": lat,
       "lng": lng,
       "bannerImgs": imgUrlNameStr,
-      "companyDetailInfo": companyDetailInfo
+      "companyDetailInfo": companyDetailInfo,
+      "deleteImg": deleteImg.join(",")
     }
     var url;
     if (type == "edit") {
@@ -268,13 +271,14 @@ Page({
     })
   },
   /**
-   * 长按删除图片   没有删除储存图片
+   * 长按删除图片   没有删除 储存在本地的图片
    */
-  deletImg: function(e) {
+  deleteImg: function(e) {
     var that = this;
     var name = e.currentTarget.dataset.name;
     var imgUrlName = that.data.imgUrlName;
     var imgUrls = that.data.imgUrls;
+    var deleteImg = that.data.deleteImg;
     wx.showModal({
       title: '提示',
       content: '是否删除图片',
@@ -288,9 +292,11 @@ Page({
               break;
             }
           }
+          deleteImg.push(name);
           that.setData({
-            imgUrlName: imgUrlName,
-            imgUrls: imgUrls
+            imgUrlName,
+            imgUrls,
+            deleteImg
           });
         }
       }

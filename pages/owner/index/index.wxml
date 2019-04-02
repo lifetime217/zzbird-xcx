@@ -1,5 +1,5 @@
 <!--pages/owner/index/index.wxml-->
-<wxs src="../../../util/util.wxs" module="tools"/>
+<wxs src="../../../util/util.wxs" module="tools" />
 <!-- 用户信息 -->
 <view class='userInfo flex' catchtap='editUser'>
   <view class="flex mui-align-center mui-view-center userImgView">
@@ -79,7 +79,7 @@
   <!-- 块 二 -->
   <view class='flex mui-view-wrap kuai'>
     <!-- 企业老师 -->
-    <view class='flex line' data-type="{{menuitems_com.enterPriseToTea}}"  catchtap="jumpPage">
+    <view class='flex line' data-type="{{menuitems_com.enterPriseToTea}}" catchtap="jumpPage">
       <view class='flex mui-align-center mui-view-center label-view'>
         <text class='iconfont {{menuitems_com.enterPriseToTea.icon}} label'></text>
       </view>
@@ -89,7 +89,7 @@
       <text class='iconfont icon-arrowright icon-arrowright-line'></text>
     </view>
     <!-- 企业学生 -->
-    <view class='flex line' data-type="{{menuitems_com.enterpriseToStu}}"  catchtap="jumpPage">
+    <view class='flex line' data-type="{{menuitems_com.enterpriseToStu}}" catchtap="jumpPage">
       <view class='flex mui-align-center mui-view-center label-view'>
         <text class='iconfont {{menuitems_com.enterpriseToStu.icon}} label'></text>
       </view>
@@ -98,8 +98,18 @@
       </view>
       <text class='iconfont icon-arrowright icon-arrowright-line'></text>
     </view>
+    <!-- 课时账单 -->
+    <view class='flex line' data-type="{{menuitems_com.classBill}}" catchtap="jumpPage">
+      <view class='flex mui-align-center mui-view-center label-view'>
+        <text class='iconfont  {{menuitems_com.classBill.icon}}'></text>
+      </view>
+      <view class='flex mui-align-center tga-name'>
+        <text>{{menuitems_com.classBill.text}}</text>
+      </view>
+      <text class='iconfont icon-arrowright icon-arrowright-line'></text>
+    </view>
     <!-- 消息列表 -->
-    <view class='flex line' data-type="{{menuitems_com.messageToEnter}}"  catchtap="jumpPage">
+    <view class='flex line' data-type="{{menuitems_com.messageToEnter}}" catchtap="jumpPage">
       <view class='flex mui-align-center mui-view-center label-view'>
         <text class='iconfont {{menuitems_com.messageToEnter.icon}} label'></text>
       </view>
@@ -113,7 +123,7 @@
   <!-- 块 三 -->
   <view class='flex mui-view-wrap kuai'>
     <!-- 切换身份 -->
-    <view class='flex line' data-type="{{menuitems_com.switchIdentity}}"  catchtap="jumpPage">
+    <view class='flex line' data-type="{{menuitems_com.switchIdentity}}" catchtap="jumpPage">
       <view class='flex mui-align-center mui-view-center label-view'>
         <text class='iconfont {{menuitems_com.switchIdentity.icon}} label'></text>
       </view>
@@ -123,7 +133,7 @@
       <text class='iconfont icon-arrowright icon-arrowright-line'></text>
     </view>
     <!-- 编辑企业 -->
-    <view class='flex line' data-type="{{menuitems_com.updateCompany}}"  catchtap="jumpPage">
+    <view class='flex line' data-type="{{menuitems_com.updateCompany}}" catchtap="jumpPage">
       <view class='flex mui-align-center mui-view-center label-view'>
         <text class='iconfont {{menuitems_com.updateCompany.icon}} label'></text>
       </view>
@@ -168,7 +178,7 @@
   <!-- 块 一 -->
   <view class='flex mui-view-wrap kuai'>
     <!-- 课程列表 -->
-    <view class='flex line' data-type="{{menuitems_tea.course}}"  catchtap="jumpPage">
+    <view class='flex line' data-type="{{menuitems_tea.course}}" catchtap="jumpPage">
       <view class='flex mui-align-center mui-view-center label-view'>
         <text class='iconfont {{menuitems_tea.course.icon}} label'></text>
       </view>
@@ -178,7 +188,7 @@
       <text class='iconfont icon-arrowright icon-arrowright-line'></text>
     </view>
     <!-- 学生列表 -->
-    <view class='flex line' data-type="{{menuitems_tea.stuList}}"  catchtap="jumpPage">
+    <view class='flex line' data-type="{{menuitems_tea.stuList}}" catchtap="jumpPage">
       <view class='flex mui-align-center mui-view-center label-view'>
         <text class='iconfont {{menuitems_tea.stuList.icon}} label'></text>
       </view>
@@ -188,7 +198,7 @@
       <text class='iconfont icon-arrowright icon-arrowright-line'></text>
     </view>
     <!-- 消息列表 -->
-    <view class='flex line' data-type="{{menuitems_tea.messageToTea}}"  catchtap="jumpPage">
+    <view class='flex line' data-type="{{menuitems_tea.messageToTea}}" catchtap="jumpPage">
       <view class='flex mui-align-center mui-view-center label-view'>
         <text class='iconfont {{menuitems_tea.messageToTea.icon}} label'></text>
       </view>
@@ -202,7 +212,7 @@
   <!-- 块 二 -->
   <view class='flex mui-view-wrap kuai'>
     <!-- 切换身份 -->
-    <view class='flex line' data-type="{{menuitems_tea.switchIdentity}}"  catchtap="jumpPage">
+    <view class='flex line' data-type="{{menuitems_tea.switchIdentity}}" catchtap="jumpPage">
       <view class='flex mui-align-center mui-view-center label-view'>
         <text class='iconfont {{menuitems_tea.switchIdentity.icon}} label'></text>
       </view>
@@ -245,10 +255,10 @@
       </view>
     </view>
   </view>
-   <!-- 块 一 -->
+  <!-- 块 一 -->
   <view class='flex mui-view-wrap kuai'>
     <!-- 课时账单 -->
-    <view class='flex line' data-type="{{menuitems_par.punchClock}}"  catchtap="jumpPage">
+    <view class='flex line' data-type="{{menuitems_par.punchClock}}" catchtap="jumpPage">
       <view class='flex mui-align-center mui-view-center label-view'>
         <text class='iconfont icon-dangqiankecheng {{menuitems_par.punchClock.icon}}'></text>
       </view>
@@ -258,7 +268,7 @@
       <text class='iconfont icon-arrowright icon-arrowright-line'></text>
     </view>
     <!-- 消息列表 -->
-    <view class='flex line' data-type="{{menuitems_par.messageToStu}}"  catchtap="jumpPage">
+    <view class='flex line' data-type="{{menuitems_par.messageToStu}}" catchtap="jumpPage">
       <view class='flex mui-align-center mui-view-center label-view'>
         <text class='iconfont {{menuitems_par.messageToStu.icon}} label'></text>
       </view>
@@ -269,10 +279,10 @@
       <text class='iconfont icon-arrowright icon-arrowright-line'></text>
     </view>
   </view>
-   <!-- 块 二 -->
+  <!-- 块 二 -->
   <view class='flex mui-view-wrap kuai'>
     <!-- 切换身份 -->
-    <view class='flex line' data-type="{{menuitems_par.switchIdentity}}"  catchtap="jumpPage">
+    <view class='flex line' data-type="{{menuitems_par.switchIdentity}}" catchtap="jumpPage">
       <view class='flex mui-align-center mui-view-center label-view'>
         <text class='iconfont {{menuitems_par.switchIdentity.icon}} label'></text>
       </view>

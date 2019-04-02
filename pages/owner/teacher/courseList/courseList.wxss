@@ -11,6 +11,12 @@
   padding-left: 4vw;
 }
 
+.courseName>scroll-view, .companyName>scroll-view {
+  width: 60vw;
+  height: 100%;
+  white-space: nowrap;
+}
+
 .courseName {
   color: #61b5fe;
 }

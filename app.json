@@ -19,7 +19,8 @@
     "pages/owner/student/punchClockRecord/punchClockRecord",
     "pages/init/richText/richText",
     "pages/course/punchClock/punchClock",
-    "pages/owner/messageDetails/messageDetails"
+    "pages/owner/messageDetails/messageDetails",
+    "pages/owner/company/classBill/classBill"
   ],
   "window": {
     "backgroundTextStyle": "dark",

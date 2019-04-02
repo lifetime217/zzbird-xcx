@@ -4,14 +4,22 @@
     <view class='img flex mui-align-center'>
       <image src='{{on.courseImg}}'></image>
       <view class='course-information'>
-        <view class='courseName'>{{on.courseName}}</view>
+        <view class='courseName'>
+          <scroll-view scroll-x>
+            <text class=''> {{on.courseName}}</text>
+          </scroll-view>
+        </view>
         <view class='personNumber'>当前学员{{on.personNumber}}人</view>
         <view class='time' wx:if="{{roleVal==10}}">{{on.startTime}}~{{on.endTime}}</view>
-        <view class='companyName' wx:elif="{{roleVal==20}}">{{on.companyname}}</view>
+        <view class='companyName' wx:elif="{{roleVal==20}}">
+          <scroll-view scroll-x>
+            <text class=''>  {{on.companyname}}</text>
+          </scroll-view>
+        </view>
       </view>
     </view>
     <view wx:if="{{roleVal==10}}" class='company-btn' catchtap="stopBubbles">
-      <button open-type='share' data-invite='inviteTea' data-coursename='{{on.courseName}}'  data-companyname='{{on.companyname}}'  data-companyid='{{on.companyId}}' data-id='{{on.id}}' class='invite-tea'>邀请老师</button>
+      <button open-type='share' data-invite='inviteTea' data-coursename='{{on.courseName}}' data-companyname='{{on.companyname}}' data-companyid='{{on.companyId}}' data-id='{{on.id}}' class='invite-tea'>邀请老师</button>
     </view>
     <view wx:elif="{{roleVal==20}}" class='teacher-btn' catchtap="stopBubbles">
       <!-- <button open-type='share' data-invite='inviteStu' data-coursename='{{on.courseName}}'  data-companyname='{{on.companyname}}'  data-companyid='{{on.companyId}}' data-id='{{on.id}}' class='invite-stu'>邀请学生</button>
@@ -20,9 +28,9 @@
     <view wx:elif="{{roleVal==30}}" class='student-btn'>
     </view>
   </view>
-   <view wx:if="{{!hasData}}" class='NoCourse flex mui-view-center'>
-      <image src='../../../images/no_course.png'></image>
-    </view>
+  <view wx:if="{{!hasData}}" class='NoCourse flex mui-view-center'>
+    <image src='../../../images/no_course.png'></image>
+  </view>
 </view>
 
 
