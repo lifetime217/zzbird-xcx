@@ -10,10 +10,10 @@
       </view>
       <view class='course-basics-information'>
         <view class='courseName'>
-          <scroll-view  scroll-x>
+          <scroll-view scroll-x>
             <text>{{courseName}}</text>
           </scroll-view>
-          </view>
+        </view>
         <view class='flex teacher'>
           <!-- <text wx:for="{{teacher}}" wx:if="{{index<3}}" wx:for-item="on" wx:key="{{teacher}}">{{tools.subStr(on.name,3)}}</text> -->
           <text class='iconfont icon-qiyelaoshi'></text>
@@ -23,7 +23,7 @@
         </view>
         <view class='flex companyName'>
           <text class='iconfont icon-xuexiao'></text>
-          <scroll-view  scroll-x>
+          <scroll-view scroll-x>
             <text>{{companyName}}</text>
           </scroll-view>
         </view>
@@ -36,7 +36,7 @@
     </view>
   </view>
 </view>
-<view class='course-desc-container' wx:if="{{courseDetailInfo!=''}}">
+<view class="course-desc-container {{!isFollow && type != 'nav'?'bottomMargin':''}}" wx:if="{{courseDetailInfo!=''}}">
   <!-- {{courseDetailInfo}} -->
   <template is="wxParse" data="{{wxParseData:article.nodes}}" />
 </view>
@@ -55,7 +55,7 @@
   <text class='BackIndex' catchtap='backIndex'>返回首页</text>
 </view>
 
-<view wx:if="{{roleVal=='30'&&type!='inviteTea' && type!='inviteStu'}}">
+<view wx:if="{{roleVal=='30'&&type!='inviteTea' && type!='inviteStu'}}" class="{{!isFollow?'bottomMargin-nav':''}}">
   <button catchtap='share' class='mui-col-sm-100 blue share'>生成分享海报</button>
 </view>
 
@@ -87,6 +87,44 @@
         <button class='confirmModal mui-col-sm-50' open-type='getUserInfo' lang="zh_CN" bindgetuserinfo="confirmModal"> 接受 </button>
       </view>
     </view>
+  </view>
+</view>
 
+<view wx:if="{{!isFollow && roleVal=='30' && type!='inviteTea'}}" class='flex isFollow mui-view-wrap'>
+  <view class='flex mui-align-center gzhTitle'>
+    <text>知知鸟关联的公众号</text>
+  </view>
+  <view class='flex mui-align-center gzhBody'>
+    <view class='flex mui-align-center mui-view-center img-view'>
+      <image src="http://111.231.78.102:71/kaka/GzhImg.jpg" class='img'></image>
+    </view>
+    <view class='flex mui-view-wrap gzhDetails'>
+      <view class='flex mui-align-center gzhName'>
+        <text>青团趣学服务号</text>
+      </view>
+      <view class='flex gzhExplain'>
+        <text>关注后推送即时打卡信息！</text>
+      </view>
+    </view>
+    <view class='flex mui-align-center mui-view-center gzhButton-view'>
+      <view class='gzhButton' catchtap='openGzhCode'>
+        <text>关注</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{openGzhCode}}" class='gzhCodeBg' catchtap='hideCode'>
+</view>
+<view wx:if="{{openGzhCode}}" class='flex mui-view-wrap gzhCodeView'>
+  <view class='flex mui-align-center mui-view-center codeImg'>
+    <image src='http://111.231.78.102:71/kaka/GzhCode.jpg'></image>
+  </view>
+  <view class='flex mui-view-center mui-view-wrap saveCodeButtonView'>
+    <view class="saveGzhCode" catchtap='saveGzhCode'>
+      <text>保存图片</text>
+    </view>
+  </view>
+  <view class='flex mui-view-center zhu'>
+    <text>注：保存图片后请使用微信扫一扫关注公众号！</text>
   </view>
 </view>

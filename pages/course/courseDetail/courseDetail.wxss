@@ -257,3 +257,137 @@ canvas {
   margin: 3vh 0vw;
   right: -15vw;
 }
+
+.isFollow {
+  width: 99%;
+  height: 11vh;
+  position: fixed;
+  background: white;
+  bottom: 0vh;
+  border: solid #e9e6e6 0.2vh;
+  border-radius: 1vw;
+}
+
+.gzhTitle {
+  width: 100%;
+  height: 30%;
+  font-size: 3vw;
+  color: #aaa5a2;
+  padding-left: 2vw;
+}
+
+.bottomMargin {
+  margin-bottom: 15vh;
+}
+
+.bottomMargin-nav {
+  margin-bottom: 22vh;
+}
+
+.img-view {
+  height: 100%;
+  width: 20%;
+}
+
+.img {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.gzhBody {
+  height: 70%;
+  width: 100%;
+}
+
+.gzhDetails {
+  height: 100%;
+  width: 60%;
+  padding-left: 1vw;
+}
+
+.gzhName {
+  width: 100%;
+  height: 50%;
+  font-size: 4vw;
+  font-weight: 600;
+}
+
+.gzhExplain {
+  width: 100%;
+  height: 50%;
+  font-size: 3vw;
+  color: #555;
+  padding-top: 0.5vh;
+}
+
+.gzhButton-view {
+  height: 100%;
+  width: 20%;
+}
+
+.gzhButton {
+  color: #437446;
+  border: #437446 solid 0.4vw;
+  border-radius: 1vw;
+  font-size: 3.5vw;
+  padding: 0.4vh 3vw 0.4vh 3vw;
+}
+
+.gzhCodeBg {
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: #000;
+  opacity: 0.5;
+}
+
+.gzhCodeView {
+  background: white;
+  position: fixed;
+  top: 10vh;
+  left: 10vw;
+  height: 60vh;
+  width: 80vw;
+  z-index: 101;
+  border-radius: 2vw;
+}
+
+.codeImg {
+  width: 100%;
+  height: 70%;
+}
+
+.saveCodeButtonView {
+  width: 100%;
+  height: 10%;
+}
+
+.codeImg image {
+  width: 60vw;
+  height: 60vw;
+}
+
+.saveGzhCode {
+  width: 60%;
+  height: 100%;
+  background: #f05107;
+  color: white;
+  border-radius: 2vw;
+  font-size: 4.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zhu{
+  font-size: 3.6vw;
+  color: #505050;
+  height: 10%;
+  width: 100%;
+}

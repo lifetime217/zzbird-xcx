@@ -36,7 +36,9 @@ Page({
     isback: false, //受邀请展示返回首页
     prurl: "", //保存相册使用的路劲
     exist: false, // 受邀請進來已經是否是該課程的老師或者學生
-    isEdit:false,//判断该用户是否是该课程的企业创建者
+    isEdit: false, //判断该用户是否是该课程的企业创建者
+    isFollow: true, //判断用户是否关注了公众号
+    openGzhCode: false, //公众号二维码遮罩层
   },
   hideCanvas: function() {
     this.setData({
@@ -75,7 +77,7 @@ Page({
    * 
    */
 
-  jumpEdit:function(){
+  jumpEdit: function() {
     var that = this;
     wx.navigateTo({
       url: '/pages/init/addCourse/addCourse?type=edit&courseId=' + that.data.courseId,
@@ -335,6 +337,7 @@ Page({
             classHour,
             type,
             isEdit: data.isEdit,
+            isFollow: data.isFollow,
           });
           resolve();
         } else {
@@ -375,8 +378,8 @@ Page({
     var that = this;
     if (options.type != undefined) {
       var type = options.type;
-      
-      if ( type == 'inviteTea' ||  type == 'inviteStu') {
+
+      if (type == 'inviteTea' || type == 'inviteStu') {
         var companyId = options.companyId;
         var inviteSessionKey = options.inviteSessionKey;
         var invitationMessage = "";
@@ -385,7 +388,7 @@ Page({
         var inviteRoleVal = options.roleVal;
         //老师或者学生不存在该课程中
         var exist = that.data.exist;
-        if (exist){
+        if (exist) {
           wx.showModal({
             content: '您已经是该课程的老师或者学生了',
             showCancel: false,
@@ -416,6 +419,102 @@ Page({
     }
   },
 
+
+  /**
+   * 打卡公众号二维码
+   */
+  openGzhCode: function() {
+    var that = this;
+    that.setData({
+      openGzhCode: true,
+    })
+  },
+
+  /**
+   * 关闭二维码窗口
+   */
+  hideCode: function() {
+    var that = this;
+    that.setData({
+      openGzhCode: false,
+    })
+  },
+
+
+  /**
+   * 保存公众号二维码
+   */
+  saveGzhCode: function() {
+    var that = this;
+    wx.downloadFile({
+      url: "http://111.231.78.102:71/kaka/GzhCode.jpg",
+      success:function(res){
+        var tempFilePath = res.tempFilePath
+        wx.saveImageToPhotosAlbum({
+          filePath: tempFilePath,
+          success(res) {
+            wx.showToast({
+              title: '保存成功',
+            })
+          },
+          fail(res) {
+            wx.getSetting({
+              success: function (res) {
+                var statu = res.authSetting;
+                // 没有授权的
+                if (!statu['scope.writePhotosAlbum']) {
+                  wx.showModal({
+                    title: '是否授权保存相册',
+                    content: '需要保存在相册中，请确认授权，否则无法保存相册',
+                    success: function (tip) {
+                      if (tip.confirm) {
+                        wx.openSetting({
+                          success: function (data) {
+                            if (data.authSetting["scope.writePhotosAlbum"] === true) {
+                              wx.showToast({
+                                title: '授权成功',
+                                icon: 'none',
+                                duration: 1000
+                              })
+                              //生产环境时 记得这里要加入获取相册授权的代码
+                              wx.saveImageToPhotosAlbum({
+                                filePath: tempFilePath,
+                                success(res) {
+                                  wx.showToast({
+                                    title: '保存成功',
+                                  })
+                                }
+                              })
+                            } else {
+                              wx.showToast({
+                                title: '授权失败',
+                                icon: 'none',
+                                duration: 1000
+                              })
+                            }
+                          }
+                        })
+                      }
+                    }
+                  })
+                }
+              }
+            })
+
+          }
+        })
+      },
+      fail:function(res){
+        console.log(res)
+        wx.showToast({
+          title: '图片下载失败',
+          icon: 'none',
+          duration: 1000
+        })
+        return;
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -456,5 +555,6 @@ Page({
       })
     }
   },
+
 
 })

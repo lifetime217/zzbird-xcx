@@ -46,7 +46,7 @@ Page({
   navCourseDetail: function(e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: "../courseDetail/courseDetail?type='nav'&courseId=" + id,
+      url: "../courseDetail/courseDetail?type=nav&courseId=" + id,
     })
   },
   /**
