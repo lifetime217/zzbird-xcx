@@ -5,56 +5,59 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    classBill: {
+      "2019-4": {
+        "张老师": [{
+          "courseId": "123456789",
+          "courseName": "架子鼓",
+          "dakaNum": 62
+        }, {
+          "courseId": "4567891",
+          "courseName": "钢琴课",
+          "dakaNum": 78
+        }],
+        "李老师": [{
+          "courseId": "123456789",
+          "courseName": "美术",
+          "dakaNum": 51
+        }, {
+          "courseId": "4567891",
+          "courseName": "幼教",
+          "dakaNum": 38
+        }]
+      },
+      "2019-3": {
+        "王老师": [{
+          "courseId": "123456789",
+          "courseName": "架子鼓",
+          "dakaNum": 62
+        }, {
+          "courseId": "4567891",
+          "courseName": "钢琴课",
+          "dakaNum": 78
+        }, {
+          "courseId": "4567891",
+          "courseName": "幼教",
+          "dakaNum": 78
+        }],
+        "李老师": [{
+          "courseId": "123456789",
+          "courseName": "美术",
+          "dakaNum": 51
+        }, {
+          "courseId": "4567891",
+          "courseName": "幼教",
+          "dakaNum": 38
+        }]
+      }
+    },
+    hasData:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
+  onLoad: function(options) {
+    
+  }
 })

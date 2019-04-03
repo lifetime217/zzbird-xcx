@@ -1,54 +1,26 @@
 <!--pages/owner/company/classBill/classBill.wxml-->
 <wxs src="../../../../util/util.wxs" module="tools" />
 <view>
-  <view class='flex header' catchtouchmove='ture'>
-    <!-- 布局选择 -->
-    <view catchtap="choiceItem" data-item="1" class='mui-col-sm-50 swiber-item'>
-      <text style='{{layout == 1 ?"color:#50ACFF;":""}}'>按课程查询</text>
-    </view>
-    <view class='swiber-item'>
-      <view class='vline'></view>
-    </view>
-    <view catchtap="choiceItem" data-item="2" class='mui-col-sm-50 swiber-item'>
-      <text style='{{layout == 0 ?"color:#50ACFF;":""}}'>按时间查询</text>
-      <text class='iconfont icon-arrowright {{!channel? "":"transform"}}'></text>
-    </view>
-    <!-- 按时间查询列表 -->
-    <view class="sorting-list {{!channel?' chioce-list-hide':' chioce-list-show'}}">
-
-      <view class="flex mui-view-space option" data-index='0' catchtap='chiceIndex'>
-        <text>当月</text>
-        <radio value='0' color='#60B4FE' class="radio" checked='{{checkIndex==0}}'></radio>
-      </view>
-      <view class="flex mui-view-space option" data-index='1' catchtap='chiceIndex'>
-        <text>最近一个季度</text>
-        <radio value='1' color='#60B4FE' class="radio" checked='{{checkIndex==1}}'></radio>
-      </view>
-      <view class="flex mui-view-space option" data-index='2' catchtap='chiceIndex'>
-        <text>最近一年</text>
-        <radio value='2' color='#60B4FE' class="radio" checked='{{checkIndex==2}}'></radio>
-      </view>
-    </view>
-  </view>
   <!-- 按月份查询打卡 -->
-  <view class='body-item' wx:if="{{layout == 0}}">
+  <view class='body-item'>
     <view class="tab-right">
       <view class="scroll-view-y">
         <!-- 月份抬头 -->
-        <view class="item" wx:for="{{monthList}}" wx:for-item="on" wx:key="{{monthList}}">
+        <view class="item" wx:for="{{classBill}}" wx:for-index="month" wx:for-item="monthValues" wx:key="{{classBill}}">
           <view class="item-head flex">
-            <view class='mui-col-sm-50 item-head-text'>{{tools.subStrStatEnd(on.monthDtae,0,4)}}年{{tools.subStrStatEnd(on.monthDtae,5,8)}}月</view>
-            <view class='mui-col-sm-50 item-head-text'>共计打卡{{on.punCount}}次</view>
+            <view class='mui-col-sm-50 item-head-text'>{{month}}</view>
           </view>
           <!-- 打卡明细 -->
-          <view wx:for="{{on.punchList}}" wx:for-item="list" wx:key="{{on.punchList}}">
-            <view class="{{index % 2==0?'item-body-line': 'item-body-lineOu'}}">
-              <view class="item-body-line">
-                <view class="text-course">{{list.coursename}}</view>
-                <view class='flex'>
-                  <view class="text-date flex mui-col-sm-70"><view class="week">{{list.week}}</view>{{tools.subStrStatEnd(list.dakaTime,0,16)}}</view>
-                  <view class="text-username mui-col-sm-30">{{list.teaName}}</view>
-                </view>
+          <view wx:for="{{monthValues}}"  wx:for-index="teacher" wx:for-item="course" wx:key="{{monthValues}}">
+            <view class='teacher'>
+              {{teacher}}
+            </view>
+            <view wx:for="{{course}}" data-courseid='{{on.courseId}}' class='flex course' wx:for-item="on" wx:key="{{course}}">
+              <view class='courseName'>
+                {{on.courseName}}
+              </view>
+              <view class='dakaNum'>
+                {{on.dakaNum}}
               </view>
             </view>
           </view>
@@ -60,37 +32,4 @@
       </view>
     </view>
   </view>
-
-   <!-- 按课程查询打卡 -->
-  <view class='body-item' wx:if="{{layout == 1}}">
-    <view class="tab-right">
-      <view class="scroll-view-y">
-
-        <view class="item" wx:for="{{courseList}}" wx:for-item="on" wx:key="{{courseList}}">
-        <!-- 课程抬头 -->
-          <view class="item-head flex">
-            <view class='mui-col-sm-50 item-head-text'>{{on.courseName}}</view>
-            <view class='mui-col-sm-50 item-head-text'>课程打卡{{on.punCount}}次</view>
-          </view>
-          <!-- 打卡明细 -->
-          <view wx:for="{{on.punchList}}" wx:for-item="list" wx:key="{{on.punchList}}">
-            <view class="{{index % 2==0?'item-body-line': 'item-body-lineOu'}}">
-              <view class="item-body-line">
-                <view class='flex'>
-                  <view class="text-date flex mui-col-sm-70"><view class="week">{{list.week}}</view>{{tools.subStrStatEnd(list.dakaTime,0,16)}}</view>
-                  <view class="text-username mui-col-sm-30">{{list.teaName}}</view>
-                </view>
-              </view>
-            </view>
-          </view>
-        </view>
-        <!-- 无课程显示 -->
-        <view wx:if="{{!hasData}}" class='flex NoEnterprise mui-align-center mui-view-center'>
-          <image src='../../../../images/no_student.png'></image>
-        </view>
-
-      </view>
-    </view>
-  </view>
-
 </view>

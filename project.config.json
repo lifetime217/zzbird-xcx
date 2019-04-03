@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 15,
 			"list": [
 				{
 					"id": -1,
@@ -141,6 +141,13 @@
 					"name": "邀请学生",
 					"pathName": "pages/course/courseDetail/courseDetail",
 					"query": "type=inviteStu&companyId=248979f6ff3443939449fd029f02f577&courseId=f22e201c773a4f51978f12b856806c79&companyName=测试&courseName=真好&inviteSessionKey=A86AF68596912C7E8E4E204F19F16133&roleVal=20",
+					"scene": null
+				},
+				{
+					"id": 15,
+					"name": "企业课时账单",
+					"pathName": "pages/owner/company/classBill/classBill",
+					"query": "",
 					"scene": null
 				}
 			]
