@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 15,
+			"current": 16,
 			"list": [
 				{
 					"id": -1,
@@ -145,6 +145,13 @@
 				},
 				{
 					"id": 15,
+					"name": "企业课时账单",
+					"pathName": "pages/owner/company/classBill/classBill",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 16,
 					"name": "企业课时账单",
 					"pathName": "pages/owner/company/classBill/classBill",
 					"query": "",

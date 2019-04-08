@@ -6,21 +6,25 @@
     <view class="tab-right">
       <view class="scroll-view-y">
         <!-- 月份抬头 -->
-        <view class="item" wx:for="{{classBill}}" wx:for-index="month" wx:for-item="monthValues" wx:key="{{classBill}}">
+        <view class="item" wx:for="{{monthList}}" wx:for-item="on" wx:key="{{monthList}}">
           <view class="item-head flex">
-            <view class='mui-col-sm-50 item-head-text'>{{month}}</view>
+            <view class='mui-col-sm-50 item-head-text'>{{on.months}}</view>
           </view>
           <!-- 打卡明细 -->
-          <view wx:for="{{monthValues}}"  wx:for-index="teacher" wx:for-item="course" wx:key="{{monthValues}}">
-            <view class='teacher'>
-              {{teacher}}
+          <view wx:for="{{on.teacherList}}" wx:for-item="on" wx:key="{{on.teacherList}}" class='flex details mui-view-wrap'>
+            <view class='flex teacher mui-align-center'>
+              <view class='iconfont icon-qiyelaoshi'></view>
+              <text>{{on.teaName}}</text>
             </view>
-            <view wx:for="{{course}}" data-courseid='{{on.courseId}}' class='flex course' wx:for-item="on" wx:key="{{course}}">
-              <view class='courseName'>
-                {{on.courseName}}
+            <!-- 课程集合 -->
+            <view wx:for="{{on.courseList}}" data-courseid='{{on.courseId}}' wx:for-item="on" wx:key="{{on.courseList}}" class='flex courseDetails'>
+              <view class='flex courseName mui-align-center {{index %2 == 0?"bg":""}}'>
+                <view class='iconfont icon-kechengliebiao'></view>
+                <text>{{on.courseName}}</text>
               </view>
-              <view class='dakaNum'>
-                {{on.dakaNum}}
+              <!-- 打卡天数 -->
+              <view  class='flex courseDayCount mui-align-center {{index %2 == 0?"bg":""}}'>
+                <text>课程打卡 {{on.dayCount}} 天</text>
               </view>
             </view>
           </view>

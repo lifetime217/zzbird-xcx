@@ -4,8 +4,8 @@
 
 page {
   height: 80%;
+  background: #f3f3f3;
 }
-
 
 .tab-right {
   bottom: 1vh;
@@ -19,25 +19,31 @@ page {
 .item {
   margin: 2vh 3vw 2vh 3vw;
   box-shadow: 0vh 0.5vw 0.9vh 0vw #ddd;
+  background: #e2e1e1;
 }
 
 .item-head {
   width: 100%;
-  height: 5.5vh;
-  background-color: #50acff;
+  background-color: #f06f19;
   border-top-left-radius: 2vw;
   border-top-right-radius: 2vw;
   text-align: center;
 }
 
 .item-head-text {
-  font-size: 4vw;
-  line-height: 5vh;
+  font-size: 5vw;
+  line-height: 6vh;
   color: white;
+  font-weight: 900;
 }
 
-.teacher{
-
+.teacher {
+  height: 7vh;
+  width: 100%;
+}
+.teacher text {
+  font-size: 4vw;
+  color: #f06f19;
 }
 
 .NoEnterprise image {
@@ -51,3 +57,38 @@ page {
   width: 100%;
   height: 100%;
 }
+
+.courseName {
+ width: 70%;
+ font-size: 3.5vw;
+ color: #508eeb;
+}
+.courseDayCount{
+  width: 30%;
+  font-size: 3.5vw;
+  color: #508eeb;
+}
+.details {
+  background: white;
+  margin: 0.2vh 0vw 0.2vh 0vw;
+  width: 100%;
+}
+
+.icon-qiyelaoshi{
+  margin: 0vh 2vw 0vh 4vw;
+  font-size: 4vw;
+  color: #f06f19;
+}
+
+.icon-kechengliebiao{
+   margin: 0vh 2vw 0vh 8vw;
+   font-size: 3.5vw;
+}
+.courseDetails{
+  height: 5vh;
+  width: 100%;
+}
+.bg{
+  background: #fff7f5;
+}
+
