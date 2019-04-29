@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 16,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -46,10 +46,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "新增课程",
 					"pathName": "pages/init/addCourse/addCourse",
-					"query": "type=addCompany",
+					"query": "type=edit&couseId=a8d3ba2601294dec8169ffac55c2185e",
 					"scene": null
 				},
 				{
@@ -63,7 +63,7 @@
 					"id": 3,
 					"name": "修改课程",
 					"pathName": "pages/init/addCourse/addCourse",
-					"query": "courseId=14635fb4b3b745969c09b9e486b21801&type=edit",
+					"query": "type=edit&courseId=a8d3ba2601294dec8169ffac55c2185e",
 					"scene": null
 				},
 				{
@@ -155,6 +155,13 @@
 					"name": "企业课时账单",
 					"pathName": "pages/owner/company/classBill/classBill",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "邀请老师",
+					"pathName": "pages/course/courseDetail/courseDetail",
+					"query": "type=inviteTea&companyId=d70dbdbf1f7f4f9b888c36543efb9eff&courseId=a8d3ba2601294dec8169ffac55c2185e&companyName=美画&courseName=一对一美术&inviteSessionKey=A86AF68596912C7E8E4E204F19F16133&roleVal=10",
 					"scene": null
 				}
 			]

@@ -18,8 +18,8 @@ var subStr = function(str, length) {
 /**
  * 截取字符串有头有尾
  */
-var subStrStatEnd = function (str, stat, end) {
-  return str.substring(stat,end);
+var subStrStatEnd = function(str, stat, end) {
+  return str.substring(stat, end);
 }
 
 /**
@@ -38,10 +38,17 @@ var validateId = function(arrayToSearch, attr, val) {
  * 截取第一张图片
  */
 var splitFirstImg = function(imgs) {
-  if (imgs.indexOf(",")==-1){
+  if (imgs.indexOf(",") == -1) {
     return imgs;
   }
   return imgs.substring(0, imgs.indexOf(","));
+}
+
+/**
+ * 截取年龄
+ */
+var splitAge = function(ageRange, type) {
+  return ageRange.split("-")[type];
 }
 
 module.exports = {
@@ -49,5 +56,6 @@ module.exports = {
   validateId: validateId,
   subStr: subStr,
   subStrStatEnd: subStrStatEnd,
-  splitFirstImg: splitFirstImg
+  splitFirstImg: splitFirstImg,
+  splitAge: splitAge
 }

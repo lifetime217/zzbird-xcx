@@ -249,7 +249,6 @@ Page({
           var data = res.data.data;
           var course = data.course;
           var roleVal = app.globalData.roleVal;
-          console.log(course.courseDesc);
           WxParse.wxParse("article", "html", course.courseDesc, that, 0)
 
           var companyName = data.companyName;
@@ -319,8 +318,13 @@ Page({
               });
 
             })
+
+          
           }
+          
           that.setData({
+            isEdit: data.isEdit,
+            isFollow: data.isFollow,
             courseId,
             imgUrls: data.courseImgsUrl,
             courseName,
@@ -335,9 +339,7 @@ Page({
             roleVal: app.globalData.roleVal,
             studyWeek,
             classHour,
-            type,
-            isEdit: data.isEdit,
-            isFollow: data.isFollow,
+            type
           });
           resolve();
         } else {
@@ -447,7 +449,7 @@ Page({
   saveGzhCode: function() {
     var that = this;
     wx.downloadFile({
-      url: "http://111.231.78.102:71/kaka/GzhCode.jpg",
+      url: "https://zzn.luoran.net/kaka/GzhCode.jpg",
       success:function(res){
         var tempFilePath = res.tempFilePath
         wx.saveImageToPhotosAlbum({
@@ -505,9 +507,9 @@ Page({
         })
       },
       fail:function(res){
-        console.log(res)
+      
         wx.showToast({
-          title: '图片下载失败',
+          title: res,
           icon: 'none',
           duration: 1000
         })

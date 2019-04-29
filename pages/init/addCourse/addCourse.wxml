@@ -42,17 +42,19 @@
   </view>
 </view>
 <!-- 年龄范围 -->
-<view class=' ageRange' catchtap="kindToggle">
-  <view class="flex mui-view-space ageRang-select  ageRang-item-hd {{isShow ? 'ageRang-item-hd-show' : ''}} ">
+<view class=' ageRange'>
+  <view class="flex mui-view-space ageRang-select  ageRang-item-hd  ">
     <view class='flex mui-align-center'>
       <view class='ageRange-title'>年龄范围</view>
-      <view class='select'>{{ageRange}}</view>
-    </view>
-    <view>
-      <text class="iconfont icon-arrowright {{isShow ? 'normal' : 'triangle'}}"></text>
+      <!-- <view class='select'>{{ageRange}}</view> -->
+      <view class='flex mui-align-center '>
+        <input type="number" value='{{startAge}}' bindinput="ageInput" data-type='start' maxlength="3" class='mui-col-sm-30 startAge'></input>
+        <view class="school">至</view>
+        <input type="number" value='{{endAge}}' bindinput="ageInput" data-type='end' maxlength="3" class='mui-col-sm-30 endAge'></input>
+      </view>
     </view>
   </view>
-  <view class="ageRang-bd {{isShow ? 'ageRang-bd-show' : ''}}">
+  <!-- <view class="ageRang-bd {{isShow ? 'ageRang-bd-show' : ''}}">
     <view class="ageRang-item {{isShow ? 'ageRang-item-show' : ''}}">
       <block wx:for-items="{{ages}}" wx:key="{{ages}}">
         <view class="ageRang" data-index='{{index}}' data-type='{{item}}' catchtap='checkAge'>
@@ -61,7 +63,7 @@
         </view>
       </block>
     </view>
-  </view>
+  </view> -->
 </view>
 <!-- 课时选择 -->
 <view class='flex mui-view-space class-time-choose'>

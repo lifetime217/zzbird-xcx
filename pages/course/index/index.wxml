@@ -1,6 +1,6 @@
 <!--pages/course/index/index.wxml-->
 <view>
-  <view wx:for="{{courseList}}" class='flex mui-view-space mui-align-center course-container' catchtap='navCourseDetail' wx:for-item="on" wx:key="{{courseList}}" data-id='{{on.id}}'>
+  <view wx:for="{{courseList}}" class='flex mui-view-space mui-align-center course-container' catchlongpress='deleteCourse' catchtap='navCourseDetail' wx:for-item="on" wx:key="{{courseList}}" data-id='{{on.id}}'>
     <view class='img flex mui-align-center'>
       <image src='{{on.courseImg}}'></image>
       <view class='course-information'>

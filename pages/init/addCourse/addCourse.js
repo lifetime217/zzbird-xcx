@@ -24,13 +24,30 @@ Page({
       }
     ],
     classTimeSelect: "1课时", //课时选择名称
-    isShow: false, // 控制年龄范围的伸缩
-    ages: ['1-8', '8-14', '14-18', '18以上'], // 年龄范围的选项
-    ageRange: "1-8", // 年龄选择名称
-    ageIndex: 0, // 年龄范围索引
+    // isShow: false, // 控制年龄范围的伸缩
+    startAge: "", //开始年龄
+    endAge: "", //结束年龄
+    // ages: ['1-8', '8-14', '14-18', '18以上'], // 年龄范围的选项
+    // ageRange: "1-8", // 年龄选择名称
+    // ageIndex: 0, // 年龄范围索引
     courseDetailInfo: "", //课程介绍
     courseId: "", //编辑课程
     deleteImg: [], //保存删除的图片
+  },
+  /**
+   * 选择年龄
+   */
+  ageInput: function(e) {
+    var type = e.currentTarget.dataset.type;
+    if (type == "start") {
+      this.setData({
+        startAge: e.detail.value
+      });
+    } else {
+      this.setData({
+        endAge: e.detail.value
+      });
+    }
   },
   /**
    * 选择图片
@@ -179,27 +196,27 @@ Page({
       url: '../richText/richText?type=course&courseDetailInfo=' + escape(courseDetailInfo)
     })
   },
-  /**
-   * 选择年龄
-   */
-  checkAge: function(e) {
-    var index = e.currentTarget.dataset.index;
-    var type = e.currentTarget.dataset.type;
-    this.setData({
-      isShow: !this.data.isShow,
-      ageRange: type,
-      ageIndex: index
-    });
-  },
+  // /**
+  //  * 选择年龄
+  //  */
+  // checkAge: function(e) {
+  //   var index = e.currentTarget.dataset.index;
+  //   var type = e.currentTarget.dataset.type;
+  //   this.setData({
+  //     isShow: !this.data.isShow,
+  //     ageRange: type,
+  //     ageIndex: index
+  //   });
+  // },
 
-  /**
-   * 年龄选择
-   */
-  kindToggle: function() {
-    this.setData({
-      isShow: !this.data.isShow
-    });
-  },
+  // /**
+  //  * 年龄选择
+  //  */
+  // kindToggle: function() {
+  //   this.setData({
+  //     isShow: !this.data.isShow
+  //   });
+  // },
   /**
    * 课时选择
    */
@@ -264,24 +281,28 @@ Page({
             classTime[i].checked = false;
           }
         }
-        //拿到年龄选择的下标
-        var ageIndex = 0;
-        var ageRange = course.ageRange;
-        for (var i = 0; i < ages.length; i++) {
-          if (ages[i] == ageRange) {
-            ageIndex = i;
-          }
-        }
+        //拿到年龄范围
+        var ageRange = course.ageRange.split("-");
+
+        // var ageIndex = 0;
+        // for (var i = 0; i < ages.length; i++) {
+        //   if (ages[i] == ageRange) {
+        //     ageIndex = i;
+        //   }
+        // }
+
         that.setData({
           imgUrlName: data.courseImgsName,
           imgUrls: data.courseImgsUrl,
           courseName: course.courseName,
           startTime: course.startTime,
           endTime: course.endTime,
-          ageIndex: ageIndex,
+          // ageIndex: ageIndex,
           classTime: classTime,
           classTimeSelect: courseHour,
-          ageRange: ageRange,
+          // ageRange: ageRange,
+          startAge: ageRange[0],
+          endAge: ageRange[1],
           courseDetailInfo: course.courseDesc
         });
       } else {
@@ -304,6 +325,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    
     if (options.type != undefined) {
       // 编辑课程
       if (options.courseId != undefined) {
@@ -334,6 +356,8 @@ Page({
     var classTimeSelect = that.data.classTimeSelect;
     var courseDetailInfo = that.data.courseDetailInfo;
     var deleteImg = that.data.deleteImg;
+    var startAge = that.data.startAge;
+    var endAge = that.data.endAge;
     var type = that.data.type;
     if (imgUrlName.length == 0) {
       wx.showToast({
@@ -356,11 +380,26 @@ Page({
       })
       return;
     }
+    if (startAge == "" || endAge == "") {
+      wx.showToast({
+        title: '请填写年龄范围',
+        icon: 'none'
+      })
+      return;
+    }
+    if (parseInt(startAge) > parseInt(endAge)) {
+      wx.showToast({
+        title: '最大年龄不能小于最小年龄',
+        icon: 'none'
+      })
+      return;
+    }
+
     var imgUrlNameStr = imgUrlName.join(",");
     var params = {
       "courseName": courseName,
       "courseHour": classTimeSelect,
-      "ageRange": ageRange,
+      "ageRange": startAge + "-" + endAge,
       "startTime": startTime,
       "endTime": endTime,
       "courseDesc": courseDetailInfo,
@@ -417,12 +456,6 @@ Page({
       })
       that.hideTime();
     });
-
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
 
   },
 

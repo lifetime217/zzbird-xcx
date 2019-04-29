@@ -16,6 +16,14 @@ Page({
     isFirstRequest: true, // 是否是第一次请求数据(page为1时)
   },
   /**
+   * 删除课程
+   */
+  deleteCourse: function(e) {
+    var courseId = e.currentTarget.dataset.id;
+    console.log(courseId);
+
+  },
+  /**
    * 新建课程
    */
   addCourse: function() {

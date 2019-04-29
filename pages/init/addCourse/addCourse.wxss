@@ -78,16 +78,16 @@ page {
   font-size: 4.5vw;
 }
 
-.ageRang-bd {
+/* .ageRang-bd {
   height: 0;
   overflow: hidden;
 }
 
 .ageRang-bd-show {
   height: auto;
-}
+} */
 
-.ageRang-item {
+/* .ageRang-item {
   opacity: 0;
   position: relative !important;
   background-color: #fff;
@@ -100,22 +100,24 @@ page {
 .ageRang-item-show {
   opacity: 1;
   transform: translateY(0);
-}
+} */
 
-.ageRang-text {
+/* .ageRang-text {
   flex: 1;
   padding-left: 1vw;
   font-size: 4.5vw;
-}
+} */
 
-.ageRang {
+/* .ageRang {
   padding: 20rpx 0px;
   position: relative;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #f2f2f2;
-  /* margin: 0 15px; */
-}
+  border-bottom: 1px solid #f2f2f2; */
+
+/* margin: 0 15px; */
+
+/* } */
 
 .normal {
   transform: rotateZ(90deg);
@@ -129,16 +131,16 @@ page {
   display: inline-block;
 }
 
-.select {
+/* .select {
   font-size: 4.5vw;
   letter-spacing: 0.3vw;
-}
+} */
 
-.age-option {
+/* .age-option {
   position: relative;
   right: 0.5vw;
   zoom: 0.7;
-}
+} */
 
 .ageRang-select {
   background-color: #fff;
@@ -150,8 +152,22 @@ page {
   transition: opacity 0.3s;
 }
 
-.ageRang-item-hd-show {
+/* .ageRang-item-hd-show {
   opacity: 0.2;
+} */
+
+
+.startAge {
+  width: 21vw;
+  margin-right: 3vw;
+  border-bottom: 1px solid #c5d1c5;
+  text-align: center;
+}
+
+.endAge {
+  width: 21vw;
+  border-bottom: 1px solid #c5d1c5;
+  text-align: center;
 }
 
 .btn {

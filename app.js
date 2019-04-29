@@ -17,13 +17,13 @@ App({
     }
   },
   globalData: {
-    sessionKey: "A86AF68596912C7E8E4E204F19F16133", // 与后台交互的标识  代替了openid
+    sessionKey: "", // 与后台交互的标识  代替了openid
     searchHistory: [], //搜索历史
-    roleVal: "30", //用户角色
+    roleVal: "", //用户角色
     domainUrl: "http://192.168.1.112", //本机
     flagback: 0, //搜索页面返回首页 0左上角返回 1按钮返回或者历史返回
     // domainUrl:  "http://192.168.0.105/", //本机
-    // domainUrl: "https://zzn.luoran.net/zzn/",
+    // domainUrl: "https://zzn.luoran.net/zzn",
     isFirstRequest: 0, //判断请求后台是否是第一次请求 0是第一次 
     companyReload:false,//首页刷新
     courseReload: false,//课程的刷新
