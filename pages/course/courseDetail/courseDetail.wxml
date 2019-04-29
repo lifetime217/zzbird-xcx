@@ -41,13 +41,13 @@
   <template is="wxParse" data="{{wxParseData:article.nodes}}" />
 </view>
 
-<view wx:if="{{roleVal=='30'&&classHour!=''}}" class="data-container flex">
+<view wx:if="{{roleVal=='30'}}" class="data-container flex">
   <view class='class-hour mui-col-sm-25 ta-center '>
-    <view> {{classHour}}周</view>
+    <view> {{studyWeek}}周</view>
     <view>坚持学习</view>
   </view>
   <view class='study-week mui-col-sm-25 ta-center '>
-    <view> {{studyWeek}}课时</view>
+    <view> {{classHour}}课时</view>
     <view>累计学习</view>
   </view>
 </view>
