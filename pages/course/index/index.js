@@ -19,8 +19,56 @@ Page({
    * 删除课程
    */
   deleteCourse: function(e) {
+    var that = this;
     var courseId = e.currentTarget.dataset.id;
-    console.log(courseId);
+    var number = e.currentTarget.dataset.number;
+    if (app.globalData.roleVal != 10) {
+      return;
+    }
+    wx.showModal({
+      title: '删除课程',
+      content: '是否删除课程',
+      showCancel: true,
+      success: function(res) {
+        if (res.cancel) {
+          //点击取消,默认隐藏弹框
+        } else {
+          if (number != "0") {
+            wx.showToast({
+              title: '该课程下还有学生,无法删除!',
+              icon: 'none',
+              duration: 1000
+            })
+            return;
+          }
+
+          //删除课程
+          http.httpPost(domainUrl + "/api/companycourseuser/delCourse", {
+            "courseId": courseId
+          }).then((res) => {
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'none',
+              duration: 1000
+            })
+            //删除成功重新刷新
+            if (res.data.data.successStatus == "success") {
+              that.queryCouse(that.data.page);
+            }
+
+          }).catch((errMsg) => {
+            wx.showModal({
+              content: '网络异常',
+              showCancel: false,
+            })
+            that.hideTime();
+          });
+
+        }
+      }
+    })
+
+
 
   },
   /**
@@ -177,7 +225,8 @@ Page({
    */
   onReachBottom: function() {
     if (this.data.hasMore) {
-      this.queryCouse(this.data.page);
+      var myPage = this.data.page + 1;
+      this.queryCouse(myPage);
     }
   },
   /**
